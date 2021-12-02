@@ -1,0 +1,130 @@
+cxx_includes = -Isrc -Imock
+if OSX
+cxx_warnings = -Wall -Wpedantic -Wextra -D_XOPEN_SOURCE_EXTENDED
+endif
+if LINUX
+cxx_warnings = -Wall -Wpedantic -Wextra -Wsuggest-override -Wsuggest-attribute=format
+endif
+if WINDOWS
+cxx_warnings = -Wall -Wpedantic -Wextra -Wsuggest-override -Wsuggest-attribute=format
+endif
+cxx_std = -std=c++14
+
+check_PROGRAMS = engine_test engine_1_test engine_2_test engine_3_test engine_4_test engine_5_test engine_6_test engine_7_test engine_8_test scene_manager_test scene_manager_2_test objectFileFactory_test objectFileFactory_1_test objectFileFactory_2_test objectFileFactory_3_test objectFileFactory_4_test objectFileFactory_5_test objectFileFactory_6_test objectFileFactory_tearDown_test objectFileFactory_tearDown_1_test objectFileFactory_tearDown_2_test objectFileFactory_tearDown_3_test objectFileFactory_tearDown_4_test objectFileFactory_update_test objectFileFactory_update_1_test objectFileFactory_update_2_test objectFileFactory_update_3_test objectFileFactory_update_4_test
+
+engine_test_group = engine_test.cpp engine.cpp engine.hpp mock/scene_manager.cpp scene_manager.hpp mock/LoggerService.cpp LoggerService.hpp mock/MockLogger.cpp mock/MockLogger.hpp Logger.hpp
+
+engine_test_SOURCES =  $(engine_test_group) mock/ncurses.cpp
+engine_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_test_LDFLAGS = --coverage
+
+engine_1_test_SOURCES = $(engine_test_group) mock/ncurses_fail_initscr.cpp
+engine_1_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_1_test_LDFLAGS = --coverage
+
+engine_2_test_SOURCES = $(engine_test_group) mock/ncurses_fail_start_color.cpp
+engine_2_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_2_test_LDFLAGS = --coverage
+
+engine_3_test_SOURCES = $(engine_test_group) mock/ncurses_fail_cbreak.cpp
+engine_3_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_3_test_LDFLAGS = --coverage
+
+engine_4_test_SOURCES = $(engine_test_group) mock/ncurses_fail_noecho.cpp
+engine_4_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_4_test_LDFLAGS = --coverage
+
+engine_5_test_SOURCES = $(engine_test_group) mock/ncurses_fail_curs_set.cpp
+engine_5_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_5_test_LDFLAGS = --coverage
+
+engine_6_test_SOURCES = $(engine_test_group) mock/ncurses_fail_keypad.cpp
+engine_6_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_6_test_LDFLAGS = --coverage
+
+engine_7_test_SOURCES = $(engine_test_group) mock/ncurses_fail_nodelay.cpp
+engine_7_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_7_test_LDFLAGS = --coverage
+
+engine_8_test_SOURCES = $(engine_test_group) mock/ncurses_fail_endwin.cpp
+engine_8_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+engine_8_test_LDFLAGS = --coverage
+
+scene_manager_test_group = scene_manager_test.cpp scene_manager.cpp component.hpp mock/component.cpp mock/LoggerService.cpp mock/MockLogger.cpp mock/MockLogger.hpp mock/ObjectFactoryService.cpp mock/ObjectFileFactory.cpp mock/GameComponentFactory.cpp mock/ncurses.cpp
+
+scene_manager_test_SOURCES =  $(scene_manager_test_group)
+scene_manager_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+scene_manager_test_LDFLAGS = --coverage
+
+scene_manager_2_test_SOURCES =  $(scene_manager_test_group) mock/ncurses_getch.cpp
+scene_manager_2_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+scene_manager_2_test_LDFLAGS = --coverage
+
+objectFileFactory_test_group = ObjectFileFactory.hpp ObjectFileFactory.cpp mock/component.cpp mock/LoggerService.cpp mock/MockLogger.cpp mock/MockLogger.hpp
+objectFileFactory_test_SOURCES =  objectFileFactory_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_test_LDFLAGS = --coverage
+
+objectFileFactory_1_test_SOURCES =  objectFileFactory_1_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_1_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_1_test_LDFLAGS = --coverage
+
+objectFileFactory_2_test_SOURCES =  objectFileFactory_1_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory_fail_createComponent.cpp
+objectFileFactory_2_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_2_test_LDFLAGS = --coverage
+
+objectFileFactory_3_test_SOURCES =  objectFileFactory_3_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_3_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_3_test_LDFLAGS = --coverage
+
+objectFileFactory_4_test_SOURCES =  objectFileFactory_4_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_4_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_4_test_LDFLAGS = --coverage
+
+objectFileFactory_5_test_SOURCES =  objectFileFactory_5_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_5_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_5_test_LDFLAGS = --coverage
+
+objectFileFactory_6_test_SOURCES =  objectFileFactory_6_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_6_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_6_test_LDFLAGS = --coverage
+
+objectFileFactory_tearDown_test_SOURCES =  objectFileFactory_tearDown_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_tearDown_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_tearDown_test_LDFLAGS = --coverage
+
+objectFileFactory_tearDown_1_test_SOURCES =  objectFileFactory_tearDown_1_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_tearDown_1_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_tearDown_1_test_LDFLAGS = --coverage
+
+objectFileFactory_tearDown_2_test_SOURCES =  objectFileFactory_tearDown_2_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_tearDown_2_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_tearDown_2_test_LDFLAGS = --coverage
+
+objectFileFactory_tearDown_3_test_SOURCES =  objectFileFactory_tearDown_3_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_tearDown_3_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_tearDown_3_test_LDFLAGS = --coverage
+
+objectFileFactory_tearDown_4_test_SOURCES =  objectFileFactory_tearDown_4_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_tearDown_4_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_tearDown_4_test_LDFLAGS = --coverage
+
+objectFileFactory_update_test_SOURCES =  objectFileFactory_update_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_update_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_update_test_LDFLAGS = --coverage
+
+objectFileFactory_update_1_test_SOURCES =  objectFileFactory_update_1_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_update_1_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_update_1_test_LDFLAGS = --coverage
+
+objectFileFactory_update_2_test_SOURCES =  objectFileFactory_update_2_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_update_2_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_update_2_test_LDFLAGS = --coverage
+
+objectFileFactory_update_3_test_SOURCES =  objectFileFactory_update_3_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_update_3_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_update_3_test_LDFLAGS = --coverage
+
+objectFileFactory_update_4_test_SOURCES =  objectFileFactory_update_4_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_update_4_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_update_4_test_LDFLAGS = --coverage

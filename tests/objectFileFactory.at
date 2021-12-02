@@ -1,0 +1,688 @@
+# Test Suite ObjectFileFactory.cpp
+AT_SETUP([objectFileFactory-execution])
+AT_COLOR_TESTS
+# Test fail to open a file in constructor of ObjectFileFactory.cpp. Mocked dependency's
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_test "mock filename"],[0],[Mock GameComponentFactory constructor was called
+Opening Object File 'mock filename'
+Unable to Open Object File 'mock filename'
+Mock GameComponentFactory destructor was called
+])
+# Test successfully opened a file in constructor of ObjectFileFactory.cpp. Mocked dependency's
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Mock GameComponentFactory destructor was called
+])
+# Test success of createObject of ObjectFileFactory.cpp. Mocked dependency's
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_1_test "${abs_top_builddir}"/test-objects.dat 1],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+# Test failure of createObject of ObjectFileFactory.cpp. Mocked dependency's
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_1_test "${abs_top_builddir}"/test-objects.dat 2],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 2, 0
+Generic Object Type 2 Not Found
+Type: -1
+Name: 
+Id: -1
+Mock GameComponentFactory destructor was called
+])
+# Test failure of createObject fail to create component of ObjectFileFactory.cpp. Mocked dependency's
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_2_test "${abs_top_builddir}"/test-objects.dat 1],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Unable to create component 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Unable to create component 1
+Type: 1
+Name: Test
+Id: 0
+Mock GameComponentFactory destructor was called
+])
+
+# Test setup with no components
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Mock GameComponentFactory destructor was called
+])
+# Test setup with a component
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Component should not be setup
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should be setup
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+# Test setup on a component that is already setup
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_5_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Component should not be setup
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should be setup
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should still be setup
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+# Test setup on a component that is removed 
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_6_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Component should not be removed
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform remove was called
+Component should be removed
+Mock Component 0 1 transform isRemoved was called returning 1
+Component should not be setup
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 1
+Component should still not be setup
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform destructor was called
+Mock Component 0 1 direction destructor was called
+Mock GameComponentFactory destructor was called
+])
+# Test tearDown with no components
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Mock GameComponentFactory destructor was called
+])
+
+# Test tearDown with a component
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should not be torn down
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction tearDown was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 transform tearDown was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should be tornDown
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+
+# Test tearDown on a component that is already tearDown
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_2_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should not be torn down
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction tearDown was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 transform tearDown was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should be torn down
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction tearDown was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 transform tearDown was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should still be torn down
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+# Test tearDown on a component that is removed 
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should not be removed
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform remove was called
+Component should be removed
+Mock Component 0 1 transform isRemoved was called returning 1
+Component should not be torn down
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction tearDown was called
+Mock Component 0 1 transform isRemoved was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 1
+Component should still not be torn down
+Mock Component 0 1 transform destructor was called
+Mock Component 0 1 direction destructor was called
+Mock GameComponentFactory destructor was called
+])
+# Test tearDown on a component that is not setup 
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Component should not be torn down
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should still not be torn down
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+
+# Test update with no components
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Mock GameComponentFactory destructor was called
+])
+
+# Test update with a component
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should not yet be updated
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction update was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 transform update was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should be updated
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+
+# Test update on a component that is already update
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_2_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should not yet be updated
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction update was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 transform update was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should be updated
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction update was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 transform update was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should be updated again
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+
+# Test update on a component that is removed 
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should not yet be removed
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform remove was called
+Component should be removed
+Mock Component 0 1 transform isRemoved was called returning 1
+Component should not be update
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 transform isRemoved was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction update was called
+Mock Component 0 1 transform isRemoved was called returning 1
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 1
+Component should still not be updated
+Mock Component 0 1 transform destructor was called
+Mock Component 0 1 direction destructor was called
+Mock GameComponentFactory destructor was called
+])
+# Test update on a component that is not setup 
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Component should not yet be updated
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction update was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 transform update was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should now be setup and updated
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+AT_CLEANUP
