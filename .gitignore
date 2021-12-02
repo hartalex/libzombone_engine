@@ -13,7 +13,6 @@ libzombone_engine.la
 *_test
 *.lo
 stamp-h1
-configure
 build/
 makefile
 makefile.in
