@@ -25,6 +25,8 @@ jobs:
       run: make clean
     - name: make
       run: make
+    - name: debug
+      run: gdb -ex=run src/scene_manager_test
     - name: make check
       run: make check
     - name: test log
