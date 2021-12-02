@@ -1,6 +1,8 @@
 #define config mock
 #include "scene_manager.hpp"
 
+#include <iostream>
+
 #include "GameComponentFactory.hpp"
 #include "ObjectFactoryService.hpp"
 #include "ObjectFileFactory.hpp"
