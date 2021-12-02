@@ -28,4 +28,5 @@ jobs:
     - name: make check
       run: make check
     - name: test log
+      if: failure()
       run: cat tests/testsuite.log
