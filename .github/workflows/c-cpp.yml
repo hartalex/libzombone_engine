@@ -21,9 +21,11 @@ jobs:
       run: ./bootstrap.sh
     - name: configure
       run: ./configure
+    - name: make clean
+      run: make clean
     - name: make
       run: make
     - name: make check
       run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: test log
+      run: cat tests/testsuite.log
