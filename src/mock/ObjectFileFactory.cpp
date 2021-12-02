@@ -1,10 +1,10 @@
-#include <fstream>
+#include "ObjectFileFactory.hpp"
+
 #include <iostream>
 #include <string>
 
 #include "ComponentFactory.hpp"
 #include "ObjectData.hpp"
-#include "ObjectFileFactory.hpp"
 
 std::vector<std::string> split(const std::string &str, char delim);
 
