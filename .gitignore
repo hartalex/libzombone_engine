@@ -43,4 +43,5 @@ config.sub
 config.guess~
 config.sub~
 configure~
+configure
 .libs

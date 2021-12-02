@@ -13,6 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: install deps
+      run: sudo apt-get -y install libsdl2-dev libsdl2-mixer-dev libncurses-dev gcovr
+    - name: install python deps
+      run: pip install --user -r requirements.txt
+    - name: bootstrap
+      run: ./bootstrap.sh
     - name: configure
       run: ./configure
     - name: make
