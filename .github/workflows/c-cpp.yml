@@ -28,6 +28,7 @@ jobs:
     - name: make check
       run: make check
     - name: debug
+      if: failure()
       run: gdb -ex=run ./src/scene_manager_test
     - name: test log
       if: failure()
