@@ -11,7 +11,7 @@
 // The maximum length a log message
 #define MAX_MESSAGE_SIZE 50
 
-export class MemoryJournal : public Journal {
+class MemoryJournal : public Journal {
  public:
   MemoryJournal();
   virtual ~MemoryJournal();

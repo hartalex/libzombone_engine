@@ -6,7 +6,7 @@
 #include "component.hpp"
 #include "types.hpp"
 
-export class Transform2DComponent : public Component {
+class Transform2DComponent : public Component {
  public:
   Transform2DComponent(std::string name, ObjectIdentifier objectIdentifier)
       : Component(TYPE_COMPONENT_TRANSFORM_2D, name, objectIdentifier),

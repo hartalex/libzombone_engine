@@ -3,7 +3,7 @@
 
 #include <list>
 
-export class Journal {
+class Journal {
  public:
   virtual ~Journal(){};
   virtual void addMessage(char const *message, ...) = 0;

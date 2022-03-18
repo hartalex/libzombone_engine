@@ -10,7 +10,7 @@
 #include "ObjectIdentifier.hpp"
 #include "input.hpp"
 
-export class ObjectFileFactory : public ObjectFactory {
+class ObjectFileFactory : public ObjectFactory {
  public:
   ObjectFileFactory(std::unique_ptr<ComponentFactory> componentFactory,
                     std::string fileName);

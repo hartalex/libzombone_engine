@@ -3,7 +3,7 @@
 
 #include "Logger.hpp"
 
-export class LoggerService {
+class LoggerService {
  public:
   static Logger &getLogger();
 

@@ -6,7 +6,7 @@
 
 #include "ComponentData.hpp"
 
-export struct ObjectData {
+struct ObjectData {
   int type;
   std::vector<ComponentData> components;
   std::string name;

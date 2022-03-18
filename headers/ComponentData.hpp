@@ -6,7 +6,7 @@
 
 #include "ObjectIdentifier.hpp"
 
-export struct ComponentData {
+struct ComponentData {
   int type;
   std::string name;
   ObjectIdentifier objectIdentifier;

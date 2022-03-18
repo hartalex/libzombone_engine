@@ -1,7 +1,7 @@
 #ifndef HEADER_VIEW
 #define HEADER_VIEW
 
-export struct view {
+struct view {
   int x;
   int y;
   int height;

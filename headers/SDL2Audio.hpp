@@ -8,7 +8,7 @@
 #include <string>
 using namespace std;
 
-export class SDL2Audio : public Audio {
+class SDL2Audio : public Audio {
  public:
   SDL2Audio();
   ~SDL2Audio();

@@ -10,7 +10,7 @@
 #include "input.hpp"
 /* #include "types.hpp" */
 
-export class Component {
+class Component {
  public:
   Component(int componentType, std::string componentName,
             ObjectIdentifier objectIdentifier);

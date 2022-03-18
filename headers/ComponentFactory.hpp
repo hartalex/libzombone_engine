@@ -6,7 +6,7 @@
 #include "ComponentData.hpp"
 #include "component.hpp"
 
-export class ComponentFactory {
+class ComponentFactory {
  public:
   virtual ~ComponentFactory(){};
   virtual std::shared_ptr<Component> createComponent(ComponentData data) = 0;

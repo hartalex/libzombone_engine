@@ -3,7 +3,7 @@
 
 #include <string>
 
-export struct ObjectIdentifier {
+struct ObjectIdentifier {
   int objectType;
   std::string objectName;
   int objectId;

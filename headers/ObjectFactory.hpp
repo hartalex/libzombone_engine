@@ -9,7 +9,7 @@
 #include "component.hpp"
 #include "input.hpp"
 
-export class ObjectFactory {
+class ObjectFactory {
  public:
   virtual ~ObjectFactory(){};
   virtual void createComponent(ComponentData) = 0;

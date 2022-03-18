@@ -1,7 +1,7 @@
 #ifndef HEADER_SCENE_MANAGER
 #define HEADER_SCENE_MANAGER
 
-export class SceneManager {
+class SceneManager {
  public:
   SceneManager(int initialObjectId);
   ~SceneManager();

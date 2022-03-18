@@ -3,7 +3,7 @@
 
 #include "Journal.hpp"
 
-export class JournalService {
+class JournalService {
  public:
   static Journal &getJournal();
 

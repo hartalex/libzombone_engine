@@ -4,7 +4,7 @@
 
 #include "ObjectFactory.hpp"
 
-export class ObjectFactoryService {
+class ObjectFactoryService {
  public:
   static ObjectFactory &getObjectFactory();
 

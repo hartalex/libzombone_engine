@@ -3,7 +3,7 @@
 
 #include <Audio.hpp>
 
-export class DefaultAudio : public Audio {
+class DefaultAudio : public Audio {
  public:
   DefaultAudio();
   ~DefaultAudio();

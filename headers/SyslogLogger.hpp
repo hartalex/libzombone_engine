@@ -12,7 +12,7 @@
 #define LOG_LEVEL_WARN 2
 #define LOG_LEVEL_ERROR 3
 
-export class SyslogLogger : public Logger {
+class SyslogLogger : public Logger {
  public:
   SyslogLogger();
   virtual ~SyslogLogger();

@@ -1,7 +1,7 @@
 #ifndef HEADER_AUDIO
 #define HEADER_AUDIO
 
-export class Audio {
+class Audio {
  public:
   virtual ~Audio();
   virtual void playSound(int i) = 0;

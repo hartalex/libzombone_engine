@@ -3,7 +3,7 @@
 
 #include "Audio.hpp"
 
-export class AudioService {
+class AudioService {
  public:
   static Audio &getAudio();
 

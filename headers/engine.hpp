@@ -2,7 +2,7 @@
 
 #include "scene_manager.hpp"
 
-export class Engine {
+class Engine {
  public:
   Engine(int initialObjectId);
   ~Engine();
