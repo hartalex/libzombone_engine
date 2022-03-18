@@ -1,4 +1,4 @@
-cxx_includes = -Isrc -Imock
+cxx_includes = -Imock
 if OSX
 cxx_warnings = -Wall -Wpedantic -Wextra -D_XOPEN_SOURCE_EXTENDED
 endif

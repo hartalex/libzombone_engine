@@ -4,9 +4,10 @@ AUTOM4TE = $(SHELL) $(top_srcdir)/missing --run autom4te
 AUTOTEST = $(AUTOM4TE) --language=autotest
 
 check-local: atconfig atlocal $(TESTSUITE)
-	rm -rf $(top_srcdir)/**/*.gc*
+	rm -rf **/*.gc*
+	rm -rf **/*.o
 	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
-	if test '$(GCOVR)' = 'yes'; then gcovr -r $(top_srcdir) -e '(.+)/src/mock' -e '(.+)/(.+)_test\.cpp' --fail-under-line 70 -d; fi;
+	if test '$(GCOVR)' = 'yes'; then gcovr -r $(top_srcdir)/src/ -e '(.+)/src/mock' -e '(.+)/(.+)_test\.cpp' --fail-under-line 70 -d; fi;
 
 atconfig: $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status tests/$@
