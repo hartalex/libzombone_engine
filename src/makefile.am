@@ -128,3 +128,13 @@ objectFileFactory_update_3_test_LDFLAGS = --coverage
 objectFileFactory_update_4_test_SOURCES =  objectFileFactory_update_4_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
 objectFileFactory_update_4_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
 objectFileFactory_update_4_test_LDFLAGS = --coverage
+
+clean-am:
+	rm -rf *.gc*
+	rm -rf *.o
+	rm -rf *.la
+	rm -rf *.lo
+	rm -rf mock/*.gc*
+	rm -rf mock/*.o
+	rm -rf mock/*.la
+	rm -rf mock/*.lo

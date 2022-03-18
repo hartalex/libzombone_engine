@@ -1,9 +1,10 @@
 #include "engine.hpp"
 
-#include <chrono>
-#include <iostream>
 #include <ncurses.h>
 #include <stdlib.h>
+
+#include <chrono>
+#include <iostream>
 #include <thread>
 
 #include "LoggerService.hpp"
