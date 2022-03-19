@@ -21,13 +21,14 @@ ObjectFileFactory::ObjectFileFactory(
   nextObjectId = 0;
   LoggerService::getLogger().debug("Opening Object File '%s'",
                                    fileName.c_str());
+  bool isError = false;
   std::string::size_type sz;
   std::fstream inputFile(fileName, std::ios::in);
   if (inputFile.is_open()) {
     std::string line;
     ObjectData data;
     data.type = -1;
-    while (!inputFile.eof()) {
+    while (!inputFile.eof() && !isError) {
       std::getline(inputFile, line);
       if (!inputFile.eof()) {
         // new object
@@ -39,8 +40,14 @@ ObjectFileFactory::ObjectFileFactory(
             data.components.clear();
           }
           std::vector<std::string> type_strings = split(line, ' ');
-          data.type = std::stoi(type_strings.at(0), &sz);
-          data.name = type_strings.at(1);
+          if (type_strings.size() >= 2) {
+            data.type = std::stoi(type_strings.at(0), &sz);
+            data.name = type_strings.at(1);
+          } else {
+            isError = true;
+            LoggerService::getLogger().warn(
+                "Object Type String Size is not >= 2 %i", type_strings.size());
+          }
         } else {
           ComponentData componentData;
           componentData.objectIdentifier.objectType = data.type;

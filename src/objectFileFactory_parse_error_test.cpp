@@ -18,19 +18,5 @@ int main(int argc, char *argv[]) {
     std::cout << "Name:" << std::endl;
   }
   std::cout << "Id: " << oid.objectId << std::endl;
-  std::shared_ptr<Component> c =
-      off.getComponentByObjectAndComponentType(1, "transform", oid);
-  if (!c) {
-    std::cerr << "Component should have been found" << std::endl;
-    return -1;
-  }
-  std::cout << "Component should not be setup" << std::endl;
-  c->isSetup();
-  off.setup();
-  std::cout << "Component should be setup" << std::endl;
-  c->isSetup();
-  off.setup();
-  std::cout << "Component should still be setup" << std::endl;
-  c->isSetup();
   return EXIT_SUCCESS;
 }

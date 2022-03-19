@@ -1,0 +1,2 @@
+left off working on test coverage for objectfile stuff, figuring out broken test case for objectfile test 5 which is new and is still broken.
+Was thinking that objectfile needs more error handling when object file is malformed

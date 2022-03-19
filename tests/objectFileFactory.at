@@ -2,7 +2,7 @@
 AT_SETUP([objectFileFactory-execution])
 AT_COLOR_TESTS
 # Test fail to open a file in constructor of ObjectFileFactory.cpp. Mocked dependency's
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_test "mock filename"],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_fail_test "mock filename"],[0],[Mock GameComponentFactory constructor was called
 Opening Object File 'mock filename'
 Unable to Open Object File 'mock filename'
 Mock GameComponentFactory destructor was called
@@ -685,4 +685,65 @@ Mock Component 0 1 direction destructor was called
 Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
+# Test Failure to parse object file
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_parse_error_test "${abs_top_builddir}"/test-bad-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-bad-objects.dat'
+Object Type String Size is not >= 2 1
+Closing Object File '/home/alex/workspace/libzombone_engine/test-bad-objects.dat'
+Creating Object of type 1, 0
+Generic Object Type 1 Not Found
+Type: -1
+Name:
+Id: -1
+Mock GameComponentFactory destructor was called
+])
+# Test input with a component
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_input_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+Opening Object File '${abs_top_builddir}/test-objects.dat'
+Parsed Component 1
+Parsed Object 1
+Parsed Component 1
+Parsed Object 3
+Closing Object File '${abs_top_builddir}/test-objects.dat'
+Creating Object of type 1, 0
+Mock GameComponentFactory createComponent called with (1, direction, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 direction constructor was called with (1, direction, 1, Test, 0)
+Creating component of Type 1
+Mock GameComponentFactory createComponent called with (1, transform, 1, Test, 0)
+data.args: , 0, 0
+Mock Component 0 1 transform constructor was called with (1, transform, 1, Test, 0)
+Creating component of Type 1
+Type: 1
+Name: Test
+Id: 0
+Mock Component 0 1 direction getType was called returning 1
+Mock Component 0 1 direction getName was called returning direction
+Mock Component 0 1 transform getType was called returning 1
+Mock Component 0 1 transform getName was called returning transform
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Mock Component 0 1 transform getObjectIdentifier was called
+Found 1 instances of Component transform
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 0
+Mock Component 0 1 direction setup was called
+Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 0
+Mock Component 0 1 transform setup was called
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should not yet be updated
+Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 direction isSetup was called returning 1
+Mock Component 0 1 direction input was called with (a)Mock Component 0 1 transform isRemoved was called returning 0
+Mock Component 0 1 transform isSetup was called returning 1
+Mock Component 0 1 transform input was called with (a)Mock Component 0 1 direction isRemoved was called returning 0
+Mock Component 0 1 transform isRemoved was called returning 0
+Component should be inputed
+Mock Component 0 1 direction destructor was called
+Mock Component 0 1 transform destructor was called
+Mock GameComponentFactory destructor was called
+])
+
 AT_CLEANUP

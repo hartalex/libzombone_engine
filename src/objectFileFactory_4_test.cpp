@@ -1,8 +1,10 @@
 #define config mock
+#include <stdlib.h>
+
+#include <iostream>
+
 #include "GameComponentFactory.hpp"
 #include "ObjectFileFactory.hpp"
-#include <iostream>
-#include <stdlib.h>
 
 int main(int argc, char *argv[]) {
   (void)argc;

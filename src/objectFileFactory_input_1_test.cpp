@@ -24,13 +24,9 @@ int main(int argc, char *argv[]) {
     std::cerr << "Component should have been found" << std::endl;
     return -1;
   }
-  std::cout << "Component should not be setup" << std::endl;
-  c->isSetup();
   off.setup();
-  std::cout << "Component should be setup" << std::endl;
-  c->isSetup();
-  off.setup();
-  std::cout << "Component should still be setup" << std::endl;
-  c->isSetup();
+  std::cout << "Component should not yet be updated" << std::endl;
+  off.input(Input('a'));
+  std::cout << "Component should be inputed" << std::endl;
   return EXIT_SUCCESS;
 }
