@@ -689,13 +689,9 @@ Mock GameComponentFactory destructor was called
 AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_parse_error_test "${abs_top_builddir}"/test-bad-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-bad-objects.dat'
 Object Type String Size is not >= 2 1
-Closing Object File '/home/alex/workspace/libzombone_engine/test-bad-objects.dat'
-Creating Object of type 1, 0
-Generic Object Type 1 Not Found
-Type: -1
-Name:
-Id: -1
 Mock GameComponentFactory destructor was called
+Exception caught
+Object Type String Size is not >= 2
 ])
 # Test input with a component
 AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_input_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called

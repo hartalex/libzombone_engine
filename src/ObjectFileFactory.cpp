@@ -21,14 +21,13 @@ ObjectFileFactory::ObjectFileFactory(
   nextObjectId = 0;
   LoggerService::getLogger().debug("Opening Object File '%s'",
                                    fileName.c_str());
-  bool isError = false;
   std::string::size_type sz;
   std::fstream inputFile(fileName, std::ios::in);
   if (inputFile.is_open()) {
     std::string line;
     ObjectData data;
     data.type = -1;
-    while (!inputFile.eof() && !isError) {
+    while (!inputFile.eof()) {
       std::getline(inputFile, line);
       if (!inputFile.eof()) {
         // new object
@@ -44,9 +43,9 @@ ObjectFileFactory::ObjectFileFactory(
             data.type = std::stoi(type_strings.at(0), &sz);
             data.name = type_strings.at(1);
           } else {
-            isError = true;
             LoggerService::getLogger().warn(
                 "Object Type String Size is not >= 2 %i", type_strings.size());
+            throw std::logic_error("Object Type String Size is not >= 2");
           }
         } else {
           ComponentData componentData;
