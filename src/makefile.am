@@ -10,7 +10,7 @@ cxx_warnings = -Wall -Wpedantic -Wextra -Wsuggest-override -Wsuggest-attribute=f
 endif
 cxx_std = -std=c++14
 
-check_PROGRAMS = engine_test engine_1_test engine_2_test engine_3_test engine_4_test engine_5_test engine_6_test engine_7_test engine_8_test scene_manager_test scene_manager_2_test objectFileFactory_fail_test objectFileFactory_test objectFileFactory_1_test objectFileFactory_2_test objectFileFactory_3_test objectFileFactory_4_test objectFileFactory_5_test objectFileFactory_6_test objectFileFactory_tearDown_test objectFileFactory_tearDown_1_test objectFileFactory_tearDown_2_test objectFileFactory_tearDown_3_test objectFileFactory_tearDown_4_test objectFileFactory_update_test objectFileFactory_update_1_test objectFileFactory_update_2_test objectFileFactory_update_3_test objectFileFactory_update_4_test objectFileFactory_parse_error_test objectFileFactory_input_1_test
+check_PROGRAMS = engine_test engine_1_test engine_2_test engine_3_test engine_4_test engine_5_test engine_6_test engine_7_test engine_8_test scene_manager_test scene_manager_2_test objectFileFactory_fail_test objectFileFactory_test objectFileFactory_1_test objectFileFactory_2_test objectFileFactory_3_test objectFileFactory_4_test objectFileFactory_5_test objectFileFactory_6_test objectFileFactory_tearDown_test objectFileFactory_tearDown_1_test objectFileFactory_tearDown_2_test objectFileFactory_tearDown_3_test objectFileFactory_tearDown_4_test objectFileFactory_update_test objectFileFactory_update_1_test objectFileFactory_update_2_test objectFileFactory_update_3_test objectFileFactory_update_4_test objectFileFactory_parse_error_test objectFileFactory_input_1_test objectFileFactory_physics_1_test objectFileFactory_getIsDirty_1_test objectFileFactory_render_1_test
 
 engine_test_group = engine_test.cpp engine.cpp engine.hpp mock/scene_manager.cpp scene_manager.hpp mock/LoggerService.cpp LoggerService.hpp mock/MockLogger.cpp mock/MockLogger.hpp Logger.hpp
 
@@ -140,6 +140,18 @@ objectFileFactory_parse_error_test_LDFLAGS = --coverage
 objectFileFactory_input_1_test_SOURCES =  objectFileFactory_input_1_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
 objectFileFactory_input_1_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
 objectFileFactory_input_1_test_LDFLAGS = --coverage
+
+objectFileFactory_physics_1_test_SOURCES =  objectFileFactory_physics_1_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_physics_1_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_physics_1_test_LDFLAGS = --coverage
+
+objectFileFactory_getIsDirty_1_test_SOURCES =  objectFileFactory_getIsDirty_1_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_getIsDirty_1_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_getIsDirty_1_test_LDFLAGS = --coverage
+
+objectFileFactory_render_1_test_SOURCES =  objectFileFactory_render_1_test.cpp $(objectFileFactory_test_group) mock/GameComponentFactory.cpp
+objectFileFactory_render_1_test_CXXFLAGS = $(cxx_std) -O0 --coverage $(cxx_includes) $(cxx_warnings)
+objectFileFactory_render_1_test_LDFLAGS = --coverage
 
 clean-am:
 	rm -rf *.gc*

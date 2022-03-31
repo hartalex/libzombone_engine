@@ -67,6 +67,7 @@ ObjectFileFactory::ObjectFileFactory(
           } else {
             LoggerService::getLogger().warn(
                 "Component String Size is not > 2 %i", componentStrings.size());
+            throw std::logic_error("Component String Size is not > 2");
           }
           data.components.push_back(componentData);
           LoggerService::getLogger().debug("Parsed Component %i",
