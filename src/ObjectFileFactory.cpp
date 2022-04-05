@@ -256,19 +256,6 @@ ObjectFileFactory::getComponentsByObjectAndComponentType(
           (*cit)->getObjectIdentifier().objectId == objectIdentifier.objectId) {
         retval.push_back(*cit);
       }
-      if (componentType == TYPE_COMPONENT_HITPOINTS &&
-          (*cit)->getObjectIdentifier().objectId == objectIdentifier.objectId) {
-        LoggerService::getLogger().info(
-            "Component (%i, %s, %i, %s, %i) looking Component(%i, %s, "
-            "%i, "
-            "%s, %i)",
-            componentType, componentName.c_str(), objectIdentifier.objectType,
-            objectIdentifier.objectName.c_str(), objectIdentifier.objectId,
-            (*cit)->getType(), (*cit)->getName().c_str(),
-            (*cit)->getObjectIdentifier().objectType,
-            (*cit)->getObjectIdentifier().objectName.c_str(),
-            (*cit)->getObjectIdentifier().objectId);
-      }
     }
   }
   return retval;
