@@ -13,22 +13,24 @@
 #include "component.hpp"
 #include "types.hpp"
 
-std::vector<std::string> split(const std::string &str, char delim);
+using namespace std;
+
+vector<string> split(const string &str, char delim);
 
 ObjectFileFactory::ObjectFileFactory(
-    std::unique_ptr<ComponentFactory> componentFactory, std::string fileName)
-    : componentFactory(std::move(componentFactory)) {
+    unique_ptr<ComponentFactory> componentFactory, string fileName)
+    : componentFactory(move(componentFactory)) {
   nextObjectId = 0;
   LoggerService::getLogger().debug("Opening Object File '%s'",
                                    fileName.c_str());
-  std::string::size_type sz;
-  std::fstream inputFile(fileName, std::ios::in);
+  string::size_type sz;
+  fstream inputFile(fileName, ios::in);
   if (inputFile.is_open()) {
-    std::string line;
+    string line;
     ObjectData data;
     data.type = -1;
     while (!inputFile.eof()) {
-      std::getline(inputFile, line);
+      getline(inputFile, line);
       if (!inputFile.eof()) {
         // new object
         if (line.at(0) != ' ') {
@@ -38,28 +40,27 @@ ObjectFileFactory::ObjectFileFactory(
             LoggerService::getLogger().debug("Parsed Object %i", data.type);
             data.components.clear();
           }
-          std::vector<std::string> type_strings = split(line, ' ');
+          vector<string> type_strings = split(line, ' ');
           if (type_strings.size() >= 2) {
-            data.type = std::stoi(type_strings.at(0), &sz);
+            data.type = stoi(type_strings.at(0), &sz);
             data.name = type_strings.at(1);
           } else {
             LoggerService::getLogger().warn(
                 "Object Type String Size is not >= 2 %i", type_strings.size());
-            throw std::logic_error("Object Type String Size is not >= 2");
+            throw logic_error("Object Type String Size is not >= 2");
           }
         } else {
           ComponentData componentData;
           componentData.objectIdentifier.objectType = data.type;
           componentData.objectIdentifier.objectName = data.name;
-          std::vector<std::string> componentStrings = split(line, ' ');
+          vector<string> componentStrings = split(line, ' ');
           if (componentStrings.size() >= 2) {
-            componentData.type = std::stoi(componentStrings.at(0), &sz);
+            componentData.type = stoi(componentStrings.at(0), &sz);
             componentData.name = componentStrings.at(1);
             if (componentStrings.size() > 2) {
-              componentData.type = std::stoi(componentStrings.at(0), &sz);
+              componentData.type = stoi(componentStrings.at(0), &sz);
               componentData.name = componentStrings.at(1);
-              for (std::vector<std::string>::iterator it =
-                       componentStrings.begin() + 2;
+              for (vector<string>::iterator it = componentStrings.begin() + 2;
                    it != componentStrings.end(); ++it) {
                 componentData.args.push_back(*it);
               }
@@ -67,7 +68,7 @@ ObjectFileFactory::ObjectFileFactory(
           } else {
             LoggerService::getLogger().warn(
                 "Component String Size is not > 2 %i", componentStrings.size());
-            throw std::logic_error("Component String Size is not > 2");
+            throw logic_error("Component String Size is not > 2");
           }
           data.components.push_back(componentData);
           LoggerService::getLogger().debug("Parsed Component %i",
@@ -89,11 +90,11 @@ ObjectFileFactory::ObjectFileFactory(
   }
 }
 
-std::vector<std::string> split(const std::string &str, char delim) {
-  std::vector<std::string> strings;
+vector<string> split(const string &str, char delim) {
+  vector<string> strings;
   size_t start;
   size_t end = 0;
-  while ((start = str.find_first_not_of(delim, end)) != std::string::npos) {
+  while ((start = str.find_first_not_of(delim, end)) != string::npos) {
     end = str.find(delim, start);
     strings.push_back(str.substr(start, end - start));
   }
@@ -109,14 +110,14 @@ ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
   oid.objectName = "";
   LoggerService::getLogger().info("Creating Object of type %i, %i", type,
                                   nextObjectId);
-  std::vector<ObjectData>::iterator it = objects.begin();
+  vector<ObjectData>::iterator it = objects.begin();
   while (it != objects.end() && (*it).type != type) {
     ++it;
   }
   if (it != objects.end()) {
     ObjectData od = *it;
 
-    for (std::vector<ComponentData>::iterator iit = od.components.begin();
+    for (vector<ComponentData>::iterator iit = od.components.begin();
          iit != od.components.end(); ++iit) {
       (*iit).objectIdentifier.objectId = nextObjectId;
       createComponent(*iit);
@@ -127,8 +128,8 @@ ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
     transformData.objectIdentifier.objectType = od.type;
     transformData.objectIdentifier.objectName = od.name;
     transformData.objectIdentifier.objectId = nextObjectId;
-    transformData.args.push_back(std::to_string(x));
-    transformData.args.push_back(std::to_string(y));
+    transformData.args.push_back(to_string(x));
+    transformData.args.push_back(to_string(y));
     createComponent(transformData);
     oid.objectType = od.type;
     oid.objectName = od.name;
@@ -141,8 +142,7 @@ ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
 }
 
 void ObjectFileFactory::createComponent(ComponentData data) {
-  std::shared_ptr<Component> component =
-      componentFactory->createComponent(data);
+  shared_ptr<Component> component = componentFactory->createComponent(data);
   if (component) {
     LoggerService::getLogger().info("Creating component of Type %i", data.type);
     components.push_back(component);
@@ -152,9 +152,8 @@ void ObjectFileFactory::createComponent(ComponentData data) {
 }
 
 void ObjectFileFactory::setup() {
-  std::vector<std::shared_ptr<Component>> tmpComponents = components;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           tmpComponents.begin();
+  vector<shared_ptr<Component>> tmpComponents = components;
+  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
        cit != tmpComponents.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 0) {
       (*cit)->setup();
@@ -163,8 +162,7 @@ void ObjectFileFactory::setup() {
   deleteComponents();
 }
 void ObjectFileFactory::tearDown() {
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup()) {
       (*cit)->tearDown();
@@ -173,16 +171,14 @@ void ObjectFileFactory::tearDown() {
   deleteComponents();
 }
 void ObjectFileFactory::update() {
-  std::vector<std::shared_ptr<Component>> tmpComponents = components;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           tmpComponents.begin();
+  vector<shared_ptr<Component>> tmpComponents = components;
+  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
        cit != tmpComponents.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 0) {
       (*cit)->setup();
     }
   }
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           tmpComponents.begin();
+  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
        cit != tmpComponents.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
       (*cit)->update();
@@ -192,9 +188,8 @@ void ObjectFileFactory::update() {
 }
 
 void ObjectFileFactory::input(Input inputData) {
-  std::vector<std::shared_ptr<Component>> tmpComponents = components;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           tmpComponents.begin();
+  vector<shared_ptr<Component>> tmpComponents = components;
+  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
        cit != tmpComponents.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
       (*cit)->input(inputData);
@@ -204,9 +199,8 @@ void ObjectFileFactory::input(Input inputData) {
 }
 
 void ObjectFileFactory::physics() {
-  std::vector<std::shared_ptr<Component>> tmpComponents = components;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           tmpComponents.begin();
+  vector<shared_ptr<Component>> tmpComponents = components;
+  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
        cit != tmpComponents.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
       (*cit)->physics();
@@ -216,8 +210,7 @@ void ObjectFileFactory::physics() {
 }
 int ObjectFileFactory::getIsDirty() {
   int isDirty = 0;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
       isDirty += (*cit)->getIsDirty();
@@ -226,9 +219,8 @@ int ObjectFileFactory::getIsDirty() {
   return isDirty;
 }
 void ObjectFileFactory::render() {
-  std::vector<std::shared_ptr<Component>> tmpComponents = components;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           tmpComponents.begin();
+  vector<shared_ptr<Component>> tmpComponents = components;
+  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
        cit != tmpComponents.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
       (*cit)->render();
@@ -238,13 +230,12 @@ void ObjectFileFactory::render() {
 }
 void ObjectFileFactory::clearAllComponents() { components.clear(); }
 
-std::vector<std::shared_ptr<Component>>
+vector<shared_ptr<Component>>
 ObjectFileFactory::getComponentsByObjectAndComponentType(
-    int componentType, std::string componentName,
+    int componentType, string componentName,
     ObjectIdentifier objectIdentifier) {
-  std::vector<std::shared_ptr<Component>> retval;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+  vector<shared_ptr<Component>> retval;
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0) {
       if ((*cit)->getType() == componentType &&
@@ -261,11 +252,10 @@ ObjectFileFactory::getComponentsByObjectAndComponentType(
   return retval;
 }
 
-std::shared_ptr<Component>
-ObjectFileFactory::getComponentByObjectAndComponentType(
-    int componentType, std::string componentName,
+shared_ptr<Component> ObjectFileFactory::getComponentByObjectAndComponentType(
+    int componentType, string componentName,
     ObjectIdentifier objectIdentifier) {
-  std::vector<std::shared_ptr<Component>> foundComponents =
+  vector<shared_ptr<Component>> foundComponents =
       getComponentsByObjectAndComponentType(componentType, componentName,
                                             objectIdentifier);
   LoggerService::getLogger().info("Found %i instances of Component %s",
@@ -277,13 +267,14 @@ ObjectFileFactory::getComponentByObjectAndComponentType(
   return 0;
 }
 
-std::vector<std::shared_ptr<Component>>
-ObjectFileFactory::getComponentsByObjectAndComponentType(
-    int componentType, std::string componentName, int objectType,
-    std::string objectName, int objectId) {
-  std::vector<std::shared_ptr<Component>> retval;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+vector<shared_ptr<Component>>
+ObjectFileFactory::getComponentsByObjectAndComponentType(int componentType,
+                                                         string componentName,
+                                                         int objectType,
+                                                         string objectName,
+                                                         int objectId) {
+  vector<shared_ptr<Component>> retval;
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->getType() == componentType &&
         (*cit)->getName().compare(componentName) == 0 &&
@@ -296,13 +287,13 @@ ObjectFileFactory::getComponentsByObjectAndComponentType(
   return retval;
 }
 
-std::vector<std::shared_ptr<Component>>
-ObjectFileFactory::getComponentsByObjectAndComponentType(
-    int componentType, std::string componentName, int objectType,
-    std::string objectName) {
-  std::vector<std::shared_ptr<Component>> retval;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+vector<shared_ptr<Component>>
+ObjectFileFactory::getComponentsByObjectAndComponentType(int componentType,
+                                                         string componentName,
+                                                         int objectType,
+                                                         string objectName) {
+  vector<shared_ptr<Component>> retval;
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->getType() == componentType &&
         (*cit)->getName().compare(componentName) == 0 &&
@@ -314,11 +305,9 @@ ObjectFileFactory::getComponentsByObjectAndComponentType(
   return retval;
 }
 
-void ObjectFileFactory::removeComponent(int componentType,
-                                        std::string componentName,
+void ObjectFileFactory::removeComponent(int componentType, string componentName,
                                         ObjectIdentifier objectIdentifier) {
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 &&
         (*cit)->getType() == componentType &&
@@ -333,8 +322,7 @@ void ObjectFileFactory::removeComponent(int componentType,
   }
 }
 void ObjectFileFactory::removeObject(ObjectIdentifier objectIdentifier) {
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 &&
         (*cit)->getObjectIdentifier().objectType ==
@@ -348,8 +336,7 @@ void ObjectFileFactory::removeObject(ObjectIdentifier objectIdentifier) {
 }
 
 void ObjectFileFactory::deleteComponents() {
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end();) {
     if (*cit != 0 && (*cit)->isRemoved() == 1) {
       // remove components marked to be removed
@@ -363,11 +350,10 @@ void ObjectFileFactory::deleteComponents() {
   }
 }
 
-std::vector<std::shared_ptr<Component>>
-ObjectFileFactory::getComponentsByObject(ObjectIdentifier objectIdentifier) {
-  std::vector<std::shared_ptr<Component>> retval;
-  for (std::vector<std::shared_ptr<Component>>::iterator cit =
-           components.begin();
+vector<shared_ptr<Component>> ObjectFileFactory::getComponentsByObject(
+    ObjectIdentifier objectIdentifier) {
+  vector<shared_ptr<Component>> retval;
+  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 &&
         (*cit)->getObjectIdentifier().objectType ==

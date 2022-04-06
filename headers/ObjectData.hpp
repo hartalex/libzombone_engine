@@ -5,11 +5,12 @@
 #include <vector>
 
 #include "ComponentData.hpp"
+using namespace std;
 
 struct ObjectData {
   int type;
-  std::vector<ComponentData> components;
-  std::string name;
+  vector<ComponentData> components;
+  string name;
 };
 
 #endif

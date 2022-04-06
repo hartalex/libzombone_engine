@@ -1,22 +1,23 @@
 #include "scene_manager.hpp"
-#include "engine.hpp"
+
 #include <iostream>
 
+#include "engine.hpp"
+using namespace std;
+
 SceneManager::SceneManager(int initialObjectId) {
-  std::cout << "Mock SceneManager constructor called with (" << initialObjectId
-            << ")" << std::endl;
+  cout << "Mock SceneManager constructor called with (" << initialObjectId
+       << ")" << endl;
 }
 
 SceneManager::~SceneManager() {
-  std::cout << "Mock SceneManager destructor called" << std::endl;
+  cout << "Mock SceneManager destructor called" << endl;
 }
 
-void SceneManager::setup() {
-  std::cout << "Mock SceneManager setup called" << std::endl;
-}
+void SceneManager::setup() { cout << "Mock SceneManager setup called" << endl; }
 
 void SceneManager::update() {
-  std::cout << "Mock SceneManager update called" << std::endl;
+  cout << "Mock SceneManager update called" << endl;
   Engine::exit();
 }
 

@@ -1,22 +1,25 @@
 #define config mock
+#include <stdlib.h>
+
+#include <iostream>
+
 #include "GameComponentFactory.hpp"
 #include "ObjectFileFactory.hpp"
-#include <iostream>
-#include <stdlib.h>
+using namespace std;
 
 int main(int argc, char *argv[]) {
   (void)argc;
   (void)argv;
-  ObjectFileFactory off(std::make_unique<GameComponentFactory>(), argv[1]);
-  std::string::size_type sz;
-  int i = std::stoi(argv[2], &sz);
+  ObjectFileFactory off(make_unique<GameComponentFactory>(), argv[1]);
+  string::size_type sz;
+  int i = stoi(argv[2], &sz);
   ObjectIdentifier oid = off.createObject(i, 0, 0);
-  std::cout << "Type: " << oid.objectType << std::endl;
+  cout << "Type: " << oid.objectType << endl;
   if (oid.objectName.size() > 0) {
-    std::cout << "Name: " << oid.objectName.c_str() << std::endl;
+    cout << "Name: " << oid.objectName.c_str() << endl;
   } else {
-    std::cout << "Name:" << std::endl;
+    cout << "Name:" << endl;
   }
-  std::cout << "Id: " << oid.objectId << std::endl;
+  cout << "Id: " << oid.objectId << endl;
   return EXIT_SUCCESS;
 }

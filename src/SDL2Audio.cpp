@@ -2,24 +2,25 @@
 using namespace std;
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
+using namespace std;
 
 SDL2Audio::SDL2Audio() {
   if (SDL_Init(SDL_INIT_AUDIO) < 0) {
     printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
-    std::exit(1);
+    exit(1);
   }
   // Initialize SDL_mixer
   if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
     printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n",
            Mix_GetError());
-    std::exit(1);
+    exit(1);
   }
 
   // Load music
   gMusic = Mix_LoadMUS("sounds/Music.wav");
   if (gMusic == NULL) {
     printf("Failed to load beat music! SDL_mixer Error: %s\n", Mix_GetError());
-    std::exit(1);
+    exit(1);
   }
   loadSounds();
 }
@@ -32,7 +33,7 @@ void SDL2Audio::loadSounds() {
     if (gSound[i] == NULL) {
       printf("Failed to load %s sound effect! SDL_mixer Error: %s\n",
              soundFiles[i].data(), Mix_GetError());
-      std::exit(1);
+      exit(1);
     }
   }
 }

@@ -5,10 +5,11 @@
 
 #include "ComponentData.hpp"
 #include "component.hpp"
+using namespace std;
 
 class ComponentFactory {
  public:
   virtual ~ComponentFactory(){};
-  virtual std::shared_ptr<Component> createComponent(ComponentData data) = 0;
+  virtual shared_ptr<Component> createComponent(ComponentData data) = 0;
 };
 #endif

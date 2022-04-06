@@ -6,10 +6,11 @@
 #include "GameComponentFactory.hpp"
 #include "ObjectFactoryService.hpp"
 #include "ObjectFileFactory.hpp"
+using namespace std;
 
-std::unique_ptr<ObjectFactory> ObjectFactoryService::objectFactory =
-    std::make_unique<ObjectFileFactory>(
-        std::make_unique<GameComponentFactory>(), "./objects.dat");
+unique_ptr<ObjectFactory> ObjectFactoryService::objectFactory =
+    make_unique<ObjectFileFactory>(make_unique<GameComponentFactory>(),
+                                   "./objects.dat");
 
 int main(int argc, char *argv[]) {
   (void)argc;

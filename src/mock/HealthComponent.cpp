@@ -1,12 +1,13 @@
 #include "HealthComponent.hpp"
 
-#include "types.hpp"
 #include <string>
+
+#include "types.hpp"
+using namespace std;
 
 #define HEALTH_SIZE_MAX 20
 
-HealthComponent::HealthComponent(std::string name,
-                                 ObjectIdentifier objectIdentifier)
+HealthComponent::HealthComponent(string name, ObjectIdentifier objectIdentifier)
     : Component(TYPE_COMPONENT_HEALTH, name, objectIdentifier) {}
 
 HealthComponent::~HealthComponent() {}

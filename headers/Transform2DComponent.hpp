@@ -5,25 +5,26 @@
 
 #include "component.hpp"
 #include "types.hpp"
+using namespace std;
 
 class Transform2DComponent : public Component {
  public:
-  Transform2DComponent(std::string name, ObjectIdentifier objectIdentifier)
+  Transform2DComponent(string name, ObjectIdentifier objectIdentifier)
       : Component(TYPE_COMPONENT_TRANSFORM_2D, name, objectIdentifier),
         x(0),
         y(0),
         previous_x(0),
         previous_y(0),
         hasMoved(0){};
-  Transform2DComponent(std::string name, ObjectIdentifier objectIdentifier,
-                       int x, int y)
+  Transform2DComponent(string name, ObjectIdentifier objectIdentifier, int x,
+                       int y)
       : Component(TYPE_COMPONENT_TRANSFORM_2D, name, objectIdentifier),
         x(x),
         y(y),
         previous_x(x),
         previous_y(y),
         hasMoved(0){};
-  Transform2DComponent(std::string name, int x, int y)
+  Transform2DComponent(string name, int x, int y)
       : Component(TYPE_COMPONENT_TRANSFORM_2D, name),
         x(x),
         y(y),

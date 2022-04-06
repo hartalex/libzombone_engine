@@ -1,13 +1,16 @@
 #define config mock
+#include <stdlib.h>
+
+#include <iostream>
+
 #include "GameComponentFactory.hpp"
 #include "ObjectFileFactory.hpp"
-#include <iostream>
-#include <stdlib.h>
+using namespace std;
 
 int main(int argc, char *argv[]) {
   (void)argc;
   (void)argv;
-  ObjectFileFactory off(std::make_unique<GameComponentFactory>(), argv[1]);
+  ObjectFileFactory off(make_unique<GameComponentFactory>(), argv[1]);
   off.tearDown();
   return EXIT_SUCCESS;
 }

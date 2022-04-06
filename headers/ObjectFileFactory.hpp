@@ -9,11 +9,12 @@
 #include "ObjectFactory.hpp"
 #include "ObjectIdentifier.hpp"
 #include "input.hpp"
+using namespace std;
 
 class ObjectFileFactory : public ObjectFactory {
  public:
-  ObjectFileFactory(std::unique_ptr<ComponentFactory> componentFactory,
-                    std::string fileName);
+  ObjectFileFactory(unique_ptr<ComponentFactory> componentFactory,
+                    string fileName);
   virtual ~ObjectFileFactory();
   virtual void createComponent(ComponentData) override;
   virtual ObjectIdentifier createObject(int type, int x, int y) override;
@@ -25,33 +26,28 @@ class ObjectFileFactory : public ObjectFactory {
   virtual int getIsDirty() override;
   virtual void render() override;
   virtual void clearAllComponents() override;
-  virtual void removeComponent(int componentType, std::string componentName,
+  virtual void removeComponent(int componentType, string componentName,
                                ObjectIdentifier objectIdentifier) override;
   virtual void removeObject(ObjectIdentifier objectIdentifier) override;
-  virtual std::vector<std::shared_ptr<Component>>
-  getComponentsByObjectAndComponentType(int componentType,
-                                        std::string componentName,
-                                        int objectType, std::string objectName,
-                                        int objectId) override;
-  virtual std::vector<std::shared_ptr<Component>>
-  getComponentsByObjectAndComponentType(int componentType,
-                                        std::string componentName,
-                                        int objectType,
-                                        std::string objectName) override;
-  virtual std::vector<std::shared_ptr<Component>>
-  getComponentsByObjectAndComponentType(
-      int componentType, std::string componentName,
+  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+      int componentType, string componentName, int objectType,
+      string objectName, int objectId) override;
+  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+      int componentType, string componentName, int objectType,
+      string objectName) override;
+  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+      int componentType, string componentName,
       ObjectIdentifier objectIdentifier) override;
-  virtual std::shared_ptr<Component> getComponentByObjectAndComponentType(
-      int componentType, std::string componentName,
+  virtual shared_ptr<Component> getComponentByObjectAndComponentType(
+      int componentType, string componentName,
       ObjectIdentifier objectIdentifier) override;
-  virtual std::vector<std::shared_ptr<Component>> getComponentsByObject(
+  virtual vector<shared_ptr<Component>> getComponentsByObject(
       ObjectIdentifier objectIdentifier) override;
 
  private:
-  std::vector<ObjectData> objects;
-  std::unique_ptr<ComponentFactory> const componentFactory;
-  std::vector<std::shared_ptr<Component>> components;
+  vector<ObjectData> objects;
+  unique_ptr<ComponentFactory> const componentFactory;
+  vector<shared_ptr<Component>> components;
   int nextObjectId;
   void deleteComponents();
 };

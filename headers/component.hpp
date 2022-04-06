@@ -8,13 +8,13 @@
 
 #include "ObjectIdentifier.hpp"
 #include "input.hpp"
-/* #include "types.hpp" */
+using namespace std;
 
 class Component {
  public:
-  Component(int componentType, std::string componentName,
+  Component(int componentType, string componentName,
             ObjectIdentifier objectIdentifier);
-  Component(int componentType, std::string componentName);
+  Component(int componentType, string componentName);
   virtual ~Component();
   virtual void setup();
   virtual void tearDown();
@@ -24,10 +24,10 @@ class Component {
   virtual void collide(ObjectIdentifier objectIdentifier);
   virtual void physics();
   int getType() const;
-  std::string getName() const;
+  string getName() const;
   int getObjectType() const;
-  std::string getObjectName() const;
-  void removeComponent(int type, std::string name);
+  string getObjectName() const;
+  void removeComponent(int type, string name);
   int isRemoved() const;
   void remove();
   int isSetup() const;
@@ -36,7 +36,7 @@ class Component {
 
  private:
   int componentType;
-  std::string componentName;
+  string componentName;
   ObjectIdentifier objectIdentifier;
   int removed;
 

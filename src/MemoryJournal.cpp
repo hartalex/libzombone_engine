@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+using namespace std;
 
 MemoryJournal::MemoryJournal() { nextMessage = 0; }
 
@@ -22,8 +23,8 @@ void MemoryJournal::addMessage(char const *message, ...) {
   }
 }
 
-std::list<char *> MemoryJournal::getLastMessages(int count) {
-  std::list<char *> retval;
+list<char *> MemoryJournal::getLastMessages(int count) {
+  list<char *> retval;
   int numToReturn = count;
   int index = nextMessage;
   int counter = 0;

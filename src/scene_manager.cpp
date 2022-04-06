@@ -1,5 +1,7 @@
 #include "scene_manager.hpp"
+
 #include <ncurses.h>
+
 #include <vector>
 
 #include "LoggerService.hpp"
@@ -16,7 +18,6 @@ SceneManager::~SceneManager() {}
 void SceneManager::setup() { ObjectFactoryService::getObjectFactory().setup(); }
 
 void SceneManager::update() {
-
   char ch = getch();
 
   if (ch != ERR) {

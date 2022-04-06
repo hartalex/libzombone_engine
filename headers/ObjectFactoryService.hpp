@@ -3,12 +3,13 @@
 #include <memory>
 
 #include "ObjectFactory.hpp"
+using namespace std;
 
 class ObjectFactoryService {
  public:
   static ObjectFactory &getObjectFactory();
 
  private:
-  static std::unique_ptr<ObjectFactory> objectFactory;
+  static unique_ptr<ObjectFactory> objectFactory;
 };
 #endif

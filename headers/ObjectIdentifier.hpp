@@ -2,10 +2,11 @@
 #define HEADER_OBJECT_IDENTIFIER
 
 #include <string>
+using namespace std;
 
 struct ObjectIdentifier {
   int objectType;
-  std::string objectName;
+  string objectName;
   int objectId;
 };
 

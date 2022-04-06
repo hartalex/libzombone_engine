@@ -1,31 +1,35 @@
 #define config mock
+#include <stdlib.h>
+
+#include <iostream>
+
 #include "GameComponentFactory.hpp"
 #include "ObjectFileFactory.hpp"
-#include <iostream>
-#include <stdlib.h>
+
+using namespace std;
 
 int main(int argc, char *argv[]) {
   (void)argc;
   (void)argv;
-  ObjectFileFactory off(std::make_unique<GameComponentFactory>(), argv[1]);
+  ObjectFileFactory off(make_unique<GameComponentFactory>(), argv[1]);
   ObjectIdentifier oid = off.createObject(1, 0, 0);
-  std::cout << "Type: " << oid.objectType << std::endl;
+  cout << "Type: " << oid.objectType << endl;
   if (oid.objectName.size() > 0) {
-    std::cout << "Name: " << oid.objectName.c_str() << std::endl;
+    cout << "Name: " << oid.objectName.c_str() << endl;
   } else {
-    std::cout << "Name:" << std::endl;
+    cout << "Name:" << endl;
   }
-  std::cout << "Id: " << oid.objectId << std::endl;
-  std::shared_ptr<Component> c =
+  cout << "Id: " << oid.objectId << endl;
+  shared_ptr<Component> c =
       off.getComponentByObjectAndComponentType(1, "transform", oid);
   if (!c) {
-    std::cerr << "Component should have been found" << std::endl;
+    cerr << "Component should have been found" << endl;
     return -1;
   }
-  std::cout << "Component should not yet be updated" << std::endl;
+  cout << "Component should not yet be updated" << endl;
   c->isSetup();
   off.update();
-  std::cout << "Component should now be setup and updated" << std::endl;
+  cout << "Component should now be setup and updated" << endl;
   c->isSetup();
   return EXIT_SUCCESS;
 }

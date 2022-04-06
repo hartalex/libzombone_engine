@@ -2,6 +2,7 @@
 
 #include <ncurses.h>
 #include <stdlib.h>
+
 #include <string>
 
 #include "LoggerService.hpp"
@@ -10,9 +11,9 @@
 #include "ScoreComponent.hpp"
 #include "Transform2DComponent.hpp"
 #include "types.hpp"
+using namespace std;
 
-BoardComponent::BoardComponent(std::string name,
-                               ObjectIdentifier objectIdentifier)
+BoardComponent::BoardComponent(string name, ObjectIdentifier objectIdentifier)
     : Component(TYPE_COMPONENT_BOARD, name, objectIdentifier) {}
 
 void BoardComponent::setup() {}

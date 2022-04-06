@@ -1,12 +1,13 @@
 #include "ScoreComponent.hpp"
 
-#include "types.hpp"
 #include <string>
+
+#include "types.hpp"
+using namespace std;
 
 #define SCORE_SIZE_MAX 20
 
-ScoreComponent::ScoreComponent(std::string name,
-                               ObjectIdentifier objectIdentifier)
+ScoreComponent::ScoreComponent(string name, ObjectIdentifier objectIdentifier)
     : Component(TYPE_COMPONENT_SCORE, name, objectIdentifier) {}
 
 ScoreComponent::~ScoreComponent() {}

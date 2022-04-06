@@ -9,8 +9,9 @@
 #include "NameComponent.hpp"
 #include "Transform2DComponent.hpp"
 #include "types.hpp"
+using namespace std;
 
-LogComponent::LogComponent(std::string name, ObjectIdentifier objectIdentifier)
+LogComponent::LogComponent(string name, ObjectIdentifier objectIdentifier)
     : Component(TYPE_COMPONENT_LOG, name, objectIdentifier) {}
 
 void LogComponent::setup() {}

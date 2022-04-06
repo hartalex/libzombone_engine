@@ -1,16 +1,17 @@
 #ifndef HEADER_GAME_COMPONENT_FACTORY
 #define HEADER_GAME_COMPONENT_FACTORY
 
+#include <memory>
+
 #include "ComponentData.hpp"
 #include "ComponentFactory.hpp"
 #include "component.hpp"
-#include <memory>
+using namespace std;
 
 class GameComponentFactory : public ComponentFactory {
-public:
+ public:
   GameComponentFactory();
   virtual ~GameComponentFactory();
-  virtual std::shared_ptr<Component>
-  createComponent(ComponentData data) override;
+  virtual shared_ptr<Component> createComponent(ComponentData data) override;
 };
 #endif

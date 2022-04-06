@@ -1,18 +1,18 @@
 #include "engine.hpp"
-#include "scene_manager.hpp"
+
 #include <iostream>
+
+#include "scene_manager.hpp"
+using namespace std;
 
 Engine::Engine(int initialObjectId)
     : sceneManager(SceneManager(initialObjectId)) {
-  std::cout << "Mock Engine constructor called with " << initialObjectId
-            << std::endl;
+  cout << "Mock Engine constructor called with " << initialObjectId << endl;
 }
 
-Engine::~Engine() {
-  std::cout << "Mock Engine destructor called." << std::endl;
-}
+Engine::~Engine() { cout << "Mock Engine destructor called." << endl; }
 
-void Engine::loop() { std::cout << "Mock Engine Loop was called" << std::endl; }
+void Engine::loop() { cout << "Mock Engine Loop was called" << endl; }
 
-void Engine::exit() { std::cout << "Mock Engine Exit was called" << std::endl; }
+void Engine::exit() { cout << "Mock Engine Exit was called" << endl; }
 

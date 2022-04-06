@@ -5,12 +5,13 @@
 #include <vector>
 
 #include "ObjectIdentifier.hpp"
+using namespace std;
 
 struct ComponentData {
   int type;
-  std::string name;
+  string name;
   ObjectIdentifier objectIdentifier;
-  std::vector<std::string> args;
+  vector<string> args;
 };
 
 #endif

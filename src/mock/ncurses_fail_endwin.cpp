@@ -3,40 +3,42 @@
 // endwin() is mocked to fail
 */
 
-#include <iostream>
 #include <ncurses.h>
 
+#include <iostream>
+using namespace std;
+
 WINDOW *initscr() {
-  std::cout << "Mock Ncurses initscr called" << std::endl;
+  cout << "Mock Ncurses initscr called" << endl;
   return OK;
 }
 int start_color() {
-  std::cout << "Mock Ncurses start_color called" << std::endl;
+  cout << "Mock Ncurses start_color called" << endl;
   return OK;
 }
 int cbreak() {
-  std::cout << "Mock Ncurses cbreak called" << std::endl;
+  cout << "Mock Ncurses cbreak called" << endl;
   return OK;
 }
 int noecho() {
-  std::cout << "Mock Ncurses noecho called" << std::endl;
+  cout << "Mock Ncurses noecho called" << endl;
   return OK;
 }
 int curs_set(int i) {
-  std::cout << "Mock Ncurses curs_set called with (" << i << ")" << std::endl;
+  cout << "Mock Ncurses curs_set called with (" << i << ")" << endl;
   return OK;
 }
 int keypad(WINDOW *win, bool bf) {
-  std::cout << "Mock Ncurses keypad called with (" << win << ", " << bf << ")"
-            << std::endl;
+  cout << "Mock Ncurses keypad called with (" << win << ", " << bf << ")"
+       << endl;
   return OK;
 }
 int nodelay(WINDOW *win, bool bf) {
-  std::cout << "Mock Ncurses nodelay called with (" << win << ", " << bf << ")"
-            << std::endl;
+  cout << "Mock Ncurses nodelay called with (" << win << ", " << bf << ")"
+       << endl;
   return OK;
 }
 int endwin() {
-  std::cout << "Mock Ncurses endwin called" << std::endl;
+  cout << "Mock Ncurses endwin called" << endl;
   return ERR;
 }

@@ -1,30 +1,31 @@
+#include <iostream>
+
 #include "ComponentData.hpp"
 #include "GameComponentFactory.hpp"
 #include "component.hpp"
-#include <iostream>
+using namespace std;
 
 GameComponentFactory::GameComponentFactory() {
-  std::cout << "Mock GameComponentFactory constructor was called" << std::endl;
+  cout << "Mock GameComponentFactory constructor was called" << endl;
 }
 
 GameComponentFactory::~GameComponentFactory() {
-  std::cout << "Mock GameComponentFactory destructor was called" << std::endl;
+  cout << "Mock GameComponentFactory destructor was called" << endl;
 }
 
-std::shared_ptr<Component>
-GameComponentFactory::createComponent(ComponentData data) {
+shared_ptr<Component> GameComponentFactory::createComponent(
+    ComponentData data) {
   (void)data;
-  std::cout << "Mock GameComponentFactory createComponent called with ("
-            << data.type << ", " << data.name << ", "
-            << data.objectIdentifier.objectType << ", "
-            << data.objectIdentifier.objectName << ", "
-            << data.objectIdentifier.objectId << ")" << std::endl;
-  std::cout << "data.args: ";
-  for (std::vector<std::string>::iterator it = data.args.begin();
-       it != data.args.end(); ++it) {
-    std::cout << ", " << (*it).c_str();
+  cout << "Mock GameComponentFactory createComponent called with (" << data.type
+       << ", " << data.name << ", " << data.objectIdentifier.objectType << ", "
+       << data.objectIdentifier.objectName << ", "
+       << data.objectIdentifier.objectId << ")" << endl;
+  cout << "data.args: ";
+  for (vector<string>::iterator it = data.args.begin(); it != data.args.end();
+       ++it) {
+    cout << ", " << (*it).c_str();
   }
-  std::cout << std::endl;
+  cout << endl;
   return 0;
 }
 

@@ -1,8 +1,10 @@
-#include <iostream>
 #include <locale.h>
 
+#include <iostream>
+using namespace std;
+
 char *setlocale(int cat, const char *locale) {
-  std::cout << "Mock Locale setlocale was called with (" << cat << ", "
-            << locale << ")" << std::endl;
+  cout << "Mock Locale setlocale was called with (" << cat << ", " << locale
+       << ")" << endl;
   return 0;
 }

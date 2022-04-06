@@ -1,10 +1,11 @@
 #include "SyslogLogger.hpp"
 
-#include "config.hpp"
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 #include <syslog.h>
+
+#include "config.hpp"
 
 SyslogLogger::SyslogLogger() {}
 

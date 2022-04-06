@@ -8,6 +8,7 @@
 #include "ObjectIdentifier.hpp"
 #include "component.hpp"
 #include "input.hpp"
+using namespace std;
 
 class ObjectFactory {
  public:
@@ -22,27 +23,22 @@ class ObjectFactory {
   virtual int getIsDirty() = 0;
   virtual void render() = 0;
   virtual void clearAllComponents() = 0;
-  virtual void removeComponent(int componentType, std::string componentName,
+  virtual void removeComponent(int componentType, string componentName,
                                ObjectIdentifier objectIdentifier) = 0;
   virtual void removeObject(ObjectIdentifier objectIdentifier) = 0;
-  virtual std::vector<std::shared_ptr<Component>>
-  getComponentsByObjectAndComponentType(int componentType,
-                                        std::string componentName,
-                                        int objectType, std::string objectName,
-                                        int objectId) = 0;
-  virtual std::vector<std::shared_ptr<Component>>
-  getComponentsByObjectAndComponentType(int componentType,
-                                        std::string componentName,
-                                        int objectType,
-                                        std::string objectName) = 0;
-  virtual std::vector<std::shared_ptr<Component>>
-  getComponentsByObjectAndComponentType(int componentType,
-                                        std::string componentName,
-                                        ObjectIdentifier objectIdentifier) = 0;
-  virtual std::shared_ptr<Component> getComponentByObjectAndComponentType(
-      int componentType, std::string componentName,
+  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+      int componentType, string componentName, int objectType,
+      string objectName, int objectId) = 0;
+  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+      int componentType, string componentName, int objectType,
+      string objectName) = 0;
+  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+      int componentType, string componentName,
       ObjectIdentifier objectIdentifier) = 0;
-  virtual std::vector<std::shared_ptr<Component>> getComponentsByObject(
+  virtual shared_ptr<Component> getComponentByObjectAndComponentType(
+      int componentType, string componentName,
+      ObjectIdentifier objectIdentifier) = 0;
+  virtual vector<shared_ptr<Component>> getComponentsByObject(
       ObjectIdentifier objectIdentifier) = 0;
 };
 

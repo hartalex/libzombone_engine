@@ -1,14 +1,22 @@
 #include "component.hpp"
+using namespace std;
 
-Component::Component(int componentType, std::string componentName,
+Component::Component(int componentType, string componentName,
                      ObjectIdentifier objectIdentifier)
-    : componentType(componentType), componentName(componentName),
-      objectIdentifier(objectIdentifier), removed(0), setuped(0), isDirty(1) {
+    : componentType(componentType),
+      componentName(componentName),
+      objectIdentifier(objectIdentifier),
+      removed(0),
+      setuped(0),
+      isDirty(1) {
   time(&initialTime);
 }
-Component::Component(int componentType, std::string componentName)
-    : componentType(componentType), componentName(componentName), removed(0),
-      setuped(0), isDirty(1) {
+Component::Component(int componentType, string componentName)
+    : componentType(componentType),
+      componentName(componentName),
+      removed(0),
+      setuped(0),
+      isDirty(1) {
   objectIdentifier.objectId = -1;
   objectIdentifier.objectName = "Unknown";
   objectIdentifier.objectType = -1;
@@ -31,11 +39,11 @@ ObjectIdentifier Component::getObjectIdentifier() const {
 }
 int Component::getType() const { return componentType; }
 
-std::string Component::getName() const { return componentName; }
+string Component::getName() const { return componentName; }
 
 int Component::getObjectType() const { return componentType; }
 
-std::string Component::getObjectName() const { return componentName; }
+string Component::getObjectName() const { return componentName; }
 
 double Component::getTicks() const {
   time_t currentTime;

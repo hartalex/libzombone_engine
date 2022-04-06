@@ -5,15 +5,16 @@
 
 #include "GameComponentFactory.hpp"
 #include "ObjectFileFactory.hpp"
+using namespace std;
 
 int main(int argc, char *argv[]) {
   (void)argc;
   (void)argv;
   try {
-    ObjectFileFactory off(std::make_unique<GameComponentFactory>(), argv[1]);
-  } catch (const std::exception &e) {
-    std::cout << "Exception caught" << std::endl;
-    std::cout << e.what() << std::endl;
+    ObjectFileFactory off(make_unique<GameComponentFactory>(), argv[1]);
+  } catch (const exception &e) {
+    cout << "Exception caught" << endl;
+    cout << e.what() << endl;
   }
   return EXIT_SUCCESS;
 }
