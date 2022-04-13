@@ -1,0 +1,24 @@
+cxx_includes = -I$(top_srcdir)/src/mock
+if OSX
+cxx_warnings = -Wall -Wpedantic -Wextra -D_XOPEN_SOURCE_EXTENDED
+endif
+if LINUX
+cxx_warnings = -Wall -Wpedantic -Wextra -Wsuggest-override -Wsuggest-attribute=format
+endif
+if WINDOWS
+cxx_warnings = -Wall -Wpedantic -Wextra -Wsuggest-override -Wsuggest-attribute=format
+endif
+cxx_std = -std=c++14
+coverage = -O0 --coverage -fprofile-abs-path
+
+check_PROGRAMS = scene_manager_test scene_manager_2_test
+
+scene_manager_test_group = scene_manager_test.cpp $(top_srcdir)/src/scene_manager.cpp component.hpp $(top_srcdir)/src/mock/component.cpp $(top_srcdir)/src/mock/LoggerService.cpp $(top_srcdir)/src/mock/MockLogger.cpp $(top_srcdir)/src/mock/MockLogger.hpp $(top_srcdir)/src/mock/ObjectFactoryService.cpp $(top_srcdir)/src/mock/ObjectFileFactory.cpp $(top_srcdir)/src/mock/GameComponentFactory.cpp $(top_srcdir)/src/mock/ncurses.cpp
+
+scene_manager_test_SOURCES =  $(scene_manager_test_group)
+scene_manager_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
+scene_manager_test_LDFLAGS = --coverage
+
+scene_manager_2_test_SOURCES =  $(scene_manager_test_group) $(top_srcdir)/src/mock/ncurses_getch.cpp
+scene_manager_2_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
+scene_manager_2_test_LDFLAGS = --coverage

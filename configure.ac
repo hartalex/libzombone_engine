@@ -16,6 +16,9 @@ AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([makefile
      src/makefile
 		 tests/makefile
+     tests/engine/makefile
+     tests/sceneManager/makefile
+     tests/objectFileFactory/makefile
 		 tests/atlocal])
 AC_LANG([C++])
 # Checks for programs.

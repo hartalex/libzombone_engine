@@ -2,7 +2,7 @@
 AT_SETUP([scene_manager-execution])
 AT_COLOR_TESTS
 # Test the successful case of scene_manager.cpp. Mocked dependency's
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/scene_manager_test],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/sceneManager/scene_manager_test],[0],[Mock GameComponentFactory constructor was called
 Mock ObjectFileFactory constructor was called with (./objects.dat)
 Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
 Mock ObjectFileFactory Setup was called.
@@ -22,7 +22,7 @@ Mock ObjectFileFactory destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test the successful case of scene_manager.cpp. Mocked dependeny's and getch returns an input
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/scene_manager_2_test],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/sceneManager/scene_manager_2_test],[0],[Mock GameComponentFactory constructor was called
 Mock ObjectFileFactory constructor was called with (./objects.dat)
 Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
 Mock ObjectFileFactory Setup was called.

@@ -2,13 +2,13 @@
 AT_SETUP([objectFileFactory-execution])
 AT_COLOR_TESTS
 # Test fail to open a file in constructor of ObjectFileFactory.cpp. Mocked dependency's
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_fail_test "mock filename"],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_fail_test "mock filename"],[0],[Mock GameComponentFactory constructor was called
 Opening Object File 'mock filename'
 Unable to Open Object File 'mock filename'
 Mock GameComponentFactory destructor was called
 ])
 # Test successfully opened a file in constructor of ObjectFileFactory.cpp. Mocked dependency's
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -18,7 +18,7 @@ Closing Object File '${abs_top_builddir}/test-objects.dat'
 Mock GameComponentFactory destructor was called
 ])
 # Test success of createObject of ObjectFileFactory.cpp. Mocked dependency's
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_1_test "${abs_top_builddir}"/test-objects.dat 1],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_1_test "${abs_top_builddir}"/test-objects.dat 1],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -42,7 +42,7 @@ Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test failure of createObject of ObjectFileFactory.cpp. Mocked dependency's
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_1_test "${abs_top_builddir}"/test-objects.dat 2],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_1_test "${abs_top_builddir}"/test-objects.dat 2],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -57,7 +57,7 @@ Id: -1
 Mock GameComponentFactory destructor was called
 ])
 # Test failure of createObject fail to create component of ObjectFileFactory.cpp. Mocked dependency's
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_2_test "${abs_top_builddir}"/test-objects.dat 1],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_2_test "${abs_top_builddir}"/test-objects.dat 1],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -78,7 +78,7 @@ Mock GameComponentFactory destructor was called
 ])
 
 # Test setup with no components
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -88,7 +88,7 @@ Closing Object File '${abs_top_builddir}/test-objects.dat'
 Mock GameComponentFactory destructor was called
 ])
 # Test setup with a component
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -132,7 +132,7 @@ Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test setup on a component that is already setup
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_5_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_5_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -184,7 +184,7 @@ Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test setup on a component that is removed 
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_6_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_6_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -231,7 +231,7 @@ Mock Component 0 1 direction destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test tearDown with no components
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_tearDown_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -242,7 +242,7 @@ Mock GameComponentFactory destructor was called
 ])
 
 # Test tearDown with a component
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_tearDown_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -293,7 +293,7 @@ Mock GameComponentFactory destructor was called
 ])
 
 # Test tearDown on a component that is already tearDown
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_2_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_tearDown_2_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -352,7 +352,7 @@ Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test tearDown on a component that is removed 
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_tearDown_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -405,7 +405,7 @@ Mock Component 0 1 direction destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test tearDown on a component that is not setup 
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_tearDown_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_tearDown_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -446,7 +446,7 @@ Mock GameComponentFactory destructor was called
 ])
 
 # Test update with no components
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_update_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -457,7 +457,7 @@ Mock GameComponentFactory destructor was called
 ])
 
 # Test update with a component
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_update_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -512,7 +512,7 @@ Mock GameComponentFactory destructor was called
 ])
 
 # Test update on a component that is already update
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_2_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_update_2_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -580,7 +580,7 @@ Mock GameComponentFactory destructor was called
 ])
 
 # Test update on a component that is removed 
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_update_3_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -636,7 +636,7 @@ Mock Component 0 1 direction destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test update on a component that is not setup 
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_update_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_update_4_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -686,7 +686,7 @@ Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test Failure to parse object file
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_parse_error_test "${abs_top_builddir}"/test-bad-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_parse_error_test "${abs_top_builddir}"/test-bad-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-bad-objects.dat'
 Object Type String Size is not >= 2 1
 Mock GameComponentFactory destructor was called
@@ -694,7 +694,7 @@ Exception caught
 Object Type String Size is not >= 2
 ])
 # Test input with a component
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_input_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_input_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -742,7 +742,7 @@ Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test physics with a component
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_physics_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_physics_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -792,7 +792,7 @@ Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
 # Test getIsDirty with a component
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_getIsDirty_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_getIsDirty_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
@@ -840,7 +840,7 @@ Mock GameComponentFactory destructor was called
 ])
 
 # Test render with a component
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/src/objectFileFactory_render_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/objectFileFactory/objectFileFactory_render_1_test "${abs_top_builddir}"/test-objects.dat],[0],[Mock GameComponentFactory constructor was called
 Opening Object File '${abs_top_builddir}/test-objects.dat'
 Parsed Component 1
 Parsed Object 1
