@@ -11,42 +11,10 @@ endif
 cxx_std = -std=c++14
 coverage = -O0 --coverage -fprofile-abs-path
 
-check_PROGRAMS = engine_test engine_1_test engine_2_test engine_3_test engine_4_test engine_5_test engine_6_test engine_7_test engine_8_test 
+check_PROGRAMS = engine_test
 
-engine_test_group = $(top_srcdir)/src/engine.cpp engine_test.cpp engine.hpp scene_manager.cpp scene_manager.hpp LoggerService.cpp LoggerService.hpp MockLogger.cpp MockLogger.hpp Logger.hpp
+engine_test_group = $(top_srcdir)/src/engine.cpp $(top_srcdir)/src/EngineService.cpp engine_test.cpp engine.hpp scene_manager.cpp scene_manager.hpp LoggerService.cpp LoggerService.hpp MockLogger.cpp MockLogger.hpp Logger.hpp
 
-engine_test_SOURCES =  $(engine_test_group) ncurses.cpp 
+engine_test_SOURCES =  $(engine_test_group)
 engine_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
 engine_test_LDFLAGS = --coverage
-
-engine_1_test_SOURCES = $(engine_test_group) ncurses_fail_initscr.cpp
-engine_1_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
-engine_1_test_LDFLAGS = --coverage
-
-engine_2_test_SOURCES = $(engine_test_group) ncurses_fail_start_color.cpp
-engine_2_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
-engine_2_test_LDFLAGS = --coverage
-
-engine_3_test_SOURCES = $(engine_test_group) ncurses_fail_cbreak.cpp
-engine_3_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
-engine_3_test_LDFLAGS = --coverage
-
-engine_4_test_SOURCES = $(engine_test_group) ncurses_fail_noecho.cpp
-engine_4_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
-engine_4_test_LDFLAGS = --coverage
-
-engine_5_test_SOURCES = $(engine_test_group) ncurses_fail_curs_set.cpp
-engine_5_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
-engine_5_test_LDFLAGS = --coverage
-
-engine_6_test_SOURCES = $(engine_test_group) ncurses_fail_keypad.cpp
-engine_6_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
-engine_6_test_LDFLAGS = --coverage
-
-engine_7_test_SOURCES = $(engine_test_group) ncurses_fail_nodelay.cpp
-engine_7_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
-engine_7_test_LDFLAGS = --coverage
-
-engine_8_test_SOURCES = $(engine_test_group) ncurses_fail_endwin.cpp
-engine_8_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
-engine_8_test_LDFLAGS = --coverage

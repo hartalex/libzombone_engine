@@ -1,6 +1,5 @@
 #include "BoardComponent.hpp"
 
-#include <ncurses.h>
 #include <stdlib.h>
 
 #include <string>

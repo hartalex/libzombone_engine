@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "engine.hpp"
+#include "EngineService.hpp"
 using namespace std;
 
 SceneManager::SceneManager(int initialObjectId) {
@@ -18,6 +18,6 @@ void SceneManager::setup() { cout << "Mock SceneManager setup called" << endl; }
 
 void SceneManager::update() {
   cout << "Mock SceneManager update called" << endl;
-  Engine::exit();
+  EngineService::getEngine().exit();
 }
 

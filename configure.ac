@@ -28,7 +28,6 @@ AC_PROG_INSTALL
 
 # Checks for libraries.
 AC_CHECK_LIB([m],[sqrt],,AC_MSG_ERROR(Couldn't find library libm))
-AC_CHECK_LIB([ncursesw],[initscr],,AC_CHECK_LIB([ncurses],[initscr],,AC_MSG_ERROR(Couldn't find library libncurses-dev)))
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h string.h syslog.h ncurses.h math.h],,AC_MSG_ERROR(Missing header))

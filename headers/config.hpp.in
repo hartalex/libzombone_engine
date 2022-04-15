@@ -9,12 +9,6 @@
 /* Define to 1 if you have the `m' library (-lm). */
 #undef HAVE_LIBM
 
-/* Define to 1 if you have the `ncurses' library (-lncurses). */
-#undef HAVE_LIBNCURSES
-
-/* Define to 1 if you have the `ncursesw' library (-lncursesw). */
-#undef HAVE_LIBNCURSESW
-
 /* Define to 1 if you have the <math.h> header file. */
 #undef HAVE_MATH_H
 

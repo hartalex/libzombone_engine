@@ -4,89 +4,15 @@ AT_COLOR_TESTS
 # Test the successful case of engine.cpp. Mocked dependency's
 AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_test],[],[Mock SceneManager constructor called with (0)
 Setup
-Mock Ncurses initscr called
-Mock Ncurses start_color called
-Mock Ncurses cbreak called
-Mock Ncurses noecho called
-Mock Ncurses curs_set called with (0)
-Mock Ncurses keypad called with (0, 1)
-Mock Ncurses nodelay called with (0, 1)
+Calling getScreenHeight return value is 0
+Calling getScreenWidth return value is 0
+Calling getInput return value is 0
+Calling getInputError return value is 0
+Calling clearScreen
+Calling refreshScreen
 Mock SceneManager setup called
 Mock SceneManager update called
 TearDown
-Mock Ncurses endwin called
 Mock SceneManager destructor called
-])
-# Test that ncurses fails to initialize.  Ncurses is mocked to fail initialization.
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_1_test],[1],[Mock SceneManager constructor called with (0)
-Setup
-Mock Ncurses initscr called
-],[Mock initscr failure
-])
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_2_test],[1],[Mock SceneManager constructor called with (0)
-Setup
-Mock Ncurses initscr called
-Mock Ncurses start_color called
-],[Error calling start_color()
-])
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_3_test],[1],[Mock SceneManager constructor called with (0)
-Setup
-Mock Ncurses initscr called
-Mock Ncurses start_color called
-Mock Ncurses cbreak called
-],[Error calling cbreak()
-])
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_4_test],[1],[Mock SceneManager constructor called with (0)
-Setup
-Mock Ncurses initscr called
-Mock Ncurses start_color called
-Mock Ncurses cbreak called
-Mock Ncurses noecho called
-],[Error calling noecho()
-])
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_5_test],[1],[Mock SceneManager constructor called with (0)
-Setup
-Mock Ncurses initscr called
-Mock Ncurses start_color called
-Mock Ncurses cbreak called
-Mock Ncurses noecho called
-Mock Ncurses curs_set called with (0)
-],[Error calling curs_set()
-])
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_6_test],[1],[Mock SceneManager constructor called with (0)
-Setup
-Mock Ncurses initscr called
-Mock Ncurses start_color called
-Mock Ncurses cbreak called
-Mock Ncurses noecho called
-Mock Ncurses curs_set called with (0)
-Mock Ncurses keypad called with (0, 1)
-],[Error calling keypad()
-])
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_7_test],[1],[Mock SceneManager constructor called with (0)
-Setup
-Mock Ncurses initscr called
-Mock Ncurses start_color called
-Mock Ncurses cbreak called
-Mock Ncurses noecho called
-Mock Ncurses curs_set called with (0)
-Mock Ncurses keypad called with (0, 1)
-Mock Ncurses nodelay called with (0, 1)
-],[Error calling nodelay()
-])
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/engine/engine_8_test],[1],[Mock SceneManager constructor called with (0)
-Setup
-Mock Ncurses initscr called
-Mock Ncurses start_color called
-Mock Ncurses cbreak called
-Mock Ncurses noecho called
-Mock Ncurses curs_set called with (0)
-Mock Ncurses keypad called with (0, 1)
-Mock Ncurses nodelay called with (0, 1)
-Mock SceneManager setup called
-Mock SceneManager update called
-TearDown
-Mock Ncurses endwin called
-],[Error calling endwin()
 ])
 AT_CLEANUP

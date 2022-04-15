@@ -5,35 +5,18 @@ AT_COLOR_TESTS
 AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/sceneManager/scene_manager_test],[0],[Mock GameComponentFactory constructor was called
 Mock ObjectFileFactory constructor was called with (./objects.dat)
 Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
-Mock ObjectFileFactory Setup was called.
-Mock ObjectFileFactory Update was called.
-Mock ObjectFileFactory Physics was called.
-Mock ObjectFileFactory GetIsDirty was called.
-Rendering
-Mock Ncurses clear called
-Mock ObjectFileFactory Render was called.
-Mock Ncurses refresh called
-Mock ObjectFileFactory TearDown was called.
-Mock ObjectFileFactory ClearAllComponents was called.
-Setting Scene to 1
-Mock ObjectFileFactory CreateObject was called with (1, 0, 0)
-Mock ObjectFileFactory Setup was called.
-Mock ObjectFileFactory destructor was called
-Mock GameComponentFactory destructor was called
-])
-# Test the successful case of scene_manager.cpp. Mocked dependeny's and getch returns an input
-AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/sceneManager/scene_manager_2_test],[0],[Mock GameComponentFactory constructor was called
-Mock ObjectFileFactory constructor was called with (./objects.dat)
+Mock Engine constructor called with 0
 Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
 Mock ObjectFileFactory Setup was called.
-Mock ObjectFileFactory Input was called with a
+Mock Engine getInputwas called
+Mock Engine getInputError was called
 Mock ObjectFileFactory Update was called.
 Mock ObjectFileFactory Physics was called.
 Mock ObjectFileFactory GetIsDirty was called.
 Rendering
-Mock Ncurses clear called
+Mock Engine clearScreen was called
 Mock ObjectFileFactory Render was called.
-Mock Ncurses refresh called
+Mock Engine refreshScreen was called
 Mock ObjectFileFactory TearDown was called.
 Mock ObjectFileFactory ClearAllComponents was called.
 Setting Scene to 1
@@ -41,5 +24,32 @@ Mock ObjectFileFactory CreateObject was called with (1, 0, 0)
 Mock ObjectFileFactory Setup was called.
 Mock ObjectFileFactory destructor was called
 Mock GameComponentFactory destructor was called
+Mock Engine destructor called.
+])
+# Test the successful case of scene_manager.cpp engine has an input. Mocked dependency's
+AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/sceneManager/scene_manager_input_test],[0],[Mock GameComponentFactory constructor was called
+Mock ObjectFileFactory constructor was called with (./objects.dat)
+Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
+Mock Engine constructor called with 0
+Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
+Mock ObjectFileFactory Setup was called.
+Mock Engine getInputwas called
+Mock Engine getInputError was called
+Mock ObjectFileFactory Input was called with c
+Mock ObjectFileFactory Update was called.
+Mock ObjectFileFactory Physics was called.
+Mock ObjectFileFactory GetIsDirty was called.
+Rendering
+Mock Engine clearScreen was called
+Mock ObjectFileFactory Render was called.
+Mock Engine refreshScreen was called
+Mock ObjectFileFactory TearDown was called.
+Mock ObjectFileFactory ClearAllComponents was called.
+Setting Scene to 1
+Mock ObjectFileFactory CreateObject was called with (1, 0, 0)
+Mock ObjectFileFactory Setup was called.
+Mock ObjectFileFactory destructor was called
+Mock GameComponentFactory destructor was called
+Mock Engine destructor called.
 ])
 AT_CLEANUP

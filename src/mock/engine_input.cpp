@@ -1,7 +1,6 @@
-#include "engine.hpp"
-
 #include <iostream>
 
+#include "engine.hpp"
 #include "scene_manager.hpp"
 using namespace std;
 
@@ -26,7 +25,7 @@ int Engine::getScreenWidth() {
 }
 char Engine::getInput() {
   cout << "Mock Engine getInputwas called" << endl;
-  return 0;
+  return 'c';
 }
 char Engine::getInputError() {
   cout << "Mock Engine getInputError was called" << endl;
