@@ -17,10 +17,11 @@
 #include "SyslogLogger.hpp"
 #include "Transform2DComponent.hpp"
 #include "component.hpp"
-#include "config.hpp"
 #include "engine.hpp"
 #include "input.hpp"
 #include "scene_manager.hpp"
 #include "types.hpp"
 #include "view.hpp"
+
+void test_zombone_engine(void);
 #endif

@@ -8,8 +8,9 @@ using namespace std;
 class ObjectFactoryService {
  public:
   static ObjectFactory &getObjectFactory();
+  static void setObjectFactory(shared_ptr<ObjectFactory> o);
 
  private:
-  static unique_ptr<ObjectFactory> objectFactory;
+  static shared_ptr<ObjectFactory> objectFactory;
 };
 #endif
