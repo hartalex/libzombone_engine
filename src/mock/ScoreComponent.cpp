@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "types.hpp"
+#include "zombone_engine_types.hpp"
 using namespace std;
 
 #define SCORE_SIZE_MAX 20

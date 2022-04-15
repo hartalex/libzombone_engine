@@ -11,7 +11,7 @@
 #include "ObjectData.hpp"
 #include "ObjectIdentifier.hpp"
 #include "component.hpp"
-#include "types.hpp"
+#include "zombone_engine_types.hpp"
 
 using namespace std;
 

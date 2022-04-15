@@ -20,8 +20,8 @@
 #include "engine.hpp"
 #include "input.hpp"
 #include "scene_manager.hpp"
-#include "types.hpp"
 #include "view.hpp"
+#include "zombone_engine_types.hpp"
 
 void test_zombone_engine(void);
 #endif

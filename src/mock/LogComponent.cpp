@@ -8,7 +8,7 @@
 #include "LoggerService.hpp"
 #include "NameComponent.hpp"
 #include "Transform2DComponent.hpp"
-#include "types.hpp"
+#include "zombone_engine_types.hpp"
 using namespace std;
 
 LogComponent::LogComponent(string name, ObjectIdentifier objectIdentifier)

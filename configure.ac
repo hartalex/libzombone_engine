@@ -30,7 +30,7 @@ AC_PROG_INSTALL
 AC_CHECK_LIB([m],[sqrt],,AC_MSG_ERROR(Couldn't find library libm))
 
 # Checks for header files.
-AC_CHECK_HEADERS([stdlib.h string.h syslog.h ncurses.h math.h],,AC_MSG_ERROR(Missing header))
+AC_CHECK_HEADERS([stdlib.h string.h syslog.h math.h],,AC_MSG_ERROR(Missing header))
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL

@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "types.hpp"
+#include "zombone_engine_types.hpp"
 using namespace std;
 
 #define HEALTH_SIZE_MAX 20

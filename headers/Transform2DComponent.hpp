@@ -4,7 +4,7 @@
 #include <string>
 
 #include "component.hpp"
-#include "types.hpp"
+#include "zombone_engine_types.hpp"
 using namespace std;
 
 class Transform2DComponent : public Component {

@@ -9,7 +9,7 @@
 #include "ObjectIdentifier.hpp"
 #include "ScoreComponent.hpp"
 #include "Transform2DComponent.hpp"
-#include "types.hpp"
+#include "zombone_engine_types.hpp"
 using namespace std;
 
 BoardComponent::BoardComponent(string name, ObjectIdentifier objectIdentifier)
