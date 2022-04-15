@@ -10,6 +10,12 @@ class Engine {
   virtual ~Engine();
   virtual void loop();
   virtual void exit();
+  virtual int getScreenHeight();
+  virtual int getScreenWidth();
+  virtual char getInput();
+  virtual char getInputError();
+  virtual void clearScreen();
+  virtual void refreshScreen();
 
  private:
   SceneManager sceneManager;

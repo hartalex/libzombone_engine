@@ -69,3 +69,10 @@ void Engine::loop() {
 }
 
 void Engine::exit() { isRunning = false; }
+
+int Engine::getScreenHeight() { return 0; }
+int Engine::getScreenWidth() { return 0; }
+char Engine::getInput() { return 0; }
+char Engine::getInputError() { return 0; }
+void Engine::clearScreen(){};
+void Engine::refreshScreen(){};

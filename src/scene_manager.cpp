@@ -1,9 +1,8 @@
 #include "scene_manager.hpp"
 
-#include <ncurses.h>
-
 #include <vector>
 
+#include "EngineService.hpp"
 #include "LoggerService.hpp"
 #include "ObjectFactoryService.hpp"
 #include "engine.hpp"
@@ -18,9 +17,9 @@ SceneManager::~SceneManager() {}
 void SceneManager::setup() { ObjectFactoryService::getObjectFactory().setup(); }
 
 void SceneManager::update() {
-  char ch = getch();
+  char ch = EngineService::getEngine().getInput();
 
-  if (ch != ERR) {
+  if (ch != EngineService::getEngine().getInputError()) {
     Input input = Input(ch);
     ObjectFactoryService::getObjectFactory().input(input);
   }
@@ -31,9 +30,9 @@ void SceneManager::update() {
 
   if (ObjectFactoryService::getObjectFactory().getIsDirty()) {
     LoggerService::getLogger().info("Rendering");
-    clear();
+    EngineService::getEngine().clearScreen();
     ObjectFactoryService::getObjectFactory().render();
-    refresh();
+    EngineService::getEngine().refreshScreen();
   }
   /* LoggerService::getLogger().info("Scene tick %d",
    * current_scene->getTicks()); */
