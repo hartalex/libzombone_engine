@@ -29,9 +29,6 @@ AC_PROG_INSTALL
 # Checks for libraries.
 AC_CHECK_LIB([m],[sqrt],,AC_MSG_ERROR(Couldn't find library libm))
 AC_CHECK_LIB([ncursesw],[initscr],,AC_CHECK_LIB([ncurses],[initscr],,AC_MSG_ERROR(Couldn't find library libncurses-dev)))
-AC_CHECK_LIB([SDL2],[main],,AC_MSG_ERROR(Couldn't find library libsdl2-dev))
-AC_CHECK_LIB([SDL2main],[main],,AC_MSG_ERROR(Couldn't find library libsdl2-dev))
-AC_CHECK_LIB([SDL2_mixer],[main],,AC_MSG_ERROR(Couldn't find library libsdl2-mixer-dev))
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h string.h syslog.h ncurses.h math.h],,AC_MSG_ERROR(Missing header))

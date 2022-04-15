@@ -15,15 +15,6 @@
 /* Define to 1 if you have the `ncursesw' library (-lncursesw). */
 #undef HAVE_LIBNCURSESW
 
-/* Define to 1 if you have the `SDL2' library (-lSDL2). */
-#undef HAVE_LIBSDL2
-
-/* Define to 1 if you have the `SDL2main' library (-lSDL2main). */
-#undef HAVE_LIBSDL2MAIN
-
-/* Define to 1 if you have the `SDL2_mixer' library (-lSDL2_mixer). */
-#undef HAVE_LIBSDL2_MIXER
-
 /* Define to 1 if you have the <math.h> header file. */
 #undef HAVE_MATH_H
 

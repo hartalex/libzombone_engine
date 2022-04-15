@@ -14,7 +14,6 @@
 #include "ObjectFactoryService.hpp"
 #include "ObjectFileFactory.hpp"
 #include "ObjectIdentifier.hpp"
-#include "SDL2Audio.hpp"
 #include "SyslogLogger.hpp"
 #include "Transform2DComponent.hpp"
 #include "component.hpp"
@@ -24,5 +23,4 @@
 #include "scene_manager.hpp"
 #include "types.hpp"
 #include "view.hpp"
-
 #endif
