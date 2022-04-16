@@ -13,11 +13,11 @@ Component::Component(int componentType, string componentName,
       setuped(0),
       isDirty(1) {
   time(&initialTime);
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str() << " constructor was called with ("
        << componentType << ", " << componentName << ", "
-       << objectIdentifier.objectType << ", " << objectIdentifier.objectName
-       << ", " << objectIdentifier.objectId << ")" << endl;
+       << objectIdentifier.getType() << ", " << objectIdentifier.getName()
+       << ", " << objectIdentifier.getId() << ")" << endl;
 }
 Component::Component(int componentType, string componentName)
     : componentType(componentType),
@@ -25,84 +25,81 @@ Component::Component(int componentType, string componentName)
       removed(0),
       setuped(0),
       isDirty(1) {
-  objectIdentifier.objectId = -1;
-  objectIdentifier.objectName = "Unknown";
-  objectIdentifier.objectType = -1;
   time(&initialTime);
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " constructor was called with (" << componentType << ", "
        << componentName << ")";
 }
 Component::~Component() {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " destructor was called" << endl;
 }
 void Component::setup() {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " setup was called" << endl;
   setuped = 1;
 }
 void Component::tearDown() {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " tearDown was called" << endl;
 }
 void Component::input(Input i) {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " input was called with (" << i.getInput() << ")";
 }
 void Component::update() {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " update was called" << endl;
 }
 void Component::collide(ObjectIdentifier objectIdentifier) {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
-       << " collide was called with (" << objectIdentifier.objectType << ", "
-       << objectIdentifier.objectName.c_str() << ", "
-       << objectIdentifier.objectId << ")" << endl;
+       << " collide was called with (" << objectIdentifier.getType() << ", "
+       << objectIdentifier.getName().c_str() << ", " << objectIdentifier.getId()
+       << ")" << endl;
 }
 void Component::physics() {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " physics was called" << endl;
 }
 int Component::isRemoved() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " isRemoved was called returning " << removed << endl;
   return removed;
 }
 void Component::remove() {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " remove was called" << endl;
   removed = 1;
 }
 int Component::isSetup() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " isSetup was called returning " << setuped << endl;
   return setuped;
 }
-ObjectIdentifier Component::getObjectIdentifier() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+const ObjectIdentifier& Component::getObjectIdentifier() const {
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " getObjectIdentifier was called" << endl;
@@ -110,7 +107,7 @@ ObjectIdentifier Component::getObjectIdentifier() const {
 }
 
 int Component::getType() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " getType was called returning " << componentType << endl;
@@ -118,7 +115,7 @@ int Component::getType() const {
 }
 
 string Component::getName() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " getName was called returning " << componentName << endl;
@@ -126,14 +123,14 @@ string Component::getName() const {
 }
 
 int Component::getObjectType() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " getObjectType was called return " << componentType << endl;
   return componentType;
 }
 string Component::getObjectName() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " getObjectName was called" << endl;
@@ -141,7 +138,7 @@ string Component::getObjectName() const {
 }
 
 double Component::getTicks() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " getTicks was called" << endl;
@@ -151,7 +148,7 @@ double Component::getTicks() const {
 }
 
 int Component::getIsDirty() const {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " getIsDirty was called returning " << isDirty << endl;
@@ -159,7 +156,7 @@ int Component::getIsDirty() const {
 }
 
 void Component::setIsDirty(int i) {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " setIsDirty was called with (" << i << ")" << endl;
@@ -167,9 +164,10 @@ void Component::setIsDirty(int i) {
 }
 
 void Component::render() {
-  cout << "Mock Component " << objectIdentifier.objectId << " " << componentType
+  cout << "Mock Component " << objectIdentifier.getId() << " " << componentType
        << " " << componentName.c_str()
 
        << " render was called" << endl;
   setIsDirty(0);
 }
+

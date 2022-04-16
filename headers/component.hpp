@@ -32,7 +32,7 @@ class Component {
   void remove();
   int isSetup() const;
   int getIsDirty() const;
-  ObjectIdentifier getObjectIdentifier() const;
+  const ObjectIdentifier& getObjectIdentifier() const;
 
  private:
   int componentType;

@@ -18,9 +18,9 @@ shared_ptr<Component> GameComponentFactory::createComponent(
     ComponentData data) {
   (void)data;
   cout << "Mock GameComponentFactory createComponent called with (" << data.type
-       << ", " << data.name << ", " << data.objectIdentifier.objectType << ", "
-       << data.objectIdentifier.objectName << ", "
-       << data.objectIdentifier.objectId << ")" << endl;
+       << ", " << data.name << ", " << data.objectIdentifier.getType() << ", "
+       << data.objectIdentifier.getName() << ", "
+       << data.objectIdentifier.getId() << ")" << endl;
   cout << "data.args: ";
   for (vector<string>::iterator it = data.args.begin(); it != data.args.end();
        ++it) {

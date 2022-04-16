@@ -29,9 +29,9 @@ ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
 
 void ObjectFileFactory::createComponent(ComponentData data) {
   cout << "Mock ObjectFileFactory createComponent called with (" << data.type
-       << ", " << data.name << ", " << data.objectIdentifier.objectType << ", "
-       << data.objectIdentifier.objectName << ", "
-       << data.objectIdentifier.objectId << ")" << endl;
+       << ", " << data.name << ", " << data.objectIdentifier.getType() << ", "
+       << data.objectIdentifier.getName() << ", "
+       << data.objectIdentifier.getId() << ")" << endl;
   cout << "data.args: ";
   for (vector<string>::iterator it = data.args.begin(); it != data.args.end();
        ++it) {
@@ -69,13 +69,13 @@ void ObjectFileFactory::clearAllComponents() {
 void ObjectFileFactory::removeComponent(int type, string name,
                                         ObjectIdentifier oid) {
   cout << "Mock ObjectFileFactory removeComponent called with (" << type << ", "
-       << name.c_str() << ", " << oid.objectType << ", " << oid.objectName
-       << ", " << oid.objectId << ")" << endl;
+       << name.c_str() << ", " << oid.getType() << ", " << oid.getName() << ", "
+       << oid.getId() << ")" << endl;
 }
 
 void ObjectFileFactory::removeObject(ObjectIdentifier oid) {
-  cout << "Mock ObjectFileFactory removeObject called with (" << oid.objectType
-       << ", " << oid.objectName << ", " << oid.objectId << ")" << endl;
+  cout << "Mock ObjectFileFactory removeObject called with (" << oid.getType()
+       << ", " << oid.getName() << ", " << oid.getId() << ")" << endl;
 }
 vector<shared_ptr<Component>>
 ObjectFileFactory::getComponentsByObjectAndComponentType(int type, string name,
@@ -107,8 +107,8 @@ ObjectFileFactory::getComponentsByObjectAndComponentType(int type, string name,
                                                          ObjectIdentifier oid) {
   cout << "Mock ObjectFileFactory getComponentsByObjectAndComponentType "
           "called with ("
-       << type << ", " << name.c_str() << ", " << oid.objectType << ", "
-       << oid.objectName << ", " << oid.objectId << ")" << endl;
+       << type << ", " << name.c_str() << ", " << oid.getType() << ", "
+       << oid.getName() << ", " << oid.getId() << ")" << endl;
   vector<shared_ptr<Component>> retval;
   return retval;
   ;
@@ -117,8 +117,8 @@ shared_ptr<Component> ObjectFileFactory::getComponentByObjectAndComponentType(
     int type, string name, ObjectIdentifier oid) {
   cout << "Mock ObjectFileFactory getComponentByObjectAndComponentType "
           "called with ("
-       << type << ", " << name.c_str() << ", " << oid.objectType << ", "
-       << oid.objectName << ", " << oid.objectId << ")" << endl;
+       << type << ", " << name.c_str() << ", " << oid.getType() << ", "
+       << oid.getName() << ", " << oid.getId() << ")" << endl;
   shared_ptr<Component> retval;
   return retval;
   ;
@@ -126,8 +126,8 @@ shared_ptr<Component> ObjectFileFactory::getComponentByObjectAndComponentType(
 vector<shared_ptr<Component>> ObjectFileFactory::getComponentsByObject(
     ObjectIdentifier oid) {
   cout << "Mock ObjectFileFactory getComponentsByObject called with ("
-       << oid.objectType << ", " << oid.objectName << ", " << oid.objectId
-       << ")" << endl;
+       << oid.getType() << ", " << oid.getName() << ", " << oid.getId() << ")"
+       << endl;
   vector<shared_ptr<Component>> retval;
   return retval;
   ;

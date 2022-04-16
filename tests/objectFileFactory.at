@@ -52,7 +52,7 @@ Closing Object File '${abs_top_builddir}/test-objects.dat'
 Creating Object of type 2, 0
 Generic Object Type 2 Not Found
 Type: -1
-Name: 
+Name: unknown
 Id: -1
 Mock GameComponentFactory destructor was called
 ])
@@ -112,8 +112,6 @@ Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
 Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Component should not be setup
 Mock Component 0 1 transform isSetup was called returning 0
@@ -155,8 +153,6 @@ Mock Component 0 1 direction getType was called returning 1
 Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Component should not be setup
@@ -207,8 +203,6 @@ Mock Component 0 1 direction getType was called returning 1
 Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Component should not be removed
@@ -266,8 +260,6 @@ Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
 Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
 Mock Component 0 1 direction isSetup was called returning 0
@@ -316,8 +308,6 @@ Mock Component 0 1 direction getType was called returning 1
 Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
@@ -376,8 +366,6 @@ Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
 Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
 Mock Component 0 1 direction isSetup was called returning 0
@@ -429,8 +417,6 @@ Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
 Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Component should not be torn down
 Mock Component 0 1 direction isRemoved was called returning 0
@@ -480,8 +466,6 @@ Mock Component 0 1 direction getType was called returning 1
 Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
@@ -535,8 +519,6 @@ Mock Component 0 1 direction getType was called returning 1
 Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
@@ -604,8 +586,6 @@ Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
 Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
 Mock Component 0 1 direction isSetup was called returning 0
@@ -659,8 +639,6 @@ Mock Component 0 1 direction getType was called returning 1
 Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Component should not yet be updated
@@ -718,8 +696,6 @@ Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
 Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
 Mock Component 0 1 direction isSetup was called returning 0
@@ -765,8 +741,6 @@ Mock Component 0 1 direction getType was called returning 1
 Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
@@ -816,8 +790,6 @@ Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
 Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
 Mock Component 0 1 direction isSetup was called returning 0
@@ -864,8 +836,6 @@ Mock Component 0 1 direction getName was called returning direction
 Mock Component 0 1 transform getType was called returning 1
 Mock Component 0 1 transform getName was called returning transform
 Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
-Mock Component 0 1 transform getObjectIdentifier was called
 Found 1 instances of Component transform
 Mock Component 0 1 direction isRemoved was called returning 0
 Mock Component 0 1 direction isSetup was called returning 0
@@ -891,6 +861,4 @@ Mock Component 0 1 direction destructor was called
 Mock Component 0 1 transform destructor was called
 Mock GameComponentFactory destructor was called
 ])
-
-
 AT_CLEANUP

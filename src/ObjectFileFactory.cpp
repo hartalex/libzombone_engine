@@ -51,8 +51,8 @@ ObjectFileFactory::ObjectFileFactory(
           }
         } else {
           ComponentData componentData;
-          componentData.objectIdentifier.objectType = data.type;
-          componentData.objectIdentifier.objectName = data.name;
+          componentData.objectIdentifier =
+              ObjectIdentifier(data.type, data.name, -1);
           vector<string> componentStrings = split(line, ' ');
           if (componentStrings.size() >= 2) {
             componentData.type = stoi(componentStrings.at(0), &sz);
@@ -105,9 +105,6 @@ ObjectFileFactory::~ObjectFileFactory() {}
 
 ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
   ObjectIdentifier oid;
-  oid.objectId = -1;
-  oid.objectType = -1;
-  oid.objectName = "";
   LoggerService::getLogger().info("Creating Object of type %i, %i", type,
                                   nextObjectId);
   vector<ObjectData>::iterator it = objects.begin();
@@ -119,21 +116,18 @@ ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
 
     for (vector<ComponentData>::iterator iit = od.components.begin();
          iit != od.components.end(); ++iit) {
-      (*iit).objectIdentifier.objectId = nextObjectId;
+      (*iit).objectIdentifier.setId(nextObjectId);
       createComponent(*iit);
     }
     ComponentData transformData;
     transformData.name = "transform";
     transformData.type = TYPE_COMPONENT_TRANSFORM_2D;
-    transformData.objectIdentifier.objectType = od.type;
-    transformData.objectIdentifier.objectName = od.name;
-    transformData.objectIdentifier.objectId = nextObjectId;
+    transformData.objectIdentifier =
+        ObjectIdentifier(od.type, od.name, nextObjectId);
     transformData.args.push_back(to_string(x));
     transformData.args.push_back(to_string(y));
     createComponent(transformData);
-    oid.objectType = od.type;
-    oid.objectName = od.name;
-    oid.objectId = nextObjectId;
+    oid = ObjectIdentifier(transformData.objectIdentifier);
     nextObjectId++;
   } else {
     LoggerService::getLogger().info("Generic Object Type %i Not Found", type);
@@ -240,11 +234,7 @@ ObjectFileFactory::getComponentsByObjectAndComponentType(
     if (*cit != 0) {
       if ((*cit)->getType() == componentType &&
           (*cit)->getName().compare(componentName) == 0 &&
-          (*cit)->getObjectIdentifier().objectType ==
-              objectIdentifier.objectType &&
-          (*cit)->getObjectIdentifier().objectName.compare(
-              objectIdentifier.objectName) == 0 &&
-          (*cit)->getObjectIdentifier().objectId == objectIdentifier.objectId) {
+          (*cit)->getObjectIdentifier() == objectIdentifier) {
         retval.push_back(*cit);
       }
     }
@@ -273,14 +263,13 @@ ObjectFileFactory::getComponentsByObjectAndComponentType(int componentType,
                                                          int objectType,
                                                          string objectName,
                                                          int objectId) {
+  ObjectIdentifier objectIdentifier(objectType, objectName, objectId);
   vector<shared_ptr<Component>> retval;
   for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->getType() == componentType &&
         (*cit)->getName().compare(componentName) == 0 &&
-        (*cit)->getObjectIdentifier().objectType == objectType &&
-        (*cit)->getObjectIdentifier().objectName.compare(objectName) == 0 &&
-        (*cit)->getObjectIdentifier().objectId == objectId) {
+        (*cit)->getObjectIdentifier() == objectIdentifier) {
       retval.push_back(*cit);
     }
   }
@@ -297,8 +286,8 @@ ObjectFileFactory::getComponentsByObjectAndComponentType(int componentType,
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->getType() == componentType &&
         (*cit)->getName().compare(componentName) == 0 &&
-        (*cit)->getObjectIdentifier().objectType == objectType &&
-        (*cit)->getObjectIdentifier().objectName.compare(objectName) == 0) {
+        (*cit)->getObjectIdentifier().getType() == objectType &&
+        (*cit)->getObjectIdentifier().getName().compare(objectName) == 0) {
       retval.push_back(*cit);
     }
   }
@@ -312,11 +301,7 @@ void ObjectFileFactory::removeComponent(int componentType, string componentName,
     if (*cit != 0 && (*cit)->isRemoved() == 0 &&
         (*cit)->getType() == componentType &&
         (*cit)->getName().compare(componentName) == 0 &&
-        (*cit)->getObjectIdentifier().objectType ==
-            objectIdentifier.objectType &&
-        (*cit)->getObjectIdentifier().objectName.compare(
-            objectIdentifier.objectName) == 0 &&
-        (*cit)->getObjectIdentifier().objectId == objectIdentifier.objectId) {
+        (*cit)->getObjectIdentifier() == objectIdentifier) {
       (*cit)->remove();
     }
   }
@@ -325,11 +310,7 @@ void ObjectFileFactory::removeObject(ObjectIdentifier objectIdentifier) {
   for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
     if (*cit != 0 && (*cit)->isRemoved() == 0 &&
-        (*cit)->getObjectIdentifier().objectType ==
-            objectIdentifier.objectType &&
-        (*cit)->getObjectIdentifier().objectName.compare(
-            objectIdentifier.objectName) == 0 &&
-        (*cit)->getObjectIdentifier().objectId == objectIdentifier.objectId) {
+        (*cit)->getObjectIdentifier() == objectIdentifier) {
       (*cit)->remove();
     }
   }
@@ -355,12 +336,7 @@ vector<shared_ptr<Component>> ObjectFileFactory::getComponentsByObject(
   vector<shared_ptr<Component>> retval;
   for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
-    if (*cit != 0 &&
-        (*cit)->getObjectIdentifier().objectType ==
-            objectIdentifier.objectType &&
-        (*cit)->getObjectIdentifier().objectName.compare(
-            objectIdentifier.objectName) == 0 &&
-        (*cit)->getObjectIdentifier().objectId == objectIdentifier.objectId) {
+    if (*cit != 0 && (*cit)->getObjectIdentifier() == objectIdentifier) {
       retval.push_back(*cit);
     }
   }

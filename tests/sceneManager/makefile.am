@@ -13,7 +13,7 @@ coverage = -O0 --coverage -fprofile-abs-path
 
 check_PROGRAMS = scene_manager_test scene_manager_input_test
 
-scene_manager_test_group = scene_manager_test.cpp $(top_srcdir)/src/scene_manager.cpp $(top_srcdir)/src/EngineService.cpp component.hpp $(top_srcdir)/src/mock/component.cpp $(top_srcdir)/src/mock/LoggerService.cpp $(top_srcdir)/src/mock/MockLogger.cpp $(top_srcdir)/src/mock/MockLogger.hpp $(top_srcdir)/src/mock/ObjectFactoryService.cpp $(top_srcdir)/src/mock/ObjectFileFactory.cpp $(top_srcdir)/src/mock/GameComponentFactory.cpp
+scene_manager_test_group = scene_manager_test.cpp $(top_srcdir)/src/scene_manager.cpp $(top_srcdir)/src/EngineService.cpp component.hpp $(top_srcdir)/src/mock/component.cpp $(top_srcdir)/src/mock/LoggerService.cpp $(top_srcdir)/src/mock/MockLogger.cpp $(top_srcdir)/src/mock/MockLogger.hpp $(top_srcdir)/src/mock/ObjectFactoryService.cpp $(top_srcdir)/src/mock/ObjectFileFactory.cpp $(top_srcdir)/src/mock/GameComponentFactory.cpp $(top_srcdir)/src/ObjectIdentifier.cpp
 
 scene_manager_test_SOURCES =  $(scene_manager_test_group) $(top_srcdir)/src/mock/engine.cpp
 scene_manager_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)

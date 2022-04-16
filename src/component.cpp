@@ -17,9 +17,6 @@ Component::Component(int componentType, string componentName)
       removed(0),
       setuped(0),
       isDirty(1) {
-  objectIdentifier.objectId = -1;
-  objectIdentifier.objectName = "Unknown";
-  objectIdentifier.objectType = -1;
   time(&initialTime);
 }
 Component::~Component() {}
@@ -34,9 +31,6 @@ void Component::physics() {}
 int Component::isRemoved() const { return removed; }
 void Component::remove() { removed = 1; }
 int Component::isSetup() const { return setuped; }
-ObjectIdentifier Component::getObjectIdentifier() const {
-  return objectIdentifier;
-}
 int Component::getType() const { return componentType; }
 
 string Component::getName() const { return componentName; }
@@ -56,3 +50,7 @@ int Component::getIsDirty() const { return isDirty; }
 void Component::setIsDirty(int i) { isDirty = i; }
 
 void Component::render() { isDirty = 0; }
+
+const ObjectIdentifier& Component::getObjectIdentifier() const {
+  return objectIdentifier;
+}

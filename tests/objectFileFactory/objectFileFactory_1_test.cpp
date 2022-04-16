@@ -14,12 +14,12 @@ int main(int argc, char *argv[]) {
   string::size_type sz;
   int i = stoi(argv[2], &sz);
   ObjectIdentifier oid = off.createObject(i, 0, 0);
-  cout << "Type: " << oid.objectType << endl;
-  if (oid.objectName.size() > 0) {
-    cout << "Name: " << oid.objectName.c_str() << endl;
+  cout << "Type: " << oid.getType() << endl;
+  if (oid.getName().size() > 0) {
+    cout << "Name: " << oid.getName().c_str() << endl;
   } else {
     cout << "Name:" << endl;
   }
-  cout << "Id: " << oid.objectId << endl;
+  cout << "Id: " << oid.getId() << endl;
   return EXIT_SUCCESS;
 }
