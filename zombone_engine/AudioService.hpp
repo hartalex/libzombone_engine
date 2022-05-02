@@ -1,7 +1,7 @@
 #ifndef HEADER_AUDIO_SERVICE
 #define HEADER_AUDIO_SERVICE
 
-#include "Audio.hpp"
+#include "zombone_engine/Audio.hpp"
 
 class AudioService {
  public:

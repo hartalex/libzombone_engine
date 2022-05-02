@@ -1,12 +1,12 @@
-#include "scene_manager.hpp"
+#include "zombone_engine/scene_manager.hpp"
 
 #include <vector>
 
-#include "EngineService.hpp"
-#include "LoggerService.hpp"
-#include "ObjectFactoryService.hpp"
-#include "engine.hpp"
-#include "input.hpp"
+#include "zombone_engine/EngineService.hpp"
+#include "zombone_engine/LoggerService.hpp"
+#include "zombone_engine/ObjectFactoryService.hpp"
+#include "zombone_engine/engine.hpp"
+#include "zombone_engine/input.hpp"
 
 SceneManager::SceneManager(int initialObjectId) {
   ObjectFactoryService::getObjectFactory().createObject(initialObjectId, 0, 0);

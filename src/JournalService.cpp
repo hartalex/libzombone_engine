@@ -1,9 +1,9 @@
-#include "JournalService.hpp"
+#include "zombone_engine/JournalService.hpp"
 
 #include <cstddef>
 
-#include "Journal.hpp"
-#include "MemoryJournal.hpp"
+#include "zombone_engine/Journal.hpp"
+#include "zombone_engine/MemoryJournal.hpp"
 
 Journal *JournalService::journal_ = NULL;
 

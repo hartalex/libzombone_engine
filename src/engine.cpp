@@ -1,4 +1,4 @@
-#include "engine.hpp"
+#include "zombone_engine/engine.hpp"
 
 #include <stdlib.h>
 
@@ -6,8 +6,8 @@
 #include <iostream>
 #include <thread>
 
-#include "LoggerService.hpp"
-#include "scene_manager.hpp"
+#include "zombone_engine/LoggerService.hpp"
+#include "zombone_engine/scene_manager.hpp"
 using namespace std;
 
 bool Engine::isRunning = true;

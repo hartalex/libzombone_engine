@@ -1,4 +1,4 @@
-#include "ObjectFileFactory.hpp"
+#include "zombone_engine/ObjectFileFactory.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -6,12 +6,12 @@
 #include <string>
 #include <vector>
 
-#include "ComponentFactory.hpp"
-#include "LoggerService.hpp"
-#include "ObjectData.hpp"
-#include "ObjectIdentifier.hpp"
-#include "component.hpp"
-#include "zombone_engine_types.hpp"
+#include "zombone_engine/ComponentFactory.hpp"
+#include "zombone_engine/LoggerService.hpp"
+#include "zombone_engine/ObjectData.hpp"
+#include "zombone_engine/ObjectIdentifier.hpp"
+#include "zombone_engine/component.hpp"
+#include "zombone_engine/zombone_engine_types.hpp"
 
 using namespace std;
 

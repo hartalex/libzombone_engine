@@ -1,4 +1,4 @@
-#include "SyslogLogger.hpp"
+#include "zombone_engine/SyslogLogger.hpp"
 
 #include <stdarg.h>
 #include <stdio.h>

@@ -10,7 +10,7 @@ LT_INIT([])
 AC_DEFINE([LOG_LEVEL], [1], [Sets the logging level, 0:debug 1:info 2:warn: 3:error ])
 
 AC_CONFIG_SRCDIR([src/])
-AC_CONFIG_HEADERS([headers/config.hpp])
+AC_CONFIG_HEADERS([src/config.hpp])
 
 AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([makefile

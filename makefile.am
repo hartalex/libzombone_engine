@@ -1,6 +1,6 @@
 SUBDIRS = src tests
 
-cxx_includes = -Isrc 
+cxx_includes = -Isrc  -Izombone_engine
 if OSX
 cxx_warnings = -Wall -Wpedantic -Wextra -D_XOPEN_SOURCE_EXTENDED
 endif
@@ -16,7 +16,7 @@ lib_LTLIBRARIES = libzombone_engine.la
 libzombone_engine_la_SOURCES = src/component.cpp src/Transform2DComponent.cpp src/scene_manager.cpp src/engine.cpp src/SyslogLogger.cpp src/LoggerService.cpp src/MemoryJournal.cpp src/JournalService.cpp src/AudioService.cpp src/Audio.cpp  src/ObjectFileFactory.cpp src/ObjectFactoryService.cpp src/DefaultAudio.cpp src/EngineService.cpp src/zombone_engine.cpp src/ObjectIdentifier.cpp
 libzombone_engine_la_CXXFLAGS = $(cxx_std) $(cxx_includes) $(cxx_warnings) -fPIC
 libzombone_engine_la_LDFLAGS= -shared -fPIC
-include_HEADERS=headers/zombone_engine.hpp headers/input.hpp headers/Transform2DComponent.hpp headers/scene_manager.hpp headers/engine.hpp headers/SyslogLogger.hpp  headers/LoggerService.hpp headers/MemoryJournal.hpp headers/JournalService.hpp headers/Logger.hpp headers/Journal.hpp headers/view.hpp headers/Audio.hpp headers/DefaultAudio.hpp headers/ObjectFactory.hpp headers/ObjectData.hpp headers/ComponentData.hpp headers/ComponentFactory.hpp headers/ObjectFactoryService.hpp headers/ObjectFileFactory.hpp headers/AudioService.hpp headers/component.hpp headers/ObjectIdentifier.hpp headers/zombone_engine_types.hpp headers/EngineService.hpp headers/ObjectIdentifier.hpp
+nobase_include_HEADERS=zombone_engine.hpp zombone_engine/input.hpp zombone_engine/Transform2DComponent.hpp zombone_engine/scene_manager.hpp zombone_engine/engine.hpp zombone_engine/SyslogLogger.hpp  zombone_engine/LoggerService.hpp zombone_engine/MemoryJournal.hpp zombone_engine/JournalService.hpp zombone_engine/Logger.hpp zombone_engine/Journal.hpp zombone_engine/view.hpp zombone_engine/Audio.hpp zombone_engine/DefaultAudio.hpp zombone_engine/ObjectFactory.hpp zombone_engine/ObjectData.hpp zombone_engine/ComponentData.hpp zombone_engine/ComponentFactory.hpp zombone_engine/ObjectFactoryService.hpp zombone_engine/ObjectFileFactory.hpp zombone_engine/AudioService.hpp zombone_engine/component.hpp zombone_engine/ObjectIdentifier.hpp zombone_engine/types.hpp zombone_engine/EngineService.hpp zombone_engine/ObjectIdentifier.hpp
 
 clean-am:
 	rm -rf *.gc*

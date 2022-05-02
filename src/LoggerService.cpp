@@ -1,9 +1,9 @@
-#include "LoggerService.hpp"
+#include "zombone_engine/LoggerService.hpp"
 
 #include <cstddef>
 
-#include "Logger.hpp"
-#include "SyslogLogger.hpp"
+#include "zombone_engine/Logger.hpp"
+#include "zombone_engine/SyslogLogger.hpp"
 
 Logger *LoggerService::logger_ = NULL;
 

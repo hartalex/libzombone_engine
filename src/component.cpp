@@ -1,4 +1,4 @@
-#include "component.hpp"
+#include "zombone_engine/component.hpp"
 using namespace std;
 
 Component::Component(int componentType, string componentName,

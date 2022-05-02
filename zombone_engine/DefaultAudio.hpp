@@ -1,7 +1,7 @@
 #ifndef HEADER_DEFAULT_AUDIO
 #define HEADER_DEFAULT_AUDIO
 
-#include <Audio.hpp>
+#include <zombone_engine/Audio.hpp>
 
 class DefaultAudio : public Audio {
  public:
