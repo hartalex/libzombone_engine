@@ -49,10 +49,10 @@ class Transform2DComponent : public Component {
   void initializeXY(int xx, int yy);
   void setXY(int, int);
   void setXY(Transform2DComponent &transform);
-  void setX(int);
-  void setY(int);
-  int getX() const;
-  int getY() const;
+  virtual void setX(int);
+  virtual void setY(int);
+  virtual int getX() const;
+  virtual int getY() const;
   double distance(Transform2DComponent &transform) const;
   int hasMovedThisFrame() const;
   virtual void render() override;
