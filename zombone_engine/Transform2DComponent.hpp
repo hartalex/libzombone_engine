@@ -60,9 +60,11 @@ class Transform2DComponent : public Component {
  private:
   int x;
   int y;
+  int hasMoved;
+
+ protected:
   int previous_x;
   int previous_y;
-  int hasMoved;
 };
 
 static Transform2DComponent UP("direction", 0, -1);
