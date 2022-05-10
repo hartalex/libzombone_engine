@@ -40,7 +40,7 @@ class Transform2DComponent : public Component {
         previous_x(t.previous_x),
         previous_y(t.previous_y),
         hasMoved(0){};
-  virtual ~Transform2DComponent() final;
+  virtual ~Transform2DComponent();
   void move(int, int);
   void move(int, int, int);
   void move(Transform2DComponent &transform);
