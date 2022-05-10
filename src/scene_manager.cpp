@@ -9,7 +9,7 @@
 #include "zombone_engine/input.hpp"
 
 SceneManager::SceneManager(int initialObjectId) {
-  ObjectFactoryService::getObjectFactory().createObject(initialObjectId, 0, 0);
+  ObjectFactoryService::getObjectFactory().createObject(initialObjectId);
 }
 
 SceneManager::~SceneManager() {}
@@ -42,6 +42,6 @@ void SceneManager::setScene(int nextObjectId) {
   ObjectFactoryService::getObjectFactory().tearDown();
   ObjectFactoryService::getObjectFactory().clearAllComponents();
   LoggerService::getLogger().debug("Setting Scene to %i", nextObjectId);
-  ObjectFactoryService::getObjectFactory().createObject(nextObjectId, 0, 0);
+  ObjectFactoryService::getObjectFactory().createObject(nextObjectId);
   ObjectFactoryService::getObjectFactory().setup();
 }

@@ -103,7 +103,7 @@ vector<string> split(const string &str, char delim) {
 
 ObjectFileFactory::~ObjectFileFactory() {}
 
-ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
+ObjectIdentifier ObjectFileFactory::createObject(int type) {
   ObjectIdentifier oid;
   LoggerService::getLogger().info("Creating Object of type %i, %i", type,
                                   nextObjectId);
@@ -119,15 +119,7 @@ ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
       (*iit).objectIdentifier.setId(nextObjectId);
       createComponent(*iit);
     }
-    ComponentData transformData;
-    transformData.name = "transform";
-    transformData.type = TYPE_COMPONENT_TRANSFORM_2D;
-    transformData.objectIdentifier =
-        ObjectIdentifier(od.type, od.name, nextObjectId);
-    transformData.args.push_back(to_string(x));
-    transformData.args.push_back(to_string(y));
-    createComponent(transformData);
-    oid = ObjectIdentifier(transformData.objectIdentifier);
+    oid = ObjectIdentifier(od.type, od.name, nextObjectId);
     nextObjectId++;
   } else {
     LoggerService::getLogger().info("Generic Object Type %i Not Found", type);

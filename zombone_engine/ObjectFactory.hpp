@@ -11,35 +11,35 @@
 using namespace std;
 
 class ObjectFactory {
- public:
-  virtual ~ObjectFactory(){};
-  virtual void createComponent(ComponentData) = 0;
-  virtual ObjectIdentifier createObject(int type, int x, int y) = 0;
-  virtual void setup() = 0;
-  virtual void tearDown() = 0;
-  virtual void update() = 0;
-  virtual void input(Input) = 0;
-  virtual void physics() = 0;
-  virtual int getIsDirty() = 0;
-  virtual void render() = 0;
-  virtual void clearAllComponents() = 0;
-  virtual void removeComponent(int componentType, string componentName,
-                               ObjectIdentifier objectIdentifier) = 0;
-  virtual void removeObject(ObjectIdentifier objectIdentifier) = 0;
-  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
-      int componentType, string componentName, int objectType,
-      string objectName, int objectId) = 0;
-  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
-      int componentType, string componentName, int objectType,
-      string objectName) = 0;
-  virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
-      int componentType, string componentName,
-      ObjectIdentifier objectIdentifier) = 0;
-  virtual shared_ptr<Component> getComponentByObjectAndComponentType(
-      int componentType, string componentName,
-      ObjectIdentifier objectIdentifier) = 0;
-  virtual vector<shared_ptr<Component>> getComponentsByObject(
-      ObjectIdentifier objectIdentifier) = 0;
+   public:
+    virtual ~ObjectFactory(){};
+    virtual void createComponent(ComponentData) = 0;
+    virtual ObjectIdentifier createObject(int type) = 0;
+    virtual void setup() = 0;
+    virtual void tearDown() = 0;
+    virtual void update() = 0;
+    virtual void input(Input) = 0;
+    virtual void physics() = 0;
+    virtual int getIsDirty() = 0;
+    virtual void render() = 0;
+    virtual void clearAllComponents() = 0;
+    virtual void removeComponent(int componentType, string componentName,
+                                 ObjectIdentifier objectIdentifier) = 0;
+    virtual void removeObject(ObjectIdentifier objectIdentifier) = 0;
+    virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+        int componentType, string componentName, int objectType,
+        string objectName, int objectId) = 0;
+    virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+        int componentType, string componentName, int objectType,
+        string objectName) = 0;
+    virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
+        int componentType, string componentName,
+        ObjectIdentifier objectIdentifier) = 0;
+    virtual shared_ptr<Component> getComponentByObjectAndComponentType(
+        int componentType, string componentName,
+        ObjectIdentifier objectIdentifier) = 0;
+    virtual vector<shared_ptr<Component>> getComponentsByObject(
+        ObjectIdentifier objectIdentifier) = 0;
 };
 
 #endif
