@@ -24,8 +24,8 @@ void Transform2DComponent::move(Transform2DComponent &transform, int hasMoved) {
 }
 
 Transform2DComponent Transform2DComponent::unMove() {
-  Transform2DComponent retval =
-      Transform2DComponent("direction", previous_x - x, previous_y - y);
+  Transform2DComponent retval = Transform2DComponent(
+      "direction", previous_x - getX(), previous_y - getY());
   return retval;
 }
 
@@ -43,11 +43,11 @@ void Transform2DComponent::setXY(Transform2DComponent &transform) {
   setXY(transform.getX(), transform.getY());
 }
 void Transform2DComponent::setX(int xx) {
-  previous_x = x;
+  previous_x = getX();
   x = xx;
 }
 void Transform2DComponent::setY(int yy) {
-  previous_y = y;
+  previous_y = getY();
   y = yy;
 }
 

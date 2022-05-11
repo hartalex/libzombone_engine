@@ -35,8 +35,8 @@ class Transform2DComponent : public Component {
   Transform2DComponent(const Transform2DComponent &t)
       : Component(TYPE_COMPONENT_TRANSFORM_2D, t.getName(),
                   t.getObjectIdentifier()),
-        x(t.x),
-        y(t.y),
+        x(t.getX()),
+        y(t.getY()),
         previous_x(t.previous_x),
         previous_y(t.previous_y),
         hasMoved(0){};
