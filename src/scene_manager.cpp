@@ -8,6 +8,8 @@
 #include "zombone_engine/engine.hpp"
 #include "zombone_engine/input.hpp"
 
+namespace zombone_engine {
+
 SceneManager::SceneManager(int initialObjectId) {
   ObjectFactoryService::getObjectFactory().createObject(initialObjectId);
 }
@@ -45,3 +47,5 @@ void SceneManager::setScene(int nextObjectId) {
   ObjectFactoryService::getObjectFactory().createObject(nextObjectId);
   ObjectFactoryService::getObjectFactory().setup();
 }
+
+}  // namespace zombone_engine

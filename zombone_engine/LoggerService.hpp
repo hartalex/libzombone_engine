@@ -3,6 +3,8 @@
 
 #include "Logger.hpp"
 
+namespace zombone_engine {
+
 class LoggerService {
  public:
   static Logger &getLogger();
@@ -10,4 +12,7 @@ class LoggerService {
  private:
   static Logger *logger_;
 };
+
+}  // namespace zombone_engine
+
 #endif

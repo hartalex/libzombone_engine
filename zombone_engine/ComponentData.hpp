@@ -7,11 +7,15 @@
 #include "ObjectIdentifier.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 struct ComponentData {
   int type;
   string name;
   ObjectIdentifier objectIdentifier;
   vector<string> args;
 };
+
+}  // namespace zombone_engine
 
 #endif

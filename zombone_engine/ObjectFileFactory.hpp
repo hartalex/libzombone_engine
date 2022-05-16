@@ -11,6 +11,8 @@
 #include "input.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 class ObjectFileFactory : public ObjectFactory {
    public:
     ObjectFileFactory(unique_ptr<ComponentFactory> componentFactory,
@@ -51,5 +53,7 @@ class ObjectFileFactory : public ObjectFactory {
     int nextObjectId;
     void deleteComponents();
 };
+
+}  // namespace zombone_engine
 
 #endif

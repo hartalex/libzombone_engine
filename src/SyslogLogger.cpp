@@ -7,6 +7,8 @@
 
 #include "config.hpp"
 
+namespace zombone_engine {
+
 SyslogLogger::SyslogLogger() {}
 
 SyslogLogger::~SyslogLogger() {}
@@ -58,3 +60,4 @@ void SyslogLogger::error(char const *message, ...) {
   }
 }
 
+}  // namespace zombone_engine

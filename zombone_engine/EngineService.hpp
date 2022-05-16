@@ -5,6 +5,8 @@
 #include "engine.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 class EngineService {
  public:
   static Engine &getEngine();
@@ -13,4 +15,7 @@ class EngineService {
  private:
   static shared_ptr<Engine> engine;
 };
+
+}  // namespace zombone_engine
+
 #endif

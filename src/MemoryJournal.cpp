@@ -5,6 +5,8 @@
 #include <string.h>
 using namespace std;
 
+namespace zombone_engine {
+
 MemoryJournal::MemoryJournal() { nextMessage = 0; }
 
 MemoryJournal::~MemoryJournal() {}
@@ -44,3 +46,5 @@ list<char *> MemoryJournal::getLastMessages(int count) {
   }
   return retval;
 }
+
+}  // namespace zombone_engine

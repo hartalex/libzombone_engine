@@ -3,6 +3,8 @@
 #include <math.h>
 #include <stdio.h>
 
+namespace zombone_engine {
+
 Transform2DComponent::~Transform2DComponent() {}
 
 void Transform2DComponent::move(int vx, int vy) {
@@ -72,3 +74,4 @@ void Transform2DComponent::render() {
   hasMoved = 0;
 }
 
+}  // namespace zombone_engine

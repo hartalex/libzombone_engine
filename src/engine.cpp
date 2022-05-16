@@ -10,6 +10,8 @@
 #include "zombone_engine/scene_manager.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 bool Engine::isRunning = true;
 
 Engine::Engine(int initialObjectId)
@@ -35,3 +37,5 @@ char Engine::getInput() { return 0; }
 char Engine::getInputError() { return 0; }
 void Engine::clearScreen(){};
 void Engine::refreshScreen(){};
+
+}  // namespace zombone_engine

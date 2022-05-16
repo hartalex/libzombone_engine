@@ -12,17 +12,21 @@ using namespace std;
 // The maximum length a log message
 #define MAX_MESSAGE_SIZE 50
 
-class MemoryJournal : public Journal {
- public:
-  MemoryJournal();
-  virtual ~MemoryJournal();
-  virtual void addMessage(char const *message, ...) override
-      __attribute__((format(printf, 2, 3)));
-  virtual list<char *> getLastMessages(int count) override;
+namespace zombone_engine {
 
- private:
-  char messages[MAX_MESSAGE_SIZE][MAX_JOURNAL_LINE_LEN];
-  int nextMessage;
+class MemoryJournal : public Journal {
+   public:
+    MemoryJournal();
+    virtual ~MemoryJournal();
+    virtual void addMessage(char const *message, ...) override
+        __attribute__((format(printf, 2, 3)));
+    virtual list<char *> getLastMessages(int count) override;
+
+   private:
+    char messages[MAX_MESSAGE_SIZE][MAX_JOURNAL_LINE_LEN];
+    int nextMessage;
 };
+
+}  // namespace zombone_engine
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef HEADER_INPUT
 #define HEADER_INPUT
 
+namespace zombone_engine {
+
 class Input {
  public:
   Input(char ch) : ch(ch){};
@@ -9,5 +11,7 @@ class Input {
  protected:
   char ch;
 };
+
+}  // namespace zombone_engine
 
 #endif

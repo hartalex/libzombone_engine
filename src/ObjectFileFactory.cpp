@@ -15,6 +15,8 @@
 
 using namespace std;
 
+namespace zombone_engine {
+
 vector<string> split(const string &str, char delim);
 
 ObjectFileFactory::ObjectFileFactory(
@@ -334,3 +336,5 @@ vector<shared_ptr<Component>> ObjectFileFactory::getComponentsByObject(
   }
   return retval;
 }
+
+}  // namespace zombone_engine

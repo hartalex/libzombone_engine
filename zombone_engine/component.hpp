@@ -10,6 +10,8 @@
 #include "input.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 class Component {
  public:
   Component(int componentType, string componentName,
@@ -48,5 +50,7 @@ class Component {
   double getTicks() const;
   void setIsDirty(int i);
 };
+
+}  // namespace zombone_engine
 
 #endif

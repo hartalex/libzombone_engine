@@ -1,6 +1,8 @@
 #include "zombone_engine/component.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 Component::Component(int componentType, string componentName,
                      ObjectIdentifier objectIdentifier)
     : componentType(componentType),
@@ -54,3 +56,5 @@ void Component::render() { isDirty = 0; }
 const ObjectIdentifier& Component::getObjectIdentifier() const {
   return objectIdentifier;
 }
+
+}  // namespace zombone_engine

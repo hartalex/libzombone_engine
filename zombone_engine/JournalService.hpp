@@ -3,6 +3,8 @@
 
 #include "Journal.hpp"
 
+namespace zombone_engine {
+
 class JournalService {
  public:
   static Journal &getJournal();
@@ -10,4 +12,7 @@ class JournalService {
  private:
   static Journal *journal_;
 };
+
+}  // namespace zombone_engine
+
 #endif

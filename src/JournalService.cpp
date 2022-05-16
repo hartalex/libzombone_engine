@@ -5,6 +5,8 @@
 #include "zombone_engine/Journal.hpp"
 #include "zombone_engine/MemoryJournal.hpp"
 
+namespace zombone_engine {
+
 Journal *JournalService::journal_ = NULL;
 
 Journal &JournalService::getJournal() {
@@ -13,3 +15,5 @@ Journal &JournalService::getJournal() {
   }
   return *journal_;
 }
+
+}  // namespace zombone_engine

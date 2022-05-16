@@ -7,6 +7,8 @@
 #include "zombone_engine/engine.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 shared_ptr<Engine> EngineService::engine(nullptr);
 
 Engine &EngineService::getEngine() {
@@ -17,3 +19,5 @@ Engine &EngineService::getEngine() {
 }
 
 void EngineService::setEngine(shared_ptr<Engine> e) { engine = e; }
+
+}  // namespace zombone_engine

@@ -4,6 +4,8 @@
 #include <string>
 using namespace std;
 
+namespace zombone_engine {
+
 class ObjectIdentifier {
  public:
   ObjectIdentifier();
@@ -20,5 +22,7 @@ class ObjectIdentifier {
   string name;
   int id;
 };
+
+}  // namespace zombone_engine
 
 #endif

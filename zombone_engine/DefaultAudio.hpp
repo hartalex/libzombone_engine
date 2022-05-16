@@ -3,6 +3,8 @@
 
 #include <zombone_engine/Audio.hpp>
 
+namespace zombone_engine {
+
 class DefaultAudio : public Audio {
  public:
   DefaultAudio();
@@ -11,5 +13,7 @@ class DefaultAudio : public Audio {
   virtual void playMusic() override;
   virtual void stopMusic() override;
 };
+
+}  // namespace zombone_engine
 
 #endif

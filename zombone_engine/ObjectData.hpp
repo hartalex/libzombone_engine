@@ -7,10 +7,13 @@
 #include "ComponentData.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 struct ObjectData {
   int type;
   vector<ComponentData> components;
   string name;
 };
 
+}  // namespace zombone_engine
 #endif

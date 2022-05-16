@@ -7,6 +7,8 @@
 #include "zombone_engine/ObjectFileFactory.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 shared_ptr<ObjectFactory> ObjectFactoryService::objectFactory(nullptr);
 
 ObjectFactory &ObjectFactoryService::getObjectFactory() {
@@ -19,3 +21,5 @@ ObjectFactory &ObjectFactoryService::getObjectFactory() {
 void ObjectFactoryService::setObjectFactory(shared_ptr<ObjectFactory> o) {
   objectFactory = o;
 }
+
+}  // namespace zombone_engine

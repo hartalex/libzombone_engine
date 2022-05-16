@@ -8,6 +8,8 @@
 
 using namespace std;
 
+namespace zombone_engine {
+
 class Transform2DComponent : public Component {
  public:
   Transform2DComponent(string name, ObjectIdentifier objectIdentifier)
@@ -76,5 +78,7 @@ static Transform2DComponent UPLEFT("direction", -1, -1);
 static Transform2DComponent UPRIGHT("direction", 1, -1);
 static Transform2DComponent DOWNLEFT("direction", -1, 1);
 static Transform2DComponent DOWNRIGHT("direction", 1, 1);
+
+}  // namespace zombone_engine
 
 #endif

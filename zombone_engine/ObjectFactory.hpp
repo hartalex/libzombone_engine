@@ -10,6 +10,8 @@
 #include "input.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 class ObjectFactory {
    public:
     virtual ~ObjectFactory(){};
@@ -41,5 +43,7 @@ class ObjectFactory {
     virtual vector<shared_ptr<Component>> getComponentsByObject(
         ObjectIdentifier objectIdentifier) = 0;
 };
+
+}  // namespace zombone_engine
 
 #endif

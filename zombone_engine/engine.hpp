@@ -4,6 +4,8 @@
 
 #include "scene_manager.hpp"
 
+namespace zombone_engine {
+
 class Engine {
  public:
   Engine(int initialObjectId);
@@ -21,5 +23,7 @@ class Engine {
   SceneManager sceneManager;
   static bool isRunning;
 };
+
+}  // namespace zombone_engine
 
 #endif

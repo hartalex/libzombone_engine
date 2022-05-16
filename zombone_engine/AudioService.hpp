@@ -3,6 +3,8 @@
 
 #include "zombone_engine/Audio.hpp"
 
+namespace zombone_engine {
+
 class AudioService {
  public:
   static Audio &getAudio();
@@ -10,4 +12,7 @@ class AudioService {
  private:
   static Audio *audio;
 };
+
+}  // namespace zombone_engine
+
 #endif

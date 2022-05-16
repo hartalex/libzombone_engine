@@ -5,6 +5,8 @@
 #include "zombone_engine/Audio.hpp"
 #include "zombone_engine/DefaultAudio.hpp"
 
+namespace zombone_engine {
+
 Audio *AudioService::audio = NULL;
 
 Audio &AudioService::getAudio() {
@@ -13,3 +15,5 @@ Audio &AudioService::getAudio() {
   }
   return *audio;
 }
+
+}  // namespace zombone_engine

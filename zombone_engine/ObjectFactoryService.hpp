@@ -5,6 +5,8 @@
 #include "ObjectFactory.hpp"
 using namespace std;
 
+namespace zombone_engine {
+
 class ObjectFactoryService {
  public:
   static ObjectFactory &getObjectFactory();
@@ -13,4 +15,7 @@ class ObjectFactoryService {
  private:
   static shared_ptr<ObjectFactory> objectFactory;
 };
+
+}  // namespace zombone_engine
+
 #endif
