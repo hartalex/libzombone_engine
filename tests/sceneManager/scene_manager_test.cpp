@@ -1,15 +1,16 @@
 #define config mock
-#include "scene_manager.hpp"
+#include "zombone_engine/scene_manager.hpp"
 
 #include <iostream>
 #include <memory>
 
-#include "EngineService.hpp"
 #include "GameComponentFactory.hpp"
-#include "ObjectFactoryService.hpp"
-#include "ObjectFileFactory.hpp"
-#include "engine.hpp"
+#include "zombone_engine/EngineService.hpp"
+#include "zombone_engine/ObjectFactoryService.hpp"
+#include "zombone_engine/ObjectFileFactory.hpp"
+#include "zombone_engine/engine.hpp"
 using namespace std;
+using namespace zombone_engine;
 
 int main(int argc, char *argv[]) {
   (void)argc;

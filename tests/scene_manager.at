@@ -4,9 +4,9 @@ AT_COLOR_TESTS
 # Test the successful case of scene_manager.cpp. Mocked dependency's
 AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/sceneManager/scene_manager_test],[0],[Mock GameComponentFactory constructor was called
 Mock ObjectFileFactory constructor was called with (./objects.dat)
-Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
+Mock ObjectFileFactory CreateObject was called with (0)
 Mock Engine constructor called with 0
-Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
+Mock ObjectFileFactory CreateObject was called with (0)
 Mock ObjectFileFactory Setup was called.
 Mock Engine getInputwas called
 Mock Engine getInputError was called
@@ -20,7 +20,7 @@ Mock Engine refreshScreen was called
 Mock ObjectFileFactory TearDown was called.
 Mock ObjectFileFactory ClearAllComponents was called.
 Setting Scene to 1
-Mock ObjectFileFactory CreateObject was called with (1, 0, 0)
+Mock ObjectFileFactory CreateObject was called with (1)
 Mock ObjectFileFactory Setup was called.
 Mock ObjectFileFactory destructor was called
 Mock GameComponentFactory destructor was called
@@ -29,9 +29,9 @@ Mock Engine destructor called.
 # Test the successful case of scene_manager.cpp engine has an input. Mocked dependency's
 AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/sceneManager/scene_manager_input_test],[0],[Mock GameComponentFactory constructor was called
 Mock ObjectFileFactory constructor was called with (./objects.dat)
-Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
+Mock ObjectFileFactory CreateObject was called with (0)
 Mock Engine constructor called with 0
-Mock ObjectFileFactory CreateObject was called with (0, 0, 0)
+Mock ObjectFileFactory CreateObject was called with (0)
 Mock ObjectFileFactory Setup was called.
 Mock Engine getInputwas called
 Mock Engine getInputError was called
@@ -46,7 +46,7 @@ Mock Engine refreshScreen was called
 Mock ObjectFileFactory TearDown was called.
 Mock ObjectFileFactory ClearAllComponents was called.
 Setting Scene to 1
-Mock ObjectFileFactory CreateObject was called with (1, 0, 0)
+Mock ObjectFileFactory CreateObject was called with (1)
 Mock ObjectFileFactory Setup was called.
 Mock ObjectFileFactory destructor was called
 Mock GameComponentFactory destructor was called

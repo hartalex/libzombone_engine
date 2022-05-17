@@ -1,12 +1,11 @@
 #define config mock
-#include "engine.hpp"
-
 #include <stdlib.h>
 
 #include <iostream>
 
-#include "EngineService.hpp"
+#include "zombone_engine/EngineService.hpp"
 using namespace std;
+using namespace zombone_engine;
 
 int main(int argc, char *argv[]) {
   (void)argc;

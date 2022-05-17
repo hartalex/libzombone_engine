@@ -4,8 +4,9 @@
 #include <iostream>
 
 #include "GameComponentFactory.hpp"
-#include "ObjectFileFactory.hpp"
+#include "zombone_engine/ObjectFileFactory.hpp"
 using namespace std;
+using namespace zombone_engine;
 
 int main(int argc, char *argv[]) {
   (void)argc;
@@ -13,7 +14,7 @@ int main(int argc, char *argv[]) {
   ObjectFileFactory off(make_unique<GameComponentFactory>(), argv[1]);
   string::size_type sz;
   int i = stoi(argv[2], &sz);
-  ObjectIdentifier oid = off.createObject(i, 0, 0);
+  ObjectIdentifier oid = off.createObject(i);
   cout << "Type: " << oid.getType() << endl;
   if (oid.getName().size() > 0) {
     cout << "Name: " << oid.getName().c_str() << endl;

@@ -1,11 +1,13 @@
-#include "ObjectFileFactory.hpp"
+#include "zombone_engine/ObjectFileFactory.hpp"
 
 #include <iostream>
 #include <string>
 
-#include "ComponentFactory.hpp"
-#include "ObjectData.hpp"
+#include "zombone_engine/ComponentFactory.hpp"
+#include "zombone_engine/ObjectData.hpp"
 using namespace std;
+
+namespace zombone_engine {
 
 vector<string> split(const string &str, char delim);
 
@@ -20,9 +22,9 @@ ObjectFileFactory::~ObjectFileFactory() {
   cout << "Mock ObjectFileFactory destructor was called" << endl;
 }
 
-ObjectIdentifier ObjectFileFactory::createObject(int type, int x, int y) {
-  cout << "Mock ObjectFileFactory CreateObject was called with (" << type
-       << ", " << x << ", " << y << ")" << endl;
+ObjectIdentifier ObjectFileFactory::createObject(int type) {
+  cout << "Mock ObjectFileFactory CreateObject was called with (" << type << ")"
+       << endl;
   ObjectIdentifier oid;
   return oid;
 }
@@ -135,3 +137,5 @@ vector<shared_ptr<Component>> ObjectFileFactory::getComponentsByObject(
 void ObjectFileFactory::deleteComponents() {
   cout << "Mock ObjectFileFactory deleteComponents was called." << endl;
 }
+
+}  // namespace zombone_engine

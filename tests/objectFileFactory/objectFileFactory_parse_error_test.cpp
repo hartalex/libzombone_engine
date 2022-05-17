@@ -4,8 +4,9 @@
 #include <iostream>
 
 #include "GameComponentFactory.hpp"
-#include "ObjectFileFactory.hpp"
+#include "zombone_engine/ObjectFileFactory.hpp"
 using namespace std;
+using namespace zombone_engine;
 
 int main(int argc, char *argv[]) {
   (void)argc;

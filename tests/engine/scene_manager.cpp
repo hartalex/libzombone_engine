@@ -1,9 +1,10 @@
-#include "scene_manager.hpp"
 
 #include <iostream>
 
-#include "EngineService.hpp"
+#include "zombone_engine/EngineService.hpp"
 using namespace std;
+
+namespace zombone_engine {
 
 SceneManager::SceneManager(int initialObjectId) {
   cout << "Mock SceneManager constructor called with (" << initialObjectId
@@ -21,3 +22,4 @@ void SceneManager::update() {
   EngineService::getEngine().exit();
 }
 
+}  // namespace zombone_engine

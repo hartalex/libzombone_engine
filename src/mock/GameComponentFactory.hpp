@@ -3,10 +3,11 @@
 
 #include <memory>
 
-#include "ComponentData.hpp"
-#include "ComponentFactory.hpp"
-#include "component.hpp"
+#include "zombone_engine/ComponentData.hpp"
+#include "zombone_engine/ComponentFactory.hpp"
+#include "zombone_engine/component.hpp"
 using namespace std;
+using namespace zombone_engine;
 
 class GameComponentFactory : public ComponentFactory {
  public:

@@ -1,9 +1,9 @@
-#include "component.hpp"
+#include "zombone_engine/component.hpp"
 
 #include <iostream>
 #include <string>
 using namespace std;
-
+namespace zombone_engine {
 Component::Component(int componentType, string componentName,
                      ObjectIdentifier objectIdentifier)
     : componentType(componentType),
@@ -171,3 +171,4 @@ void Component::render() {
   setIsDirty(0);
 }
 
+}  // namespace zombone_engine

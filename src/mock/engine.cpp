@@ -1,9 +1,11 @@
-#include "engine.hpp"
+#include "zombone_engine/engine.hpp"
 
 #include <iostream>
 
-#include "scene_manager.hpp"
+#include "zombone_engine/scene_manager.hpp"
 using namespace std;
+
+namespace zombone_engine {
 
 Engine::Engine(int initialObjectId)
     : sceneManager(SceneManager(initialObjectId)) {
@@ -38,3 +40,5 @@ void Engine::clearScreen() {
 void Engine::refreshScreen() {
   cout << "Mock Engine refreshScreen was called" << endl;
 };
+
+}  // namespace zombone_engine

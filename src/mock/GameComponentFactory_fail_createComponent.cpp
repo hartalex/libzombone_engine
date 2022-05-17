@@ -1,9 +1,10 @@
 #include <iostream>
 
-#include "ComponentData.hpp"
 #include "GameComponentFactory.hpp"
-#include "component.hpp"
+#include "zombone_engine/ComponentData.hpp"
+#include "zombone_engine/component.hpp"
 using namespace std;
+using namespace zombone_engine;
 
 GameComponentFactory::GameComponentFactory() {
   cout << "Mock GameComponentFactory constructor was called" << endl;
