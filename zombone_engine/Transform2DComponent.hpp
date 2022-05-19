@@ -35,8 +35,7 @@ class Transform2DComponent : public Component {
         previous_y(y),
         hasMoved(0){};
   Transform2DComponent(const Transform2DComponent &t)
-      : Component(TYPE_COMPONENT_TRANSFORM_2D, t.getName(),
-                  t.getObjectIdentifier()),
+      : Component(t.getType(), t.getName(), t.getObjectIdentifier()),
         x(t.getX()),
         y(t.getY()),
         previous_x(t.previous_x),
@@ -65,6 +64,28 @@ class Transform2DComponent : public Component {
   int hasMoved;
 
  protected:
+  Transform2DComponent(int type, string name, ObjectIdentifier objectIdentifier)
+      : Component(type, name, objectIdentifier),
+        x(0),
+        y(0),
+        previous_x(0),
+        previous_y(0),
+        hasMoved(0){};
+  Transform2DComponent(int type, string name, ObjectIdentifier objectIdentifier,
+                       int x, int y)
+      : Component(type, name, objectIdentifier),
+        x(x),
+        y(y),
+        previous_x(x),
+        previous_y(y),
+        hasMoved(0){};
+  Transform2DComponent(int type, string name, int x, int y)
+      : Component(type, name),
+        x(x),
+        y(y),
+        previous_x(x),
+        previous_y(y),
+        hasMoved(0){};
   int previous_x;
   int previous_y;
 };
