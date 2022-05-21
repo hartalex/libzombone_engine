@@ -7,6 +7,7 @@
 #include "ComponentFactory.hpp"
 #include "ObjectData.hpp"
 #include "ObjectFactory.hpp"
+#include "ObjectFileParser.hpp"
 #include "ObjectIdentifier.hpp"
 #include "input.hpp"
 using namespace std;
@@ -16,6 +17,7 @@ namespace zombone_engine {
 class ObjectFileFactory : public ObjectFactory {
    public:
     ObjectFileFactory(unique_ptr<ComponentFactory> componentFactory,
+                      unique_ptr<ObjectFileParser> objectFileParser,
                       string fileName);
     virtual ~ObjectFileFactory();
     virtual void createComponent(ComponentData) override;
@@ -49,6 +51,7 @@ class ObjectFileFactory : public ObjectFactory {
    private:
     vector<ObjectData> objects;
     unique_ptr<ComponentFactory> const componentFactory;
+    unique_ptr<ObjectFileParser> const objectFileParser;
     vector<shared_ptr<Component>> components;
     int nextObjectId;
     void deleteComponents();
