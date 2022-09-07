@@ -12,7 +12,6 @@
 #include "zombone_engine/ObjectFileParser.hpp"
 #include "zombone_engine/ObjectIdentifier.hpp"
 #include "zombone_engine/component.hpp"
-#include "zombone_engine/zombone_engine_types.hpp"
 
 using namespace std;
 
