@@ -46,3 +46,5 @@ configure~
 configure
 .libs
 compile_commands.json
+libtool
+ltmain.sh
