@@ -8,9 +8,12 @@ AM_INIT_AUTOMAKE([subdir-objects])
 LT_INIT([])
 
 AC_DEFINE([LOG_LEVEL], [1], [Sets the logging level, 0:debug 1:info 2:warn: 3:error ])
+AC_DEFINE_UNQUOTED([ZOMBONE_ENGINE_VERSION], ["$VERSION"])
+AC_DEFINE_UNQUOTED([ZOMBONE_ENGINE_PACKAGE_STRING], ["$PACKAGE_STRING"])
 
 AC_CONFIG_SRCDIR([src/])
-AC_CONFIG_HEADERS([src/config.hpp])
+AC_CONFIG_HEADERS([src/config.hpp
+                   zombone_engine.hpp])
 
 AC_CONFIG_TESTDIR([tests])
 AC_CONFIG_FILES([makefile

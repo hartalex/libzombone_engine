@@ -26,5 +26,8 @@
 #include "zombone_engine/types.hpp"
 #include "zombone_engine/view.hpp"
 
+#undef ZOMBONE_ENGINE_PACKAGE_STRING
+#undef ZOMBONE_ENGINE_VERSION
+
 void test_zombone_engine(void);
 #endif
