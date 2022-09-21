@@ -12,8 +12,10 @@ namespace zombone_engine {
 vector<string> split(const string &str, char delim);
 
 ObjectFileFactory::ObjectFileFactory(
-    unique_ptr<ComponentFactory> componentFactory, string fileName)
-    : componentFactory(move(componentFactory)) {
+    unique_ptr<ComponentFactory> componentFactory,
+    unique_ptr<ObjectFileParser> objectFileParser, string fileName)
+    : componentFactory(move(componentFactory)), 
+      objectFileParser(move(objectFileParser)) {
   cout << "Mock ObjectFileFactory constructor was called with ("
        << fileName.c_str() << ")" << endl;
 }

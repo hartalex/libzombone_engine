@@ -7,6 +7,9 @@ Mock ObjectFileFactory constructor was called with (./objects.dat)
 Mock ObjectFileFactory CreateObject was called with (0)
 Mock Engine constructor called with 0
 Mock ObjectFileFactory CreateObject was called with (0)
+Mock Engine constructor called with 0
+Mock Engine destructor called.
+Mock ObjectFileFactory CreateObject was called with (0)
 Mock ObjectFileFactory Setup was called.
 Mock Engine getInputwas called
 Mock Engine getInputError was called
@@ -31,6 +34,9 @@ AT_CHECK_UNQUOTED(["${abs_top_builddir}"/tests/sceneManager/scene_manager_input_
 Mock ObjectFileFactory constructor was called with (./objects.dat)
 Mock ObjectFileFactory CreateObject was called with (0)
 Mock Engine constructor called with 0
+Mock ObjectFileFactory CreateObject was called with (0)
+Mock Engine constructor called with 0
+Mock Engine destructor called.
 Mock ObjectFileFactory CreateObject was called with (0)
 Mock ObjectFileFactory Setup was called.
 Mock Engine getInputwas called

@@ -5,7 +5,6 @@
 #include <iostream>
 #include <vector>
 
-#include "ObjectFileParser.hpp"
 #include "zombone_engine/LoggerService.hpp"
 
 using namespace std;
