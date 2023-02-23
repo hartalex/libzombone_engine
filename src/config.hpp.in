@@ -76,3 +76,6 @@
 
 /* Version number of package */
 #undef VERSION
+
+#undef ZOMBONE_ENGINE_PACKAGE_STRING
+#undef ZOMBONE_ENGINE_VERSION
