@@ -8,12 +8,12 @@ namespace zombone_engine {
 Transform2DComponent::~Transform2DComponent() {}
 
 void Transform2DComponent::move(int vx, int vy) {
-  setXY(getX() + vx, getY() + vy);
+  setXY(this->x + vx, this->y + vy);
   hasMoved = 1;
 }
 
 void Transform2DComponent::move(int vx, int vy, int hasMoved) {
-  setXY(getX() + vx, getY() + vy);
+  setXY(this->x + vx, this->y + vy);
   this->hasMoved = hasMoved;
 }
 
@@ -27,15 +27,15 @@ void Transform2DComponent::move(Transform2DComponent &transform, int hasMoved) {
 
 Transform2DComponent Transform2DComponent::unMove() {
   Transform2DComponent retval = Transform2DComponent(
-      "direction", previous_x - getX(), previous_y - getY());
+      "direction", this->previous_x - this->x, this->previous_y - this->y);
   return retval;
 }
 
 void Transform2DComponent::initializeXY(int xx, int yy) {
   setX(xx);
-  previous_x = xx;
+  this->previous_x = xx;
   setY(yy);
-  previous_y = yy;
+  this->previous_y = yy;
 }
 void Transform2DComponent::setXY(int xx, int yy) {
   setX(xx);
@@ -45,12 +45,12 @@ void Transform2DComponent::setXY(Transform2DComponent &transform) {
   setXY(transform.getX(), transform.getY());
 }
 void Transform2DComponent::setX(int xx) {
-  previous_x = getX();
-  x = xx;
+  this->previous_x = this->x;
+  this->x = xx;
 }
 void Transform2DComponent::setY(int yy) {
-  previous_y = getY();
-  y = yy;
+  this->previous_y = this->y;
+  this->y = yy;
 }
 
 int Transform2DComponent::getX() const { return x; }
