@@ -18,8 +18,22 @@ libzombone_engine_la_CXXFLAGS = $(cxx_std) $(cxx_includes) $(cxx_warnings) -fPIC
 libzombone_engine_la_LDFLAGS= -shared -fPIC -release $(VERSION)
 nobase_include_HEADERS=zombone_engine.hpp zombone_engine/input.hpp zombone_engine/Transform2DComponent.hpp zombone_engine/scene_manager.hpp zombone_engine/engine.hpp zombone_engine/SyslogLogger.hpp  zombone_engine/LoggerService.hpp zombone_engine/MemoryJournal.hpp zombone_engine/JournalService.hpp zombone_engine/Logger.hpp zombone_engine/Journal.hpp zombone_engine/view.hpp zombone_engine/Audio.hpp zombone_engine/DefaultAudio.hpp zombone_engine/ObjectFactory.hpp zombone_engine/ObjectData.hpp zombone_engine/ComponentData.hpp zombone_engine/ComponentFactory.hpp zombone_engine/ObjectFactoryService.hpp zombone_engine/ObjectFileFactory.hpp zombone_engine/AudioService.hpp zombone_engine/component.hpp zombone_engine/ObjectIdentifier.hpp zombone_engine/types.hpp zombone_engine/EngineService.hpp zombone_engine/ObjectIdentifier.hpp zombone_engine/ObjectFileParser.hpp zombone_engine/FlatObjectFileParser.hpp
 
+doxygen_stamp = doxygen.stamp
+
 clean-am:
 	rm -rf *.gc*
 	rm -rf *.o
 	rm -rf *.la
 	rm -rf *.lo
+	rm $(doxygen_stamp)
+
+man_directory = $(top_srcdir)/html/index.html
+
+libzombone_engine_la_MANS = $(man_directory)
+
+$(man_directory): $(doxygen_stamp)
+
+$(doxygen_stamp): doxygen.config $(SOURCES)
+		$(DOXYGEN) doxygen.config
+		echo Timestamp > $@
+all-local: $(doxygen_stamp)
