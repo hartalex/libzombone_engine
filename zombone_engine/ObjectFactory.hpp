@@ -4,9 +4,9 @@
 #include <string>
 #include <vector>
 
+#include "Component.hpp"
 #include "ComponentData.hpp"
 #include "ObjectIdentifier.hpp"
-#include "component.hpp"
 #include "input.hpp"
 using namespace std;
 

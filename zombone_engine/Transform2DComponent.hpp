@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "component.hpp"
+#include "Component.hpp"
 #include "types.hpp"
 
 using namespace std;

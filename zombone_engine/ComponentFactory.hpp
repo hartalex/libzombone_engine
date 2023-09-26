@@ -3,8 +3,8 @@
 
 #include <memory>
 
+#include "Component.hpp"
 #include "ComponentData.hpp"
-#include "component.hpp"
 using namespace std;
 
 namespace zombone_engine {
