@@ -1,4 +1,4 @@
-#include "zombone_engine/component.hpp"
+#include "zombone_engine/Component.hpp"
 using namespace std;
 
 namespace zombone_engine {
@@ -13,6 +13,7 @@ Component::Component(int componentType, string componentName,
       isDirty(1) {
   time(&initialTime);
 }
+
 Component::Component(int componentType, string componentName)
     : componentType(componentType),
       componentName(componentName),

@@ -11,7 +11,11 @@
 using namespace std;
 
 namespace zombone_engine {
-
+/**
+ * @brief The Base Component Object
+ *
+ * From which all other components inherit from
+ */
 class Component {
  public:
   Component(int componentType, string componentName,
@@ -29,7 +33,7 @@ class Component {
   string getName() const;
   int getObjectType() const;
   string getObjectName() const;
-  void removeComponent(int type, string name);
+
   int isRemoved() const;
   void remove();
   int isSetup() const;
@@ -43,8 +47,25 @@ class Component {
   int removed;
 
  protected:
+  /**
+   * @brief Flag to determine if the component has been setup
+   *
+   * Used to skip any logic that is not needed or will fail if the component is
+   * not yet setup.
+   */
   int setuped;
+  /**
+   * @brief Flag to determine if the component has changed
+   *
+   * Used to determine if the component should be rerendered
+   */
   int isDirty;
+  /**
+   * @brief The timestamp when the component was created
+   *
+   * Used to determine how many ticks have passed since the creation of the
+   * component
+   */
   time_t initialTime;
 
   double getTicks() const;
