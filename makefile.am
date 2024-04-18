@@ -10,7 +10,7 @@ endif
 if WINDOWS
 cxx_warnings = -Wall -Wpedantic -Wextra -Wsuggest-override -Wsuggest-attribute=format
 endif
-cxx_std = -std=c++14
+cxx_std = -std=c++23
 
 lib_LTLIBRARIES = libzombone_engine.la
 libzombone_engine_la_SOURCES = src/Component.cpp src/Transform2DComponent.cpp src/scene_manager.cpp src/engine.cpp src/SyslogLogger.cpp src/LoggerService.cpp src/MemoryJournal.cpp src/JournalService.cpp src/AudioService.cpp src/Audio.cpp  src/ObjectFileFactory.cpp src/ObjectFactoryService.cpp src/DefaultAudio.cpp src/EngineService.cpp src/zombone_engine.cpp src/ObjectIdentifier.cpp src/FlatObjectFileParser.cpp

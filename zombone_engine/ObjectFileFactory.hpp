@@ -1,6 +1,10 @@
 #ifndef HEADER_OBJECT_FILE_FACTORY
 #define HEADER_OBJECT_FILE_FACTORY
+
+#include <exception>
+#include <expected>
 #include <memory>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -55,6 +59,7 @@ class ObjectFileFactory : public ObjectFactory {
     vector<shared_ptr<Component>> components;
     int nextObjectId;
     void deleteComponents();
+    expected<ObjectData, logic_error> findObjectData(int type);
 };
 
 }  // namespace zombone_engine
