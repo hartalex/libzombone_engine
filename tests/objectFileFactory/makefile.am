@@ -8,7 +8,7 @@ endif
 if WINDOWS
 cxx_warnings = -Wall -Wpedantic -Wextra -Wsuggest-override -Wsuggest-attribute=format
 endif
-cxx_std = -std=c++14
+cxx_std = -std=c++23
 coverage = -O0 --coverage -fprofile-abs-path
 
 check_PROGRAMS = objectFileFactory_fail_test objectFileFactory_test objectFileFactory_1_test objectFileFactory_2_test objectFileFactory_3_test objectFileFactory_4_test objectFileFactory_5_test objectFileFactory_6_test objectFileFactory_tearDown_test objectFileFactory_tearDown_1_test objectFileFactory_tearDown_2_test objectFileFactory_tearDown_3_test objectFileFactory_tearDown_4_test objectFileFactory_update_test objectFileFactory_update_1_test objectFileFactory_update_2_test objectFileFactory_update_3_test objectFileFactory_update_4_test objectFileFactory_parse_error_test objectFileFactory_input_1_test objectFileFactory_physics_1_test objectFileFactory_getIsDirty_1_test objectFileFactory_render_1_test

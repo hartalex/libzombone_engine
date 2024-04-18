@@ -1,8 +1,11 @@
 #include "zombone_engine/ObjectFileFactory.hpp"
 
+#include <exception>
+#include <expected>
 #include <fstream>
 #include <iostream>
 #include <memory>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -40,16 +43,25 @@ ObjectFileFactory::ObjectFileFactory(
 
 ObjectFileFactory::~ObjectFileFactory() {}
 
-ObjectIdentifier ObjectFileFactory::createObject(int type) {
-  ObjectIdentifier oid;
-  LoggerService::getLogger().info("Creating Object of type %i, %i", type,
-                                  nextObjectId);
-  vector<ObjectData>::iterator it = objects.begin();
+expected<ObjectData, logic_error> ObjectFileFactory::findObjectData(int type) {
+  auto it = objects.begin();
   while (it != objects.end() && (*it).type != type) {
     ++it;
   }
   if (it != objects.end()) {
-    ObjectData od = *it;
+    return *it;
+  }
+  LoggerService::getLogger().info("Generic Object Type %i Not Found", type);
+  return unexpected(logic_error("Object Type Not Found"));
+}
+
+ObjectIdentifier ObjectFileFactory::createObject(int type) {
+  ObjectIdentifier oid;
+  LoggerService::getLogger().info("Creating Object of type %i, %i", type,
+                                  nextObjectId);
+  auto result = findObjectData(type);
+  if (result) {
+    ObjectData od = result.value();
 
     for (vector<ComponentData>::iterator iit = od.components.begin();
          iit != od.components.end(); ++iit) {
@@ -58,10 +70,8 @@ ObjectIdentifier ObjectFileFactory::createObject(int type) {
     }
     oid = ObjectIdentifier(od.type, od.name, nextObjectId);
     nextObjectId++;
-  } else {
-    LoggerService::getLogger().info("Generic Object Type %i Not Found", type);
+    return oid;
   }
-  return oid;
 }
 
 void ObjectFileFactory::createComponent(ComponentData data) {
