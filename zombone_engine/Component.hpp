@@ -6,8 +6,8 @@
 #include <memory>
 #include <string>
 
-#include "ObjectIdentifier.hpp"
-#include "input.hpp"
+#include <ObjectIdentifier.hpp>
+#include <input.hpp>
 using namespace std;
 
 namespace zombone_engine {

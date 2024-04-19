@@ -1,4 +1,4 @@
-#include "zombone_engine/engine.hpp"
+#include <zombone_engine/engine.hpp>
 
 #include <stdlib.h>
 
@@ -6,8 +6,8 @@
 #include <iostream>
 #include <thread>
 
-#include "zombone_engine/LoggerService.hpp"
-#include "zombone_engine/scene_manager.hpp"
+#include <zombone_engine/LoggerService.hpp>
+#include <zombone_engine/scene_manager.hpp>
 using namespace std;
 
 namespace zombone_engine {

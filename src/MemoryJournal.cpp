@@ -1,4 +1,4 @@
-#include "zombone_engine/MemoryJournal.hpp"
+#include <zombone_engine/MemoryJournal.hpp>
 
 #include <stdarg.h>
 #include <stdio.h>

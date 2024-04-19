@@ -1,12 +1,12 @@
-#include "zombone_engine/scene_manager.hpp"
-
 #include <vector>
+#include <zombone_engine/EngineService.hpp>
+#include <zombone_engine/LoggerService.hpp>
+#include <zombone_engine/ObjectFactoryService.hpp>
+#include <zombone_engine/engine.hpp>
+#include <zombone_engine/input.hpp>
+#include <zombone_engine/scene_manager.hpp>
 
-#include "zombone_engine/EngineService.hpp"
-#include "zombone_engine/LoggerService.hpp"
-#include "zombone_engine/ObjectFactoryService.hpp"
-#include "zombone_engine/engine.hpp"
-#include "zombone_engine/input.hpp"
+#include "zombone_engine/ComponentStorageService.hpp"
 
 namespace zombone_engine {
 
@@ -16,24 +16,26 @@ SceneManager::SceneManager(int initialObjectId) {
 
 SceneManager::~SceneManager() {}
 
-void SceneManager::setup() { ObjectFactoryService::getObjectFactory().setup(); }
+void SceneManager::setup() {
+  ComponentStorageService::getComponentStorage().setup();
+}
 
 void SceneManager::update() {
   char ch = EngineService::getEngine().getInput();
 
   if (ch != EngineService::getEngine().getInputError()) {
     Input input = Input(ch);
-    ObjectFactoryService::getObjectFactory().input(input);
+    ComponentStorageService::getComponentStorage().input(input);
   }
 
-  ObjectFactoryService::getObjectFactory().update();
+  ComponentStorageService::getComponentStorage().update();
 
-  ObjectFactoryService::getObjectFactory().physics();
+  ComponentStorageService::getComponentStorage().physics();
 
-  if (ObjectFactoryService::getObjectFactory().getIsDirty()) {
+  if (ComponentStorageService::getComponentStorage().getIsDirty()) {
     LoggerService::getLogger().info("Rendering");
     EngineService::getEngine().clearScreen();
-    ObjectFactoryService::getObjectFactory().render();
+    ComponentStorageService::getComponentStorage().render();
     EngineService::getEngine().refreshScreen();
   }
   /* LoggerService::getLogger().info("Scene tick %d",
@@ -41,11 +43,11 @@ void SceneManager::update() {
 }
 
 void SceneManager::setScene(int nextObjectId) {
-  ObjectFactoryService::getObjectFactory().tearDown();
-  ObjectFactoryService::getObjectFactory().clearAllComponents();
+  ComponentStorageService::getComponentStorage().tearDown();
+  ComponentStorageService::getComponentStorage().clearAllComponents();
   LoggerService::getLogger().debug("Setting Scene to %i", nextObjectId);
   ObjectFactoryService::getObjectFactory().createObject(nextObjectId);
-  ObjectFactoryService::getObjectFactory().setup();
+  ComponentStorageService::getComponentStorage().setup();
 }
 
 }  // namespace zombone_engine

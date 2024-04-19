@@ -3,8 +3,8 @@
 
 #include <string>
 
-#include "Component.hpp"
-#include "types.hpp"
+#include <Component.hpp>
+#include <types.hpp>
 
 using namespace std;
 

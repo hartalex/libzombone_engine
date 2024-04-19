@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "ComponentData.hpp"
+#include <ComponentData.hpp>
 using namespace std;
 
 namespace zombone_engine {

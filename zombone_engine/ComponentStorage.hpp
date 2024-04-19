@@ -1,95 +1,51 @@
-#ifndef HEADER_OBJECT_FACTORY
-#define HEADER_OBJECT_FACTORY
+#ifndef HEADER_COMPONENT_STORAGE
+#define HEADER_COMPONENT_STORAGE
 
 #include <string>
 #include <vector>
 
-#include "ComponentData.hpp"
-#include "ObjectIdentifier.hpp"
-#include "component.hpp"
-#include "input.hpp"
+#include "zombone_engine/ComponentData.hpp"
+#include "zombone_engine/ObjectIdentifier.hpp"
+#include "zombone_engine/component.hpp"
+#include "zombone_engine/input.hpp"
 using namespace std;
 
 namespace zombone_engine {
 
-class ObjectFactory {
+class ComponentStorage {
    public:
-    virtual ~ObjectFactory(){};
-    virtual void createComponent(ComponentData) = 0;
-    virtual ObjectIdentifier createObject(int type) = 0;
-    virtual void setup() = 0;
-    virtual void tearDown() = 0;
-    virtual void update() = 0;
-    virtual void input(Input) = 0;
-    virtual void physics() = 0;
-    virtual int getIsDirty() = 0;
-    virtual void render() = 0;
-    virtual void clearAllComponents() = 0;
+    ComponentStorage();
+    virtual ~ComponentStorage();
+    virtual void setup();
+    virtual void tearDown();
+    virtual void update();
+    virtual void input(Input);
+    virtual void physics();
+    virtual int getIsDirty();
+    virtual void render();
+    virtual void clearAllComponents();
+    virtual void addComponent(shared_ptr<Component> component);
     virtual void removeComponent(int componentType, string componentName,
-                                 ObjectIdentifier objectIdentifier) = 0;
-    virtual void removeObject(ObjectIdentifier objectIdentifier) = 0;
+                                 ObjectIdentifier objectIdentifier);
+    virtual void removeObject(ObjectIdentifier objectIdentifier);
     virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
         int componentType, string componentName, int objectType,
-        string objectName, int objectId) = 0;
+        string objectName, int objectId);
     virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
         int componentType, string componentName, int objectType,
-        string objectName) = 0;
+        string objectName);
     virtual vector<shared_ptr<Component>> getComponentsByObjectAndComponentType(
         int componentType, string componentName,
-        ObjectIdentifier objectIdentifier) = 0;
-    virtual vector<shared_ptr<Component>> getComponentsByObject(
-        ObjectIdentifier objectIdentifier) = 0;
-
+        ObjectIdentifier objectIdentifier);
     virtual shared_ptr<Component> getComponentByObjectAndComponentType(
         int componentType, string componentName,
-        ObjectIdentifier objectIdentifier) = 0;
+        ObjectIdentifier objectIdentifier);
+    virtual vector<shared_ptr<Component>> getComponentsByObject(
+        ObjectIdentifier objectIdentifier);
+    void deleteComponents();
 
-    template <typename T>
-    shared_ptr<T> getComponentByObjectAndComponentType(int componentType,
-                                                       string componentName,
-                                                       int objectType,
-                                                       string objectName,
-                                                       int objectId) {
-        vector<shared_ptr<Component>> foundComponents =
-            getComponentsByObjectAndComponentType(
-                componentType, componentName, objectType, objectName, objectId);
-        if (foundComponents.size() > 0) {
-            std::shared_ptr<T> component =
-                std::static_pointer_cast<T>(foundComponents[0]);
-            return component;
-        }
-        return nullptr;
-    }
-
-    template <typename T>
-    shared_ptr<T> getComponentByObjectAndComponentType(
-        int componentType, string componentName,
-        ObjectIdentifier objectIdentifier) {
-        vector<shared_ptr<Component>> foundComponents =
-            getComponentsByObjectAndComponentType(componentType, componentName,
-                                                  objectIdentifier);
-        if (foundComponents.size() > 0) {
-            std::shared_ptr<T> component =
-                std::static_pointer_cast<T>(foundComponents[0]);
-            return component;
-        }
-        return nullptr;
-    }
-    template <typename T>
-    shared_ptr<T> getComponentByObjectAndComponentType(int componentType,
-                                                       string componentName,
-                                                       int objectType,
-                                                       string objectName) {
-        vector<shared_ptr<Component>> foundComponents =
-            getComponentsByObjectAndComponentType(componentType, componentName,
-                                                  objectType, objectName);
-        if (foundComponents.size() > 0) {
-            std::shared_ptr<T> component =
-                std::static_pointer_cast<T>(foundComponents[0]);
-            return component;
-        }
-        return nullptr;
-    }
+   private:
+    vector<shared_ptr<Component>> components;
 };
 
 }  // namespace zombone_engine

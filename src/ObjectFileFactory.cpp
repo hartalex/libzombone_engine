@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "zombone_engine/ComponentFactory.hpp"
+#include "zombone_engine/ComponentStorageService.hpp"
 #include "zombone_engine/LoggerService.hpp"
 #include "zombone_engine/ObjectData.hpp"
 #include "zombone_engine/ObjectFileParser.hpp"
@@ -59,7 +60,7 @@ ObjectIdentifier ObjectFileFactory::createObject(int type) {
   ObjectIdentifier oid;
   LoggerService::getLogger().info("Creating Object of type %i, %i", type,
                                   nextObjectId);
-  auto result = findObjectData(type);
+  auto result = this->findObjectData(type);
   if (result) {
     ObjectData od = result.value();
 
@@ -71,6 +72,9 @@ ObjectIdentifier ObjectFileFactory::createObject(int type) {
     oid = ObjectIdentifier(od.type, od.name, nextObjectId);
     nextObjectId++;
     return oid;
+  } else {
+    LoggerService::getLogger().info("Unable to create object of type %i, %i",
+                                    type, nextObjectId);
   }
 }
 
@@ -78,208 +82,70 @@ void ObjectFileFactory::createComponent(ComponentData data) {
   shared_ptr<Component> component = componentFactory->createComponent(data);
   if (component) {
     LoggerService::getLogger().info("Creating component of Type %i", data.type);
-    components.push_back(component);
+    ComponentStorageService::getComponentStorage().addComponent(component);
   } else {
     LoggerService::getLogger().info("Unable to create component %i", data.type);
   }
 }
 
-void ObjectFileFactory::setup() {
-  vector<shared_ptr<Component>> tmpComponents = components;
-  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
-       cit != tmpComponents.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 0) {
-      (*cit)->setup();
-    }
-  }
-  deleteComponents();
-}
-void ObjectFileFactory::tearDown() {
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup()) {
-      (*cit)->tearDown();
-    }
-  }
-  deleteComponents();
-}
-void ObjectFileFactory::update() {
-  vector<shared_ptr<Component>> tmpComponents = components;
-  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
-       cit != tmpComponents.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 0) {
-      (*cit)->setup();
-    }
-  }
-  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
-       cit != tmpComponents.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
-      (*cit)->update();
-    }
-  }
-  deleteComponents();
-}
-
-void ObjectFileFactory::input(Input inputData) {
-  vector<shared_ptr<Component>> tmpComponents = components;
-  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
-       cit != tmpComponents.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
-      (*cit)->input(inputData);
-    }
-  }
-  deleteComponents();
-}
-
-void ObjectFileFactory::physics() {
-  vector<shared_ptr<Component>> tmpComponents = components;
-  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
-       cit != tmpComponents.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
-      (*cit)->physics();
-    }
-  }
-  deleteComponents();
-}
-int ObjectFileFactory::getIsDirty() {
-  int isDirty = 0;
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
-      isDirty += (*cit)->getIsDirty();
-    }
-  }
-  return isDirty;
-}
-void ObjectFileFactory::render() {
-  vector<shared_ptr<Component>> tmpComponents = components;
-  for (vector<shared_ptr<Component>>::iterator cit = tmpComponents.begin();
-       cit != tmpComponents.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup() == 1) {
-      (*cit)->render();
-    }
-  }
-  deleteComponents();
-}
-void ObjectFileFactory::clearAllComponents() { components.clear(); }
-
+// deprecate
 vector<shared_ptr<Component>>
 ObjectFileFactory::getComponentsByObjectAndComponentType(
     int componentType, string componentName,
     ObjectIdentifier objectIdentifier) {
-  vector<shared_ptr<Component>> retval;
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end(); ++cit) {
-    if (*cit != 0) {
-      if ((*cit)->getType() == componentType &&
-          (*cit)->getName().compare(componentName) == 0 &&
-          (*cit)->getObjectIdentifier() == objectIdentifier) {
-        retval.push_back(*cit);
-      }
-    }
-  }
-  return retval;
+  return ComponentStorageService::getComponentStorage()
+      .getComponentsByObjectAndComponentType(componentType, componentName,
+                                             objectIdentifier);
 }
 
+// deprecate
 shared_ptr<Component> ObjectFileFactory::getComponentByObjectAndComponentType(
     int componentType, string componentName,
     ObjectIdentifier objectIdentifier) {
-  vector<shared_ptr<Component>> foundComponents =
-      getComponentsByObjectAndComponentType(componentType, componentName,
+  return ComponentStorageService::getComponentStorage()
+      .getComponentByObjectAndComponentType(componentType, componentName,
                                             objectIdentifier);
-  LoggerService::getLogger().info("Found %i instances of Component %s",
-                                  foundComponents.size(),
-                                  componentName.c_str());
-  if (foundComponents.size() > 0) {
-    return foundComponents[0];
-  }
-  return 0;
 }
 
+// deprecate
 vector<shared_ptr<Component>>
 ObjectFileFactory::getComponentsByObjectAndComponentType(int componentType,
                                                          string componentName,
                                                          int objectType,
                                                          string objectName,
                                                          int objectId) {
-  ObjectIdentifier objectIdentifier(objectType, objectName, objectId);
-  vector<shared_ptr<Component>> retval;
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end(); ++cit) {
-    if (*cit != 0 && (*cit)->getType() == componentType &&
-        (*cit)->getName().compare(componentName) == 0 &&
-        (*cit)->getObjectIdentifier() == objectIdentifier) {
-      retval.push_back(*cit);
-    }
-  }
-  return retval;
+  return ComponentStorageService::getComponentStorage()
+      .getComponentsByObjectAndComponentType(componentType, componentName,
+                                             objectType, objectName, objectId);
 }
 
+// deprecate
 vector<shared_ptr<Component>>
 ObjectFileFactory::getComponentsByObjectAndComponentType(int componentType,
                                                          string componentName,
                                                          int objectType,
                                                          string objectName) {
-  vector<shared_ptr<Component>> retval;
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end(); ++cit) {
-    if (*cit != 0 && (*cit)->getType() == componentType &&
-        (*cit)->getName().compare(componentName) == 0 &&
-        (*cit)->getObjectIdentifier().getType() == objectType &&
-        (*cit)->getObjectIdentifier().getName().compare(objectName) == 0) {
-      retval.push_back(*cit);
-    }
-  }
-  return retval;
+  return ComponentStorageService::getComponentStorage()
+      .getComponentsByObjectAndComponentType(componentType, componentName,
+                                             objectType, objectName);
 }
 
+// deprecate
 void ObjectFileFactory::removeComponent(int componentType, string componentName,
                                         ObjectIdentifier objectIdentifier) {
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 &&
-        (*cit)->getType() == componentType &&
-        (*cit)->getName().compare(componentName) == 0 &&
-        (*cit)->getObjectIdentifier() == objectIdentifier) {
-      (*cit)->remove();
-    }
-  }
+  ComponentStorageService::getComponentStorage().removeComponent(
+      componentType, componentName, objectIdentifier);
 }
+// deprecate
 void ObjectFileFactory::removeObject(ObjectIdentifier objectIdentifier) {
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end(); ++cit) {
-    if (*cit != 0 && (*cit)->isRemoved() == 0 &&
-        (*cit)->getObjectIdentifier() == objectIdentifier) {
-      (*cit)->remove();
-    }
-  }
+  ComponentStorageService::getComponentStorage().removeObject(objectIdentifier);
 }
 
-void ObjectFileFactory::deleteComponents() {
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end();) {
-    if (*cit != 0 && (*cit)->isRemoved() == 1) {
-      // remove components marked to be removed
-      cit = components.erase(cit);
-    } else if (*cit == 0) {
-      // remove components that are no longer valid
-      cit = components.erase(cit);
-    } else {
-      ++cit;
-    }
-  }
-}
-
+// deprecate
 vector<shared_ptr<Component>> ObjectFileFactory::getComponentsByObject(
     ObjectIdentifier objectIdentifier) {
-  vector<shared_ptr<Component>> retval;
-  for (vector<shared_ptr<Component>>::iterator cit = components.begin();
-       cit != components.end(); ++cit) {
-    if (*cit != 0 && (*cit)->getObjectIdentifier() == objectIdentifier) {
-      retval.push_back(*cit);
-    }
-  }
-  return retval;
+  return ComponentStorageService::getComponentStorage().getComponentsByObject(
+      objectIdentifier);
 }
 
 }  // namespace zombone_engine
