@@ -1,3 +1,0 @@
-m4_include([engine.at])
-m4_include([scene_manager.at])
-m4_include([objectFileFactory.at])

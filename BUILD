@@ -8,9 +8,10 @@ cc_library(
 )
 
 cc_test(
-	name="engine_test",
-	srcs=glob(["tests/engine/engine_test.cpp","zombone_engine/*.hpp"]),
-	includes=["zombone_engine"],
-  deps=[":libzombone_engine"],
-  copts = ["--std=c++23"],
+	name="libzombone_engine_test",
+	srcs=glob(["tests/test.cpp"]),
+	#deps=[":libzombone_engine","@com_google_googletest//:gtest_main"],
+	deps=[
+ "@gtest//:gtest_main"
+	],
 )
