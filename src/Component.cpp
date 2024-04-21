@@ -58,4 +58,10 @@ const ObjectIdentifier& Component::getObjectIdentifier() const {
   return objectIdentifier;
 }
 
+bool Component::operator==(const Component& rhs) const {
+  return componentType == rhs.componentType &&
+         componentName.compare(rhs.componentName) == 0 &&
+         objectIdentifier == rhs.objectIdentifier;
+}
+
 }  // namespace zombone_engine

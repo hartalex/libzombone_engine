@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-#include "zombone_engine/ComponentData.hpp"
 #include "zombone_engine/ObjectIdentifier.hpp"
 #include "zombone_engine/component.hpp"
 #include "zombone_engine/input.hpp"

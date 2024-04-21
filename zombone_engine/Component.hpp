@@ -3,11 +3,10 @@
 
 #include <time.h>
 
-#include <memory>
-#include <string>
-
 #include <ObjectIdentifier.hpp>
 #include <input.hpp>
+#include <memory>
+#include <string>
 using namespace std;
 
 namespace zombone_engine {
@@ -39,6 +38,7 @@ class Component {
   int isSetup() const;
   int getIsDirty() const;
   const ObjectIdentifier& getObjectIdentifier() const;
+  bool operator==(const Component& rhs) const;
 
  private:
   int componentType;
