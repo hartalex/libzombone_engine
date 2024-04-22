@@ -34,8 +34,38 @@ TEST(ComponentStorage, SetupComponent) {
   ObjectIdentifier objectIdentifier{1, "obj name", 1};
   shared_ptr<MockComponent> component =
       make_shared<MockComponent>(1, "comp name", objectIdentifier);
-  cs.addComponent(component);
-
+  cs.addComponent(component
+  
   EXPECT_CALL(*component, setup);
   cs.setup();
+}
+
+// test adding a component to storage
+// setup component storage should not call components if it's already setup
+TEST(ComponentStorage, SetupComponent) {
+  ComponentStorage cs;
+  ObjectIdentifier objectIdentifier{1, "obj name", 1};
+  shared_ptr<MockComponent> component =
+      make_shared<MockComponent>(1, "comp name", objectIdentifier);
+  cs.addComponent(component
+  
+  (*component).setup();
+  
+  EXPECT_CALL(*component, setup).Times(1);
+  cs.setup();
+}
+
+// test adding a component to storage
+// tearDown component storage should call components tearDown if component is setup
+TEST(ComponentStorage, TearDownComponent) {
+  ComponentStorage cs;
+  ObjectIdentifier objectIdentifier{1, "obj name", 1};
+  shared_ptr<MockComponent> component =
+      make_shared<MockComponent>(1, "comp name", objectIdentifier);
+  cs.addComponent(component
+  
+  (*component).setup();
+  
+  EXPECT_CALL(*component, tearDown);
+  cs.tearDown();
 }
