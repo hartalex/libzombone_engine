@@ -1,10 +1,9 @@
 #ifndef HEADER_COMPONENT_DATA
 #define HEADER_COMPONENT_DATA
 
+#include <ObjectIdentifier.hpp>
 #include <string>
 #include <vector>
-
-#include <ObjectIdentifier.hpp>
 using namespace std;
 
 namespace zombone_engine {

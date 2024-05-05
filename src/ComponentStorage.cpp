@@ -9,11 +9,11 @@
 #include <string>
 #include <vector>
 
+#include "zombone_engine/Component.hpp"
 #include "zombone_engine/ComponentFactory.hpp"
 #include "zombone_engine/LoggerService.hpp"
 #include "zombone_engine/ObjectFileParser.hpp"
 #include "zombone_engine/ObjectIdentifier.hpp"
-#include "zombone_engine/component.hpp"
 
 using namespace std;
 
@@ -40,6 +40,9 @@ void ComponentStorage::setup() {
 void ComponentStorage::tearDown() {
   for (vector<shared_ptr<Component>>::iterator cit = components.begin();
        cit != components.end(); ++cit) {
+    cout << (*cit) << endl;
+    cout << (*cit)->isRemoved() << endl;
+    cout << (*cit)->isSetup() << endl;
     if (*cit != 0 && (*cit)->isRemoved() == 0 && (*cit)->isSetup()) {
       (*cit)->tearDown();
     }

@@ -9,11 +9,11 @@
 #include <vector>
 
 #include "ComponentFactory.hpp"
+#include "ObjectData.hpp"
 #include "ObjectFactory.hpp"
+#include "ObjectFileParser.hpp"
 #include "ObjectIdentifier.hpp"
 #include "input.hpp"
-#include "zombone_engine/ObjectData.hpp"
-#include "zombone_engine/ObjectFileParser.hpp"
 using namespace std;
 
 namespace zombone_engine {

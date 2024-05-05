@@ -9,13 +9,13 @@
 #include <string>
 #include <vector>
 
+#include "zombone_engine/Component.hpp"
 #include "zombone_engine/ComponentFactory.hpp"
 #include "zombone_engine/ComponentStorageService.hpp"
 #include "zombone_engine/LoggerService.hpp"
 #include "zombone_engine/ObjectData.hpp"
 #include "zombone_engine/ObjectFileParser.hpp"
 #include "zombone_engine/ObjectIdentifier.hpp"
-#include "zombone_engine/component.hpp"
 
 using namespace std;
 

@@ -10,7 +10,7 @@ cc_library(
 cc_test(
 	name="libzombone_engine_test",
 	srcs=glob(["tests/*.cpp","tests/*.hpp"]),
-	deps=[":libzombone_engine",
+	deps=["//:libzombone_engine",
  "@gtest//:gtest_main"
 	],
 )

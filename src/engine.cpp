@@ -1,4 +1,4 @@
-#include <zombone_engine/engine.hpp>
+#include "zombone_engine/engine.hpp"
 
 #include <stdlib.h>
 
@@ -6,8 +6,8 @@
 #include <iostream>
 #include <thread>
 
-#include <zombone_engine/LoggerService.hpp>
-#include <zombone_engine/scene_manager.hpp>
+#include "zombone_engine/LoggerService.hpp"
+#include "zombone_engine/scene_manager.hpp"
 using namespace std;
 
 namespace zombone_engine {
@@ -35,7 +35,7 @@ int Engine::getScreenHeight() { return 0; }
 int Engine::getScreenWidth() { return 0; }
 char Engine::getInput() { return 0; }
 char Engine::getInputError() { return 0; }
-void Engine::clearScreen(){};
-void Engine::refreshScreen(){};
+void Engine::clearScreen() {};
+void Engine::refreshScreen() {};
 
 }  // namespace zombone_engine

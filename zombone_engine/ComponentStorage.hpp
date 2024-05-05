@@ -4,9 +4,9 @@
 #include <string>
 #include <vector>
 
-#include "zombone_engine/ObjectIdentifier.hpp"
-#include "zombone_engine/component.hpp"
-#include "zombone_engine/input.hpp"
+#include "Component.hpp"
+#include "ObjectIdentifier.hpp"
+#include "input.hpp"
 using namespace std;
 
 namespace zombone_engine {

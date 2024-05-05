@@ -1,9 +1,9 @@
-#include <zombone_engine/JournalService.hpp>
+#include "zombone_engine/JournalService.hpp"
 
 #include <cstddef>
 
-#include <zombone_engine/Journal.hpp>
-#include <zombone_engine/MemoryJournal.hpp>
+#include "zombone_engine/Journal.hpp"
+#include "zombone_engine/MemoryJournal.hpp"
 
 namespace zombone_engine {
 

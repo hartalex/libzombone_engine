@@ -1,9 +1,9 @@
+#include "zombone_engine/SyslogLogger.hpp"
+
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 #include <syslog.h>
-
-#include <zombone_engine/SyslogLogger.hpp>
 
 #include "config.hpp"
 
