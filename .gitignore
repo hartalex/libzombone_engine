@@ -52,3 +52,4 @@ zombone_engine.hpp
 doxygen.stamp
 html/
 bazel*
+genhtml/

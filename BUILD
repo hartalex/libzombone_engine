@@ -11,6 +11,6 @@ cc_test(
 	name="libzombone_engine_test",
 	srcs=glob(["tests/*.cpp","tests/*.hpp"]),
 	deps=["//:libzombone_engine",
- "@gtest//:gtest_main"
-	],
+ "@gtest//:gtest_main"],
+  copts = ["--std=c++23"]
 )
