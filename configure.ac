@@ -27,7 +27,7 @@ AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_INSTALL
-
+CXXFLAGS="$CXXFLAGS -std=c++23"
 
 # Checks for libraries.
 AC_CHECK_LIB([m],[sqrt],,AC_MSG_ERROR(Couldn't find library libm))

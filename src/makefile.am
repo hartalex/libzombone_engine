@@ -8,7 +8,6 @@ endif
 if WINDOWS
 cxx_warnings = -Wall -Wpedantic -Wextra -Wsuggest-override -Wsuggest-attribute=format
 endif
-cxx_std = -std=c++23
 
 clean-am:
 	rm -rf *.gc*
