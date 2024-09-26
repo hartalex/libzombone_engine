@@ -2,6 +2,7 @@
 #define HEADER_ZOMBONE_ENGINE
 #include "zombone_engine/Audio.hpp"
 #include "zombone_engine/AudioService.hpp"
+#include "zombone_engine/Component.hpp"
 #include "zombone_engine/ComponentData.hpp"
 #include "zombone_engine/DefaultAudio.hpp"
 #include "zombone_engine/EngineService.hpp"
@@ -19,7 +20,6 @@
 #include "zombone_engine/ObjectIdentifier.hpp"
 #include "zombone_engine/SyslogLogger.hpp"
 #include "zombone_engine/Transform2DComponent.hpp"
-#include "zombone_engine/component.hpp"
 #include "zombone_engine/engine.hpp"
 #include "zombone_engine/input.hpp"
 #include "zombone_engine/scene_manager.hpp"
