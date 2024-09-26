@@ -1,4 +1,4 @@
-#include "zombone_engine/component.hpp"
+#include "zombone_engine/Component.hpp"
 
 #include <iostream>
 #include <string>

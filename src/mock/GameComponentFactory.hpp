@@ -3,9 +3,9 @@
 
 #include <memory>
 
+#include "zombone_engine/Component.hpp"
 #include "zombone_engine/ComponentData.hpp"
 #include "zombone_engine/ComponentFactory.hpp"
-#include "zombone_engine/component.hpp"
 using namespace std;
 using namespace zombone_engine;
 

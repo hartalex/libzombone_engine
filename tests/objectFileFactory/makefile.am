@@ -13,7 +13,7 @@ coverage = -O0 --coverage -fprofile-abs-path
 
 check_PROGRAMS = objectFileFactory_fail_test objectFileFactory_test objectFileFactory_1_test objectFileFactory_2_test objectFileFactory_3_test objectFileFactory_4_test objectFileFactory_5_test objectFileFactory_6_test objectFileFactory_tearDown_test objectFileFactory_tearDown_1_test objectFileFactory_tearDown_2_test objectFileFactory_tearDown_3_test objectFileFactory_tearDown_4_test objectFileFactory_update_test objectFileFactory_update_1_test objectFileFactory_update_2_test objectFileFactory_update_3_test objectFileFactory_update_4_test objectFileFactory_parse_error_test objectFileFactory_input_1_test objectFileFactory_physics_1_test objectFileFactory_getIsDirty_1_test objectFileFactory_render_1_test
 
-objectFileFactory_test_group = ObjectFileFactory.hpp $(top_srcdir)/src/ObjectFileFactory.cpp $(top_srcdir)/src/mock/component.cpp $(top_srcdir)/src/mock/LoggerService.cpp $(top_srcdir)/src/mock/MockLogger.cpp $(top_srcdir)/src/mock/MockLogger.hpp $(top_srcdir)/src/ObjectIdentifier.cpp $(top_srcdir)/src/FlatObjectFileParser.cpp 
+objectFileFactory_test_group = ObjectFileFactory.hpp $(top_srcdir)/src/ObjectFileFactory.cpp $(top_srcdir)/src/mock/Component.cpp $(top_srcdir)/src/mock/LoggerService.cpp $(top_srcdir)/src/mock/MockLogger.cpp $(top_srcdir)/src/mock/MockLogger.hpp $(top_srcdir)/src/ObjectIdentifier.cpp $(top_srcdir)/src/FlatObjectFileParser.cpp
 
 objectFileFactory_test_SOURCES =  objectFileFactory_test.cpp $(objectFileFactory_test_group) $(top_srcdir)/src/mock/GameComponentFactory.cpp
 objectFileFactory_test_CXXFLAGS = $(cxx_std) $(coverage) $(cxx_includes) $(cxx_warnings)
