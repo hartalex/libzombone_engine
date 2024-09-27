@@ -29,7 +29,7 @@ clean-am:
 
 libzombone_engine_la_MANS = $(man_directory)
 
-$(man_directory): doxygen.config $(SOURCES) $(nobase_include_HEADERS)
+$(man_directory): libzombone_engine.la doxygen.config $(SOURCES) $(nobase_include_HEADERS)
 		$(DOXYGEN) doxygen.config
 
 all-local: $(man_directory)
