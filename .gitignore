@@ -43,7 +43,6 @@ config.sub
 config.guess~
 config.sub~
 configure~
-configure
 .libs
 compile_commands.json
 libtool

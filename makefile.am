@@ -27,6 +27,7 @@ clean-am:
 	rm -rf *.gc*
 	rm -rf *.o
 	rm -rf *.la
+	rm -rf *.a
 	rm -rf *.lo
 	rm -rf $(man_directory)
 
