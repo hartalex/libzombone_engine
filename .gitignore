@@ -15,14 +15,9 @@ libzombone_engine.la
 stamp-h1
 build/
 makefile
-makefile.in
 config.hpp
 config.status
 .deps
-install-sh
-missing
-compile
-depcomp
 .dirstamp
 tests/testsuite
 tests/testsuite.dir
