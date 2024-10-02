@@ -33,14 +33,11 @@ scene_manager_*_test
 src/config.h
 sounds
 *.wav
-config.guess
-config.sub
 config.guess~
 config.sub~
 configure~
 .libs
 compile_commands.json
 libtool
-ltmain.sh
 zombone_engine.hpp
 doxygen.stamp
